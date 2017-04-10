@@ -1,0 +1,83 @@
+% !TeX spellcheck = de_DE
+\documentclass{report}
+\usepackage[a4paper, total={6in, 9in}]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows,matrix,positioning}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{pgfplots}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{stackrel}
+\usepackage{array}
+\usepackage{verbatim}
+\usepackage{wrapfig}
+\usepackage{exercise}
+\usepackage{circuitikz}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	bookmarks=true,
+}
+
+\graphicspath{{img/}{../img/}}
+
+\usepackage{subfiles}
+\usepackage{xcolor} % Required to specify font color
+
+
+\begin{document}
+	\pagenumbering{roman}
+	%user defined commands
+	\include{command/title}
+	\include{command/math}
+	\include{command/laplace}
+	%title
+	\titleTdS
+	\pagebreak
+	%blank page after the title
+	\pagebreak
+	%table of contents
+	\tableofcontents
+	\listofexercises
+	\pagebreak
+	%contents
+	\pagenumbering{arabic}
+	\chapter{Introduzione}
+	\subfile{section/introduzione}	
+	\pagebreak
+	\chapter{Funzioni generalizzate}
+	\subfile{section/funzioni_generalizzate}
+	\pagebreak
+	\chapter{Trasformata di Laplace}
+	\subfile{section/trasformata_laplace}
+	\pagebreak
+	\chapter{Anti-Trasformata di Laplace}
+	\subfile{section/anti_trasformata_laplace}
+	\pagebreak
+	\chapter{Sistemi lineari}
+	\subfile{section/applicazione_laplace}
+	\subfile{section/sistemi_lineari}
+	\subfile{section/stabilita}
+	\subfile{section/rappresentazione_sistema}
+	\subfile{section/risposta_gradino_ordine_1_2}
+	\pagebreak
+	\chapter{Algebra dei blocchi}
+	\subfile{section/connessioni}
+	\subfile{section/risposta_forzata_sistemi_interconnessi}
+	\pagebreak
+	\chapter{Equazione di stato}
+	\subfile{section/equazione_stato}
+	\pagebreak
+	\chapter{Stabilit\'a e punti di equilibrio}
+	\subfile{section/punti_equilibrio}
+	\pagebreak
+	\chapter{Raggiungibilit\'a e controllabilit\'a}
+	\subfile{section/raggiungibilita_controllabilita}
+	\pagebreak
+	\chapter{Riepilogo}
+	\subfile{section/riepilogo_trasf_laplace}
+\end{document}
