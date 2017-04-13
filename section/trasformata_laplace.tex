@@ -17,7 +17,7 @@
 	\paragraph{Teorema 1} Se la trasformata di Laplace esiste per qualche $s=\bar{s}$, allora essa esiste anche $ \forall s\ \text{tale che}\ \Re{(s)} > \Re{\bar{(s)}} $.\\
 	In pratica l'ascissa di convergenza definisce il limite a destra del quale la trasformata esiste sempre.
 	%
-	\paragraph{Teorema 2} La trasformata di Laplace \'{e} "analitica" $ \forall s \colon \Re{(s)} > \bar{\sigma}$. Analitica significa che \'e continua e derivabile $n$ volte.
+	\paragraph{Teorema 2} La trasformata di Laplace \'{e} "analitica" $ \forall s \colon \Re{(s)} > \bar{\sigma}$. Analitica significa che \'e continua e derivabile $\infty$ volte.\footnote{In pratica, se una $f$ non \'e continua n\'e derivabile in alcuni punti, la sua trasformata lo \' comunque: \'e pi\'u facile lavorare con quest'ultima.}
 	%	
 	\section{Propriet\'{a}}
 	%
@@ -35,7 +35,7 @@
 	\label{trasl_t}
 	$$ \Lapl{f(t)}{F(s)} \quad \Rightarrow \quad \Lapl{f(t-T)\ 1(t-T)}{e^{-sT}F(s)} $$
 	\linebreak
-	Chiamiamo $ \bar{f}(t) = f(t-T)\ 1(t-T) $. Con il gradino non consideriamo tutto ci\'{o} che accade prima di $T$, altrimenti la trasformata sarebbe stata diversa e avrebbe incluso anche il tratto $(0^{-},+ \infty)$.
+	Dimostrazione: chiamiamo $ \bar{f}(t) = f(t-T)\ 1(t-T) $. Con il gradino non consideriamo tutto ci\'{o} che accade prima di $T$, altrimenti la trasformata sarebbe stata diversa e avrebbe incluso anche il tratto $(0^{-},+ \infty)$.
 	\begin{align*}
 		\Lbrace{\bar{f}(t)} &= \LaplDef{\bar{f}(t)}{s}{t} =\\
 		&= \int_{0^{-}}^{T^{-}} \bar{f}(t) e^{-st} \mathrm{d}t + \int_{T^{-}}^{+ \infty} \bar{f}(t) e^{-st} \mathrm{d}t =\\
@@ -48,7 +48,7 @@
 	\subsection{Traslazione in s}
 	\label{trasl_s}
 	$$ \Lapl{f(t)}{F(s)} \quad \Rightarrow \quad \Lapl{e^{at}f(t)}{F(s-a)}$$
-	Chiamo $\tilde{f}(t) = e^{at} f(t) $:\\
+	Dimostrazione: chiamo $\tilde{f}(t) = e^{at} f(t) $:\\
 	\begin{align*}
 		\Lbrace{\tilde{f}(t)} &= \LaplDef{\tilde{f}(t)}{s}{t} =\\
 		&= \LaplDef{e^{at}f(t)}{s}{t} = \\
@@ -87,7 +87,9 @@
 	%
 	\subsection{Integrale in t}
 	\label{int_t}
-	Ipotesi:
+	$$ \Lapl{\int_{0^{-}}^{t} f(\tau) \mathrm{d}\tau}{\frac{1}{s} F(s)} $$
+	%
+	Dimostrazione:
 	\begin{align*}
 		g(t) &= \int_{0^{-}}^{t} f(\tau) \mathrm{d}\tau\\
 		\dot{g}(t) &= f(t)\\
@@ -99,29 +101,26 @@
 		&= s G(s) - 0\\
 		&\Rightarrow G(s) = \frac{1}{s} F(s)
 	\end{align*}
-	Concludiamo che:
-	$$ \Lapl{\int_{0^{-}}^{t} f(\tau) \mathrm{d}\tau}{\frac{1}{s} F(s)} $$
 	%
 	\subsection{Derivata in s}
 	\label{deriv_s}
-	Dalla definizione ho che:
+	\begin{align*}
+	\Lapl{t f(t)}{&- \frac{\mathrm{d}}{\mathrm{d}s} F(s)}\\
+	\Lapl{t^n f(t)}{&(-1)^n \frac{\mathrm{d}^n}{\mathrm{d}s^n} F(s)}
+	\end{align*}
+	Dimostrazione ($n=1$): dalla definizione ho che:
 	\begin{align*}
 		\frac{\mathrm{d}}{\mathrm{d}s} F(s) & = \frac{\mathrm{d}}{\mathrm{d}s} \LaplDef{f(t)}{s}{t} =\\
 		\intertext{Uso la regola di derivazione sotto segno di integrale}
 		& = \LaplDef{f(t) \pder{}{s}}{s}{t}\\
 		& = \LaplDef{f(t)(-t)}{s}{t} =\\
-		& = - \LaplDef{t f(t)}{s}{t}
-	\end{align*}
-	Quindi abbiamo ottenuto che:
-	\begin{align*}
-		\Lapl{t f(t)}{&- \frac{\mathrm{d}}{\mathrm{d}s} F(s)}\\
-		\Lapl{t^n f(t)}{&(-1)^n \frac{\mathrm{d}^n}{\mathrm{d}s^n} F(s)}
+		& = - \LaplDef{t f(t)}{s}{t}=\Lbrace{t f(t)}
 	\end{align*}
 	%
 	\section{Trasformate di funzioni notevoli}
 	\subsection{Impulso}
 	\label{trasf_impulso}
-	Dalla definizione:
+	Dalla definizione, per il campionamento:
 	$$ \Lbrace{\delta (t)} = \LaplDef{\delta (t)}{s}{t} = \int_{0^{-}}^{+ \infty} \delta(t) \cdot 1 \mathrm{d}t = 1 $$
 	%
 	\subsection{Doppietto}
@@ -157,7 +156,7 @@
 	Trasformando un esponenziale si ottiene un ritardo:
 	$$ \Lapl{e^{\sigma t}\ 1(t)}{\frac{1}{s-\sigma}} $$
 	%
-	\subsection{Polinomio e Esponenziale}
+	\subsection{Alcune $f$ composte: Polinomio ed Esponenziale}
 	\begin{align*}
 		\intertext{Partiamo dal grado 1:}
 		%
@@ -283,7 +282,7 @@
 		$$ \Rightarrow \Lbrace{e^{\sigma t} f(t)} = \frac{2(s-\sigma)^3-6w^2(s-\sigma)}{[(s-\sigma)^2+w^2]^3} $$
 	\end{enumerate}
 	%
-	\subsection{Trasformata del prodotto di convoluzione}
+	\subsection{Prodotto di convoluzione: definizione}
 	\begin{equation}
 		f(t) * g(t) = \int_{0}^{t} f(\tau)g(t-\tau) d\tau \quad \text{se}\ f(t), g(t)\ \text{nulle}\ \forall t
 	\end{equation}
@@ -298,7 +297,7 @@
 	$$ \int_{0}^{t} f(\tau)g(t-\tau) d\tau = \int_{0}^{t} g(\tau)f(t-\tau) d\tau $$
 	$$ f(t)*g(t) = g(t)*f(t) $$
 	%
-	\subsection{Prodotto di convoluzione}
+	\subsection{Prodotto di convoluzione: trasformata}
 	$$ \text{Se} \quad \Lapl{f(t)}{F(s)} \qquad \Lapl{g(t)}{G(s)} $$
 	$$ \text{allora} \quad \Lapl{f(t)*g(t)}{F(s)G(s)} $$
 \end{document}
