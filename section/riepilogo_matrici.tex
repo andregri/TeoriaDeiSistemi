@@ -1,0 +1,79 @@
+% !TeX spellcheck = it_IT
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	\section{Metodi utili di calcolo matriciale}
+	%
+	\subsection{Inversione di matrici $3 \times 3$}
+	\label{inv_matrici}
+	Presa una matrice $A$ di dimensione $3 \times 3$, consideriamo l'elemento in posizione $(i,j)$ chiamato $a_{ij}$ e calcoliamo il corrispettivo valore $a'_{ij}$, l'elemento in posizione $(i,j)$ della matrice inversa di $A$.
+	%	
+			\[	A=
+	\begin{tikzpicture}[baseline=-0.5ex]
+	\matrix [matrix of math nodes,left delimiter={[},right delimiter={]}] (m1)
+	{
+		a_{11} & a_{12}  & a_{13}\\
+		a_{21} & a_{22}  & a_{23}\\
+		a_{31} & a_{32}  & a_{33}\\
+	};  
+	\draw[color=red] (m1-2-1.west) -- (m1-2-3.east);
+	\draw[color=red] (m1-1-1.north) -- (m1-3-1.south);
+	\end{tikzpicture} 
+	%
+	\;\;\; A^{-1}=
+	\begin{tikzpicture} [baseline=-0.5ex]
+	\matrix [matrix of math nodes,left delimiter={[},right delimiter={]}] (m2)
+	{
+		a'_{11} & a'_{12}  & a'_{13}\\
+		a'_{21} & a'_{22}  & a'_{23}\\
+		a'_{31} & a'_{32}  & a'_{33}\\
+	};  
+	\end{tikzpicture} 
+	%
+	\;\;\; M=
+	\begin{tikzpicture} [baseline=-0.5ex]
+	\matrix [matrix of math nodes,left delimiter={[},right delimiter={]}] (m3)
+	{
+		a'_{12}  & a'_{13}\\
+		a'_{32}  & a'_{33}\\
+	};  
+	\end{tikzpicture} 
+	%
+	\;\;\; 	a'_{12}= (-1)^{i+j}	\frac{\det{M}}{\det{A}}
+	\]
+	%
+	Consideriamo l'elemento nella "posizione trasposta" $(j,i)$ chiamato $a_{ji}$\\
+	Cancelliamo la sua riga e la sua colonna e consideriamo i quattro coefficienti rimanenti\\
+	Calcoliamo il determinante del minore $M$ $2 \times 2$ cos\'i ricavato\\
+	Dividiamo il risultato per il determinante di $A$ e moltiplichiamolo per $(-1)^{i+j}$
+	%
+	\subsection{Inversione di matrici triangolari a blocchi}
+	L'inversa di una matrice triangolare superiore invertibile \'e sempre una matrice triangolare superiore. Questa propriet\'a \'e estensibile alle matrici triangolari a blocchi $A_{ij}$.
+	Avremo perci\'o nell'inversa tutti i blocchi $A'_{ij}$ al di sotto della diagonale composti anch'essi da zeri. I blocchi della diagonale potranno essere calcolati invertendo ogni singolo blocco. I blocchi restanti (?) andranno calcolati "normalmente", con il metodo illustrato in \ref{inv_matrici}. 
+				\[ 	A= 			
+	\begin{tikzpicture}[baseline=-0.5ex]
+	\matrix [matrix of math nodes,left delimiter={[},right delimiter={]}] (a)
+	{
+		A_{11}	& A_{12}	& ...		& A_{1m}\\
+		0		& A_{22}	& ...		& A_{2m}\\
+		0		& 0			& ...		& ...	\\
+		0		& 0			& 0			& A_{nm}\\
+	};  
+	\draw[color=red] (a-2-1.north west) -- (a-4-3.south east) -- (a-4-1.south west) -- (a-2-1.north west);
+	\draw[color=green] (a-1-1.north west) -- (a-4-4.south east);
+	\end{tikzpicture} 
+	%
+	\;\;\; A^{-1}=
+	\begin{tikzpicture}[baseline=-0.5ex]
+	\matrix [matrix of math nodes,left delimiter={[},right delimiter={]}] (b)
+	{
+		(A_{11})^{-1}	& (?)			& ...		& (?)		\\
+		0				& (A_{22})^{-1}	& ...		& (?)		\\
+		0				& 0				& ...		& ...			\\
+		0				& 0				& 0			& (A_{nm})^{-1}	\\
+	};  
+	\draw[color=red] (b-2-1.north west) -- (b-4-3.south east) -- (b-4-1.south west) -- (b-2-1.north west);
+	\draw[color=green] (b-1-1.north west) -- (b-4-4.south east);
+	\end{tikzpicture} 
+	\]
+\end{document}
