@@ -50,30 +50,40 @@
 	\subsection{Inversione di matrici triangolari a blocchi}
 	L'inversa di una matrice triangolare superiore invertibile \'e sempre una matrice triangolare superiore. Questa propriet\'a \'e estensibile alle matrici triangolari a blocchi $A_{ij}$.
 	Avremo perci\'o nell'inversa tutti i blocchi $A'_{ij}$ al di sotto della diagonale composti anch'essi da zeri. I blocchi della diagonale potranno essere calcolati invertendo ogni singolo blocco. I blocchi restanti (?) andranno calcolati "normalmente", con il metodo illustrato in \ref{inv_matrici}. 
-				\[ 	A= 			
-	\begin{tikzpicture}[baseline=-0.5ex]
-	\matrix [matrix of math nodes,left delimiter={[},right delimiter={]}] (a)
-	{
-		A_{11}	& A_{12}	& ...		& A_{1m}\\
-		0		& A_{22}	& ...		& A_{2m}\\
-		0		& 0			& ...		& ...	\\
-		0		& 0			& 0			& A_{nm}\\
-	};  
-	\draw[color=red] (a-2-1.north west) -- (a-4-3.south east) -- (a-4-1.south west) -- (a-2-1.north west);
-	\draw[color=green] (a-1-1.north west) -- (a-4-4.south east);
-	\end{tikzpicture} 
-	%
-	\;\;\; A^{-1}=
-	\begin{tikzpicture}[baseline=-0.5ex]
-	\matrix [matrix of math nodes,left delimiter={[},right delimiter={]}] (b)
-	{
-		(A_{11})^{-1}	& (?)			& ...		& (?)		\\
-		0				& (A_{22})^{-1}	& ...		& (?)		\\
-		0				& 0				& ...		& ...			\\
-		0				& 0				& 0			& (A_{nm})^{-1}	\\
-	};  
-	\draw[color=red] (b-2-1.north west) -- (b-4-3.south east) -- (b-4-1.south west) -- (b-2-1.north west);
-	\draw[color=green] (b-1-1.north west) -- (b-4-4.south east);
-	\end{tikzpicture} 
+	
+	\newlength{\elwd}
+	\[ 
+		A= 			
+		\begin{tikzpicture}[baseline=-0.5ex]
+			% https://tex.stackexchange.com/questions/162822/equal-spacing-in-matrix
+			\settowidth{\elwd}{$ A_{nm}^{-1} $}
+			\newcommand{\w}[1]{\makebox[\elwd]{$ #1 $}}
+			%
+			\matrix [matrix of math nodes,left delimiter={[},right delimiter={]}] (a)
+			{
+				\w{A_{11}}	& \w{A_{12}}	& \w{...}		& \w{A_{1m}}\\
+				\w0			& \w{A_{22}}	& \w{...}		& \w{A_{2m}}\\
+				\w0			& \w0			& \w{...}		& \w{...}	\\
+				\w0			& \w0			& \w0			& \w{A_{nm}}\\
+			};  
+			\draw[color=red] (a-1-1.west) -- (a-4-4.south) -- (a-4-1.south west) -- (a-1-1.west);
+			\draw[color=green] (a-1-1.north west) -- (a-4-4.south east);
+		\end{tikzpicture} 
+		%
+		\;\;\; A^{-1}=
+		\begin{tikzpicture}[baseline=-0.5ex]
+			\settowidth{\elwd}{$ ((A_{nm}^{-1} $}
+			\newcommand{\w}[1]{\makebox[\elwd]{$ #1 $}}
+			%
+			\matrix [matrix of math nodes,left delimiter={[},right delimiter={]}] (b)
+			{
+				\w{(A_{11})^{-1}}		& \w{(?)}			& \w{...}		& \w{(?)}		\\
+				\w0						& \w{(A_{22})^{-1}}	& \w{...}		& \w{(?)}		\\
+				\w0						& \w0				& \w{...}		& \w{...}		\\
+				\w0						& \w0				& \w0			& \w{(A_{nm})^{-1}}	\\
+			};  
+			\draw[color=red] (b-1-1.west) -- (b-4-4.south) -- (b-4-1.south west) -- (b-1-1.west);
+			\draw[color=green] (b-1-1.north west) -- (b-4-4.south east);
+		\end{tikzpicture}
 	\]
 \end{document}
