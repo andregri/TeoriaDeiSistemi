@@ -78,7 +78,7 @@
 	\subsection{Polinomio caratteristico}
 		Data una matrice quadrata A, il polinomio caratteristico \'e definito come:
 		\[ \phi(s) = det(sI - A) \]
-		Inoltre si pu\'o calcolare come il mcm di tutti i denominatori diversi da zero di tutti i determinanti diversi da zero di tutte le sottomatrici quadrate di $ (sI-A)^{-1} $. Questo metodo pu\'o essere utile nel caso in cui ci venga fornita direttamente $ (sI-A)^{-1} $.
+		Inoltre si pu\'o calcolare come il mcm dei denominatori di tutti i determinanti diversi da zero di tutte le sottomatrici quadrate di $ (sI-A)^{-1} $. Questo metodo pu\'o essere utile nel caso in cui ci venga fornita direttamente $ (sI-A)^{-1} $ oppure la matrice non sia quadrata.
 	\subsubsection*{Esempio}
 		\[ A = \matTwo{1}{0}{0}{2} \]
 		\[ \phi(s) = det \left( s \matTwo{1}{0}{0}{1} - \matTwo{1}{0}{0}{2} \right) = det \left( \matTwo{s-1}{0}{0}{s-2} \right) = (s-1)(s-2) \]
