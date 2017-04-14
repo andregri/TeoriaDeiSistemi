@@ -145,21 +145,21 @@
 		\]
 		
 	\subsection{Teorema di Cayley-Hamilton}
-		Data una matrice quadrata $ A \in \R^{n_x \times n_x} $ e il relativo polinomio caratteristico $ \phi(s) = det(sI-A) $, allora:
-		\[ \phi(A) = 0\ \text{matrice nulla} \]
+		Data una matrice quadrata $ A \in \R^{n_x \times n_x} $ e il relativo polinomio caratteristico $ \varphi(s) = det(sI-A) $, allora:
+		\[ \varphi(A) = 0\ \text{matrice nulla} \]
 		In generale:
-		\[ \phi(s) = s^{n_x} + \phi_{n_x-1} s^{n_x-1} + \dots + \phi_1 s + \phi_0 \]
+		\[ \varphi(s) = s^{n_x} + \varphi_{n_x-1} s^{n_x-1} + \dots + \varphi_1 s + \varphi_0 \]
 		Per il teorema di Cayley-Hamilton:
 		\begin{align}
 			\label{th_ch}
-			\phi(A) &= A^{n_x} + \phi_{n_x-1} A^{n_x-1} + \dots + \phi_1 A + \phi_0 I = 0\\
-			A^{n_x} &= -\phi_{n_x-1} A^{n_x-1} - \dots - \phi_1 A - \phi_0 I
+			\varphi(A) &= A^{n_x} + \varphi_{n_x-1} A^{n_x-1} + \dots + \varphi_1 A + \varphi_0 I = 0\\
+			A^{n_x} &= -\varphi_{n_x-1} A^{n_x-1} - \dots - \varphi_1 A - \varphi_0 I
 		\end{align}
 		$ A_{n_x} $ \'e combinazione lineare di $ I, A, \dots, A_{n_x-1} $.
 		
 	\subsubsection{Come calcolare $ A^{n_x+k} \forall k \geq 0 $}
 		Per esempio cominciamo da $ k = 1 $:
-		\[ A^{n_x+1} = A^{n_x} A = \underbrace{- \phi_{n_x-1} A^{n_x}}_{\text{comb. lineare di}\ I, A, \dots, A_{n_x-1}} \underbrace{- \phi_{n_x-2} A^{n_x-1} - \dots - \phi_1 A^2 - \phi_0 A}_{\text{comb. lineare di}\ I, A, \dots, A_{n_x-1}} \]
+		\[ A^{n_x+1} = A^{n_x} A = \underbrace{- \varphi_{n_x-1} A^{n_x}}_{\text{comb. lineare di}\ I, A, \dots, A_{n_x-1}} \underbrace{- \varphi_{n_x-2} A^{n_x-1} - \dots - \varphi_1 A^2 - \varphi_0 A}_{\text{comb. lineare di}\ I, A, \dots, A_{n_x-1}} \]
 		Quindi $ A^{n_x+1} $ \'e combinazione lineare di $ I, A, \dots, A_{n_x-1} $.\\
 		In generale $ A^{n_x+k} $ \'e combinazione lineare di $ I, A, \dots, A_{n_x-1} $.
 		
@@ -788,16 +788,16 @@
 		\newline
 		
 		Il polinomio caratteristico (e anche il polinomio minimo) \'e invariante al cambio di base:
-		\[ \phi(s) = \tilde \phi(s) \qquad \big(  m(s) = \tilde m(s) \big) \]
+		\[ \varphi(s) = \tilde \varphi(s) \qquad \big(  m(s) = \tilde m(s) \big) \]
 		\begin{align*}
-			\tilde \phi(s) &= det(sI-\tilde A) = det(s T^{-1} I T - T^{-1} A T) =\\
+			\tilde \varphi(s) &= det(sI-\tilde A) = det(s T^{-1} I T - T^{-1} A T) =\\
 			&= det(T^{-1} (sI-A) T) = det(T^{-1}) det(sI-A) det(T) =\footnotemark det(sI-A) 
 		\end{align*}
 		\footnotetext{$ det(T) \cdot det(T^{-1}) = 1 $}
 		
 		Calcoliamo gli autovalori nella nuova base:
 		\begin{align*}
-			\phi(s) &= \tilde \phi(s) = det(sI-\tilde A) =\\
+			\varphi(s) &= \tilde \varphi(s) = det(sI-\tilde A) =\\
 			&= det\left\lbrace s
 			\begin{bmatrix}
 				I_{n_R} & 0\\
@@ -812,14 +812,187 @@
 				(sI-\tilde A_{11}) & -\tilde A_{12}\\
 				0 & (sI-\tilde A_{22})
 			\end{bmatrix} =\\
-			&= \underbrace{det(sI-\tilde A_{11})}_{\phi_C(s)} \cdot \underbrace{det(sI-\tilde A_{22})}_{\phi_{NC}(s)}
+			&= \underbrace{det(sI-\tilde A_{11})}_{\varphi_C(s)} \cdot \underbrace{det(sI-\tilde A_{22})}_{\varphi_{NC}(s)}
 		\end{align*}
 		\begin{itemize}
 			\item
-				$ \phi_C(s) $ \'e il \textbf{polinomio caratteristico di controllabilit\'a}. Le radici di $ \phi_C(s) $ sono gli autovalori di $ \tilde A_{11} $, che \'e la parte controllabile del sistema, e sono detti \textbf{autovalori controllabili}.
+				$ \varphi_C(s) $ \'e il \textbf{polinomio caratteristico di controllabilit\'a}. Le radici di $ \varphi_C(s) $ sono gli autovalori di $ \tilde A_{11} $, che \'e la parte controllabile del sistema, e sono detti \textbf{autovalori controllabili}.
+				\[ \pDeg{\varphi_C(s)} = n_R \triangleq dim\left( X_R \right) \]
+				\[ \text{sistema completamente controllabile} \quad\Leftrightarrow\quad \varphi_C(s) \equiv \varphi(s) \]
+				\[ \text{sistema completamente \textbf{non} controllabile} \quad\Leftrightarrow\quad \varphi_C(s) = 1 (B = \text{matrice nulla}) \]
 			\item
-				$ \phi_{NC}(s) $ \'e il \textbf{polinomio caratteristico di non controllabilit\'a}. Le radici di $ \phi_{NC}(s) $ sono gli autovalori di $ \tilde A_{11} $, che \'e la parte non controllabile del sistema, e sono detti \textbf{autovalori non controllabili}.
+				$ \varphi_{NC}(s) $ \'e il \textbf{polinomio caratteristico di non controllabilit\'a}. Le radici di $ \varphi_{NC}(s) $ sono gli autovalori di $ \tilde A_{11} $, che \'e la parte non controllabile del sistema, e sono detti \textbf{autovalori non controllabili}.
 		\end{itemize}
+	
+		\begin{Exercise}[title={Calcolare $ X_R $ e $ \varphi_C(s) $}, difficulty=1]
+			Dato il seguente sistema detto integratore:
+			\[ 
+				\dot x =
+				\begin{bmatrix}
+					0 & 1\\
+					0 & 0
+				\end{bmatrix} x +
+				\begin{bmatrix}
+					0\\
+					1
+				\end{bmatrix} u
+			\]
+			\[ \varphi(s) = det\left( sI-A \right) = s^2 \]
+			
+			Per studiare la controllabilit\'a possiamo procedere in due modi:
+			\begin{itemize}
+				\item
+					Usare il teorema di Kalmann che ci permette di trovare $ n_R $ e $ X_R $:
+					\[
+						P =
+						\begin{bmatrix}
+							B | AB
+						\end{bmatrix} =
+						\begin{bmatrix}
+							0 & | & 1\\
+							1 & | & 0
+						\end{bmatrix}
+					\]
+					\[ \Rightarrow\quad rank\left( P \right) = 2 \equiv n_x \]
+					Il sistema \'e completamente controllabile quindi: 
+					\begin{itemize}
+						\item $ X_R = \R^2 $
+						\item $ \varphi_C(s) = s^2 $ e $ \varphi_{NC}(s) = 1 $
+					\end{itemize}
+				\item
+					Studiare $ (sI-A)^{-1}B $ per trovare $ \varphi_C(s) $ e quindi anche $ n_R $:
+					\[
+						(sI-A)^{-1}B =
+						\begin{bmatrix}
+							s & -1\\
+							0 & s
+						\end{bmatrix}^{-1}
+						\begin{bmatrix}
+							0\\
+							1
+						\end{bmatrix}=
+						\begin{bmatrix}
+							\dfrac{1}{s} & \dfrac{1}{s^2}\\
+							0 & \dfrac{1}{s}
+						\end{bmatrix}
+						\begin{bmatrix}
+							0\\
+							1
+						\end{bmatrix} =
+						\begin{bmatrix}
+							\dfrac{1}{s^2}\\
+							\dfrac{1}{s}
+						\end{bmatrix}	
+					\]
+					\[ \varphi_C(s) = mcm\left( s, s^2 \right) = s^2 \]
+					
+					Poich\'e $ \varphi_C(s) \equiv \varphi(s) $, il sistema \'e completamente controllabile: $ X_R = \R^2 $.
+			\end{itemize}
+		\end{Exercise}
+	
+		\begin{Exercise}[title={Calcolare $ X_R $ e $ \varphi_C(s) $}, difficulty=1]
+			\[
+			\dot x =
+			\begin{bmatrix}
+			0 & 1\\
+			0 & 0
+			\end{bmatrix} x+
+			\begin{bmatrix}
+			1\\
+			0
+			\end{bmatrix} u
+			\]
+			Notiamo che:
+			\begin{enumerate}
+				\item
+				I termini $ (2,1) $ di $ A $ e $ (2,1) $ di $ B $ sono nulli, cio\'e la funzione \'e gi\'a decomposta, quindi $ x_2 $ non \'e raggiungibile. Si deduce che $ n_R < 2 $.
+				\item
+				La matrice $ B $ appartiene sempre a $ X_R $, pertanto esiste almeno uno stato raggiungibile oltre l'origine: $ n_R > 0 $.
+			\end{enumerate}
+			Da queste osservazioni ricaviamo subito che $ n_R = 1 \quad\Rightarrow\quad X_R = \begin{smallmatrix} \alpha\\ 0 \end{smallmatrix} $.
+			
+			Si pu\'o giungere allo stesso risultato pragmaticamente utilizzando il teorema di Kalmann:
+			\[
+				P =
+				\begin{bmatrix}
+					B | AB
+				\end{bmatrix} =
+				\begin{bmatrix}
+					1 & | & 0\\
+					0 & | & 0
+				\end{bmatrix}
+			\]
+			\[
+				n_R = rank\left( P \right) = 1 \quad\Rightarrow\quad X_R = \alpha B =
+				\begin{bmatrix}
+					\alpha\\
+					0
+				\end{bmatrix}
+			\]
+			
+			Calcoliamo il polinomio caratteristico di controllabilit\'a:
+			\[ \varphi(s) = det(sI-A) = s^2 \quad\Rightarrow\quad \varphi_C(s) = s \]
+		\end{Exercise}
+	
+		\begin{Exercise}[title={Calcolare $ X_R $ e $ \varphi_C(s) $}, difficulty=1]
+			\[
+				\dot x =
+				\begin{bmatrix}
+					1 & -1\\
+					1 & -1
+				\end{bmatrix} x+
+				\begin{bmatrix}
+					1\\
+					1
+				\end{bmatrix} u
+			\]
+			\[
+				\varphi(s) = det(sI-A) = det
+				\begin{bmatrix}
+					s-1 & 1\\
+					-1 & s+1
+				\end{bmatrix} =
+				s^2 - 1 + 1 = s^2
+			\]
+			
+			Calcoliamo $ \varphi_C(s) $:
+			\[
+				(sI-A)^{-1}B =
+				\begin{bmatrix}
+					s-1 & 1\\
+					-1 & s+1
+				\end{bmatrix}^{-1}
+				\begin{bmatrix}
+					1\\
+					1
+				\end{bmatrix} = \dfrac{1}{s^2}
+				\begin{bmatrix}
+					s+1 & -1\\
+					1 & s-1
+				\end{bmatrix}
+				\begin{bmatrix}
+					1\\
+					1
+				\end{bmatrix}= \dfrac{1}{s^2}
+				\begin{bmatrix}
+					s\\
+					s
+				\end{bmatrix} =
+				\begin{bmatrix}
+					\dfrac{1}{s}\\[.5cm]
+					\dfrac{1}{s}
+				\end{bmatrix}
+			\]
+			\[ \Rightarrow\quad \varphi_C(s) = mcm\left( s, s \right) = s \quad\Rightarrow\quad n_R = 1 \]
+			Poich\'e $ n_R \equiv n_u $, $ X_R $ lo possiamo dedurre direttamente da $ B $:
+			\[
+				X_R = \alpha
+				\begin{bmatrix}
+					1\\
+					1
+				\end{bmatrix}
+			\]
+		\end{Exercise}
 	
 	\subsubsection{Come calcolare gli autovalori controllabili}
 		\begin{align*}
@@ -848,7 +1021,7 @@
 		$ (sI-\tilde A)^{-1} \tilde B $ non ha informazioni su $ \tilde A_{22} $.
 		
 		\'E evidente che il polinomio caratteristico associato a $ (sI-\tilde A_{11}) \tilde B_1 $ equivale a quello di $ (sI - \tilde A)^{-1} \tilde B $, perch\'e le due matrici differiscono per un blocco di zeri (che non avendo un denominatore non influiscono sul polinomio caratteristico).\\
-		Si pu\'o dimostrare che il polinomio caratteristico associato a $ (sI-\tilde A_{11})^{-1} \tilde B_1 $ coincide con $ \phi_C(s) = det(sI-\tilde A_{11}) $. Quindi per calcolare $ \phi_C(s) $ \'e sufficiente calcolare il polinomio caratteristico associato a $ (sI-\tilde A)^{-1} \tilde B $.
+		Si pu\'o dimostrare che il polinomio caratteristico associato a $ (sI-\tilde A_{11})^{-1} \tilde B_1 $ coincide con $ \varphi_C(s) = det(sI-\tilde A_{11}) $. Quindi per calcolare $ \varphi_C(s) $ \'e sufficiente calcolare il polinomio caratteristico associato a $ (sI-\tilde A)^{-1} \tilde B $.
 		
-		Ma per \hyperref[sentece:calcolo-autovalori]{quanto gi\'a detto}, studiare $ (sI-A)^{-1} B $ equivale a studiare $ (sI-\tilde A)^{-1} \tilde B $ a meno di $ T^{-1} $. Quindi per calcolare $ \phi_C(s) $ basta calcolare il polinomio caratteristico associato a $ (sI-A)^{-1} B $.
+		Ma per \hyperref[sentece:calcolo-autovalori]{quanto gi\'a detto}, studiare $ (sI-A)^{-1} B $ equivale a studiare $ (sI-\tilde A)^{-1} \tilde B $ a meno di $ T^{-1} $. Quindi per calcolare $ \varphi_C(s) $ basta calcolare il polinomio caratteristico associato a $ (sI-A)^{-1} B $.
 \end{document}
