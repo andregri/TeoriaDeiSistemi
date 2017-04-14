@@ -84,20 +84,13 @@
 			\item
 				$ \varphi_C(s) $ viene modificata dalla retroazione algebrica su $ x $;
 			\item
-				$ \varphi_C(s) $ pu\'o essere \textbf{assegnato a piacere} con una retroazione algebrica sullo stato $ x $, cio\'e \'e possibile scegliere $ K $ tale che $ det\left[ sI - (\tilde A_{11} + \tilde B_1 K T_1) \right] $ abbia autovalori arbitrari.
+				$ \varphi_C(s) $ pu\'o essere \textbf{assegnato a piacere} con una retroazione algebrica sullo stato $ x $, cio\'e \'e possibile scegliere $ K $ tale che $ det\left[ sI - (\tilde A_{11} + \tilde B_1 K T_1) \right] $ abbia autovalori arbitrari.\\
+				Definiamo \textbf{autovalori controllabili} tutti e soli gli autovalori assegnabili a piacere con retroazione algebrica sullo stato.
 		\end{itemize}
 	
-		
-		\paragraph{Definizioni}
-		\begin{center}
-			\begin{minipage}{.9\linewidth}
-				\textbf{Autovalori controllabili} sono tutti e soli gli autovalori assegnabili a piacere con retroazione algebrica sullo stato.
-			\end{minipage}
-		\end{center}
+	\subsection{Sistema stabilizzabile}
+		Un sistema \'e \textbf{stabilizzabile} (cio\'e \'e possibile renderlo asintoticamente stabile) se e solo se la sua parte non controllabile \'e asintoticamente stabile ($ \Leftrightarrow $ gli autovalori di $ \varphi_{NC}(s) $ sono tutti a $ \Re < 0 $).
 	
-		\begin{center}
-			\begin{minipage}{.9\linewidth}
-				Un sistema \'e \textbf{stabilizzabile} (cio\'e \'e possibile renderlo asintoticamente stabile) se e solo se la sua parte non controllabile \'e asintoticamente stabile ($ \Leftrightarrow $ gli autovalori di $ \varphi_{NC}(s) $ sono tutti a $ \Re < 0 $).
-			\end{minipage}
-		\end{center}
+	\subsection{Esercizi}
+		\input{section/esercizi/retroazione_algebrica_stato}
 \end{document}

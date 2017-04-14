@@ -1,0 +1,137 @@
+\begin{document}
+	\begin{Exercise}[title={Studio completo del sistema e stabilizzazione}, difficulty=3]
+		\[
+			\begin{cases}			
+				\dot x &=
+				\begin{bmatrix}
+					0 & 0 & 1\\
+					0 & -1 & 0\\
+					0 & 1 & 0
+				\end{bmatrix} x+
+				\begin{bmatrix}
+					0 & 1\\
+					0 & 0\\
+					1 & 0
+				\end{bmatrix} u
+				\\[.75cm]
+				y &=
+				\begin{bmatrix}
+					0 & 1 & 0\\
+					1 & 1 & 0
+				\end{bmatrix} x
+			\end{cases}
+		\]
+		\[ n_x = 3 \qquad n_u = 2 \qquad n_y = 2 \]
+		
+		\paragraph{Stabilit\'a}
+			Per calcolare gli autovalori del sistema possiamo procedere in due modi:
+			\begin{itemize}
+				\item
+					notiamo che $ A $ \'e una matrice triangolare a blocchi: $ [0] , \begin{smallmatrix} -1 & 0\\ 1 & 0 \end{smallmatrix} $, dove il secondo blocco \'e a sua volta triangolare. Quindi gli autovalori sono gli elementi della diagonale: $ 0, -1, 0 $.
+				\item
+					\[
+						\varphi(s) = det(sI-A) = det
+						\begin{bmatrix}
+							s & 0 & -1\\
+							0 & s+1 & 0\\
+							0 & -1 & s
+						\end{bmatrix} = s^2(s+1)
+					\]
+					\[ 
+						\text{Gli autovalori sono:}
+						\begin{cases}
+							s_{1,2} = 0\ \text{con molt=2}\\
+							s_3 = -1
+						\end{cases}
+					\]
+			\end{itemize}
+			
+			Poich\'e un autovalore ha $ \Re = 0 $, il sistema non sar\'a asintoticamente stabile. Per determinare il tipo di stabilit\'a dobbiamo studiare il polinomio minimo $ m(s) $. Si possono seguire pi\'u strade:
+			\begin{itemize}
+				\item
+					Sappiamo che $ m(s) \subseteq\cdot \varphi(s) $, quindi i possibili polinomi minimi sono: $ s^2(s+1) $ e $ s(s+1) $.\\ Inoltre $ m(s) $ deve essere polinomio annullante per $ A $, quindi possiamo trovare quale dei due \'e quello corretto verificando questa propriet\'a: se $ A(A+1) = 0 $, allora $ m(s) = s(s+1) $, se invece $ A^2(A+I) = 0 $, allora $ m(s) = s^2(s+1) $.
+				\item
+					calcolandolo attraverso $ (sI-A)^{-1} $:
+					\[
+						(sI-A)^{-1}=
+						\begin{bmatrix}
+							\dfrac{1}{s} & \dfrac{1}{s^(s+1)} & \dfrac{s+1}{s^2(s+1)}\\[.5cm]
+							0 & \dfrac{1}{s+1} & 0\\[.5cm]
+							0 & \dfrac{1}{s(s+1)} & \dfrac{1}{s}
+						\end{bmatrix} =
+						\begin{bmatrix}
+							\dfrac{1}{s} & \dfrac{1}{s^(s+1)} & \dfrac{1}{s^2}\\[.5cm]
+							0 & \dfrac{1}{s+1} & 0\\[.5cm]
+							0 & \dfrac{1}{s(s+1)} & \dfrac{1}{s}
+						\end{bmatrix}
+					\]
+					\[ \Rightarrow\quad m(s) = s^(s+1) \]
+			\end{itemize}
+			Poich\'e $ m(s) $ ha una radice a $ \Re = 0 $ con molteplicit\'a 2, il sistema \'e instabile.
+			
+		\paragraph{Raggiungibilit\'a/Controllabilit\'a}
+			\[
+				(sI-A)^{-1}B =
+				\begin{bmatrix}
+					\frac{1}{s} & \dfrac{1}{s^2(s+1)} & \dfrac{1}{s^2}\\[.5cm]
+					0 & \dfrac{1}{s+1} & 0\\[.5cm]
+					0 & \dfrac{1}{s(s+1)} & \dfrac{1}{s}
+				\end{bmatrix}
+				\begin{bmatrix}
+					0 & 1\\
+					0 & 0\\
+					1 & 0
+				\end{bmatrix} =
+				\begin{bmatrix}
+					\dfrac{1}{s^2} & \dfrac{1}{s}\\[.5cm]
+					0 & 0\\[.5cm]
+					\dfrac{1}{s} & 0
+				\end{bmatrix}
+			\]
+			\[ \varphi_C(s) = s^2 \qquad \varphi_{NC}(s) = s+1 \]
+			Quindi $ s_{1,2} = 0 $ sono gli autovalori controllabili, mentre $ s_3 = -1 $ \'e l'unico autovalore non controllabile. Si poteva essere gi\'a intuire ci\'o dalla seconda equazione del sistema $ \dot x = -x_2 $, a cui era associato l'autovalore $ s_3 $. Infatti la componente $ x_2 $ dello stato \'e indipendente dalle altre componenti e non dipende dal controllo.
+			
+			\[
+				n_R = \pDeg{\varphi_C(s)} = 2 \equiv n_u \quad\Rightarrow\quad X_R = B =
+				\begin{bmatrix}
+					0 & 1\\
+					0 & 0\\
+					1 & 0
+				\end{bmatrix}
+			\]
+			
+		\paragraph{Stabilizzazione}
+			La parte non controllabile \'e gi\'a stabile, quindi con una retroazione sullo stato $ u = Kx + v $ \'e possibile rendere il sistema asintoticamente stabile.
+			\[ S^{*}: \dot x = (A+BK)x + Bv \]
+			\[ x: 3 \times 1 \quad u: 2 \times 1 \quad\Rightarrow\quad K: 2 \times 3 \]
+			
+			Quindi dobbiamo trovare $ K $ in modo che tutti i suoi autovalori siano a $ \Re < 0 $.
+			\[
+				(A+BK) =
+				\begin{bmatrix}
+					0 & 0 & 1\\
+					0 & -1 & 0\\
+					0 & 1 & 0
+				\end{bmatrix} +
+				\begin{bmatrix}
+					0 & 1\\
+					0 & 0\\
+					1 & 0
+				\end{bmatrix}
+				\begin{bmatrix}
+					k_{11} & k_{12} & k_{13}\\
+					k_{21} & k_{22} & k_{23}
+				\end{bmatrix} =
+				\begin{bmatrix}
+					k_{21} & k_{22} & k_{23}\\
+					0 & 0 & 0\\
+					k_{11} & k_{12} & k_{13}
+				\end{bmatrix} =
+				\begin{bmatrix}
+					k_{21} & k_{22} & 1 + k_{23}\\
+					0 & -1 & 0\\
+					k_{11} & 1 + k_{12} & k_{13}
+				\end{bmatrix}
+			\]
+	\end{Exercise}
+\end{document}
