@@ -102,12 +102,10 @@
 			
 		\paragraph{Stabilizzazione}
 			La parte non controllabile \'e gi\'a stabile, quindi con una retroazione sullo stato $ u = Kx + v $ \'e possibile rendere il sistema asintoticamente stabile.
-			\[ S^{*}: \dot x = (A+BK)x + Bv \]
+			\[ S^{*}: \dot x = (A+BK)x + Bv = A^{*}x + B^{*}u \]
 			\[ x: 3 \times 1 \quad u: 2 \times 1 \quad\Rightarrow\quad K: 2 \times 3 \]
-			
-			Quindi dobbiamo trovare $ K $ in modo che tutti i suoi autovalori siano a $ \Re < 0 $.
 			\[
-				(A+BK) =
+				A^{*} = (A+BK) =
 				\begin{bmatrix}
 					0 & 0 & 1\\
 					0 & -1 & 0\\
@@ -133,5 +131,36 @@
 					k_{11} & 1 + k_{12} & k_{13}
 				\end{bmatrix}
 			\]
+			\[
+				B^{*} \equiv B =
+				\begin{bmatrix}
+					0 & 1\\
+					0 & 0\\
+					1 & 0
+				\end{bmatrix}
+			\]
+			
+			\'E evidente che il sistema non \'e completamente controllabile, perch\'e la seconda componente dello stato non dipende dal controllo e dalle altre componenti dello stato: $ \dot{x_2} = x_2 $. Le propriet\'a di controllabilit\'a non cambiano con retroazioni algebriche sullo stato.
+			
+			Calcoliamo il nuovo polinomio caratteristico:
+			\begin{align*}
+				\varphi^{*}(s) &= det(sI-A^{*}) =\\
+				&= det
+				\begin{bmatrix}
+					s-K_{21} & -K_{22} & -(1+K_{23})\\
+					0 & s+1 & 0\\
+					-K_{11} & -(1+K_{12}) & s-K_{13}
+				\end{bmatrix} =\\
+				&= (s+1)\left[ (s-K_{21})(s-K_{13}) - K_{11}(1+K_{23}) \right] = (s+1)\left[ s^2 - (K_{21}+K_{13})s + K_{21}K_{13} - K_{11}(1+K_{23}) \right]
+			\end{align*}
+			La retroazione assegna tutti e soli gli autovalori controllabili: infatti $ (s+1) $, la parte non controllabile \'e rimasta tale. Posso imporre che il polinomio sia equivalente a qualunque polinomio monico di secondo grado:
+			\[ s^2 - (K_{21}+K_{13})s + K_{21}K_{13} - K_{11}(1+K_{23}) = s^2 + bs + c \qquad \text{con}\ b,c \in \R \]
+			\[
+				\begin{cases}
+					-(K_{21} + K_{13}) = b\\
+					K_{21} K_{13} - K_{11}(1+K_{23}) = c
+				\end{cases}
+			\]
+			Prima scegliamo $ K_{21} $ e $ K_{13} $ in modo che sia verificata la prima equazione. Quindi possiamo scegliere $ K_{11} $ e $ K_{23} $ in modo che anche la seconda equazione sia verificata: $ K_{11}(1+K_{23}) = c - K_{21}K_{13} $.
 	\end{Exercise}
 \end{document}
