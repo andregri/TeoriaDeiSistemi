@@ -7,7 +7,6 @@
 \usepackage{pgfplots}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{hyperref}
 \usepackage{stackrel}
 \usepackage{array}
 \usepackage{verbatim}
@@ -15,12 +14,17 @@
 \usepackage{exercise}
 \usepackage{circuitikz}
 
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definizione}
+
+\usepackage{hyperref}
 \hypersetup{
 	colorlinks=true,
 	linkcolor=blue,
 	filecolor=magenta,      
 	urlcolor=cyan,
-	bookmarks=true,
+	bookmarks=true
 }
 
 \graphicspath{{img/}{../img/}}
@@ -78,6 +82,9 @@
 	\chapter{Raggiungibilit\'a e controllabilit\'a}
 	\subfile{section/raggiungibilita_controllabilita}
 	\subfile{section/retroazione_algebrica_stato}
+	\pagebreak
+	\chapter{Osservabilit\'a e ricostruibilit\'a}
+	\subfile{section/osservabilita_controllabilita}
 	\pagebreak
 	\chapter{Riepilogo}
 	\subfile{section/riepilogo_trasf_laplace}

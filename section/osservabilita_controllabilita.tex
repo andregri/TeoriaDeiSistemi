@@ -1,0 +1,38 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	\section{Osservabilit\'a e ricostruibilit\'a}
+		\[
+			S:
+			\begin{cases}
+				\dot x &= Ax + Bu\\
+				y &= Cx + Du
+			\end{cases}
+		\]
+		Potremmo essere interessati a conoscere all'istante $ t $, lo stato $ x(t) $ o la condizione iniziale $ x(0^{-}) $, perch\'e $ x(t) $ pu\'o avere un significato fisico. Potremmo non averne una misura diretta. Inoltre posso voler utilizzare lo stato $ x(t) $ per esempio per fare feedback. Spesso (nella pratica sempre) ci si accontenta di una stima $ \hat x(t) $ dello stato.
+		
+		\begin{definition}
+			Un sistema \'e completamente osservabile \textbf{se e solo se}, dati $ u(\tau) $ e $ y(\tau) $ per $ \tau \in [0,t] $, \'e possibile calcolare univocamente $ x(0^{-}) $.
+		\end{definition}
+	
+		\begin{definition}
+			Un sistema \'e completamente ricostruibile \textbf{se e solo se}, dati $ y(\tau) $ e $ u(\tau) $ per $ \tau \in [0,t] $, \'e possibile calcolare univocamente $ x(t) $.
+		\end{definition}
+	
+		Poich\'e $ x(t) $ \'e sempre funzione della condizione iniziale $ x(0^{-}) $ e della sequenza di controllo $ u(\tau) $ con $ \tau \in [0,t] $, se un sistema \'e osservabile allora sar\'a anche ricostruibile. Non vale necessariamente il viceversa.
+		
+		Per i sistemi LTI a tempo continuo valgono entrambe le implicazioni:
+		\begin{center}
+			un sistema \'e osservabile $ \Leftrightarrow $ \'e ricostruibile.
+		\end{center}
+		Dimostrazione:\\
+		partiamo dall'equazione di Lagrange da cui \'e evidente che $ x(t) $ dipenda da $ x(0^{-}), u(.) $:
+		\[
+			x(t) = e^{At}x(0^{-}) + \int_{0^{-}}^{t} e^{A(t-\tau)} B\ u(\tau) d\tau
+		\]
+		ma poich\'e $ e^{At} $ \'e sempre invertibile ($ (e^{At})^{-1} = e^{-At} $) otteniamo anche che la condizione iniziale $ x(0^{-}) $ dipende da $ x(t) $ e $ u(.) $:
+		\begin{align*}
+			e^{At} x(0^{-}) &= x(t) - \int_{0^{-}}^{t} e^{A(t-\tau)} B\ u(\tau) d\tau\\
+			x(0^{-}) &= e^{-At} \left[ x(t) - \int_{0^{-}}^{t} e^{A(t-\tau)} B\ u(\tau) d\tau \right] 
+		\end{align*}
+\end{document}
