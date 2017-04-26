@@ -1,0 +1,50 @@
+%using varii
+\usepackage{tikz}
+\usetikzlibrary{arrows,matrix,positioning}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{pgfplots}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{stackrel}
+\usepackage{array}
+\usepackage{verbatim}
+\usepackage{wrapfig}
+\usepackage{exercise}
+\usepackage{circuitikz}
+\usepackage{xcolor} % Required to specify font color
+%____________________________________________
+
+%dimensioni pagina
+%VECCHIO:  \usepackage[a4paper, total={6in, 9in}]{geometry}
+\usepackage{geometry}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,heightrounded,bindingoffset=5mm}
+%____________________________________________
+
+%intestazione e piè pagina
+\usepackage{fancyhdr}
+\pagestyle {fancy}
+% - headers
+% - - left
+\fancyhead [LE] {} %even pages
+\fancyhead [LO] {\slshape \leftmark} %odd pages
+% - - right
+\fancyhead [RE] {\slshape \rightmark} %even pages
+\fancyhead [RO] {} %odd pages
+% - footers
+%\fancyfoot [C] {Pag. \thepage}
+%____________________________________________
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definizione}
+%____________________________________________
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	bookmarks=true
+}
+%____________________________________________
