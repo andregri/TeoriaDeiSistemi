@@ -19,20 +19,250 @@
 			Un sistema \'e completamente ricostruibile \textbf{se e solo se}, dati $ y(\tau) $ e $ u(\tau) $ per $ \tau \in [0,t] $, \'e possibile calcolare univocamente $ x(t) $.
 		\end{definition}
 	
-		Poich\'e $ x(t) $ \'e sempre funzione della condizione iniziale $ x(0^{-}) $ e della sequenza di controllo $ u(\tau) $ con $ \tau \in [0,t] $, se un sistema \'e osservabile allora sar\'a anche ricostruibile. Non vale necessariamente il viceversa.
-		
-		Per i sistemi LTI a tempo continuo valgono entrambe le implicazioni:
+		Poich\'e $ x(t) $ \'e sempre funzione della condizione iniziale $ x(0^{-}) $ e della sequenza di controllo $ u(\tau) $ con $ \tau \in [0,t] $, se un sistema \'e osservabile allora sar\'a anche ricostruibile. Non vale necessariamente il viceversa. Per i sistemi LTI a tempo continuo valgono entrambe le implicazioni:
 		\begin{center}
 			un sistema \'e osservabile $ \Leftrightarrow $ \'e ricostruibile.
 		\end{center}
-		Dimostrazione:\\
-		partiamo dall'equazione di Lagrange da cui \'e evidente che $ x(t) $ dipenda da $ x(0^{-}), u(.) $:
+		Per dimostrarlo partiamo dall'equazione di Lagrange da cui \'e evidente che $ x(t) $ dipenda da $ x(0^{-}), u(.) $:
 		\[
 			x(t) = e^{At}x(0^{-}) + \int_{0^{-}}^{t} e^{A(t-\tau)} B\ u(\tau) d\tau
 		\]
-		ma poich\'e $ e^{At} $ \'e sempre invertibile ($ (e^{At})^{-1} = e^{-At} $) otteniamo anche che la condizione iniziale $ x(0^{-}) $ dipende da $ x(t) $ e $ u(.) $:
+		ma poich\'e $ e^{At} $ \'e sempre invertibile $ \left( (e^{At})^{-1} = e^{-At} \right) $ otteniamo anche che la condizione iniziale $ x(0^{-}) $ dipende da $ x(t) $ e $ u(.) $:
 		\begin{align*}
 			e^{At} x(0^{-}) &= x(t) - \int_{0^{-}}^{t} e^{A(t-\tau)} B\ u(\tau) d\tau\\
 			x(0^{-}) &= e^{-At} \left[ x(t) - \int_{0^{-}}^{t} e^{A(t-\tau)} B\ u(\tau) d\tau \right] 
 		\end{align*}
+		
+		Consideriamo adesso l'uscita del sistema:
+		\[
+			y(t) = \underbrace{Ce^{At}x(0^{-})}_{y_l(t)} + \underbrace{\int_{0^{-}}^{t} e^{A(t-\tau)} B\ u(\tau) d\tau + Du(t)}_{y_f(t)}
+		\]
+		Se $ A, B, C, D $ e $ u(\tau) $ per $ \tau \in [0, t] $ sono noti, allora $ y_f(t) $ \'e calcolabile. $ y(t) $, essendo l'uscita del sistema, \'e nota perch\'e \'e misurabile. Quindi possiamo calcolare $ y_l(t) $ come:
+		\[
+			y_l(t) = y(t) - y_f(t)
+		\]
+		D'ora in poi supporremo di lavorare con il sistema "libero", cio\'e il sistema in cui l'uscita $ y_l(t) $ non \'e influenzata dall'ingresso, come se $ u(t) \equiv 0 $.
+		\newline
+		
+		Supponiamo:
+		\begin{itemize}
+			\item
+				$ \exists \tilde x\ \text{tale che se}\ x(0^{-}) = \tilde x \quad\Rightarrow\quad y_l(t) = \tilde y_l(t) \equiv 0 $\\
+				cio\'e che esista uno stato $ \tilde x $ che dal punto di vista dell'uscita libera sia indistinguibile dall'origine (infatti se lo stato iniziale \'e l'origine $ x(0^{-}) $, l'uscita libera non pu\'o che essere nulla $ y_l(t) = 0 $).
+			\item
+				di avere $ x(0^{-}) = \hat x \quad\Rightarrow\quad y_l(t) = \hat y_l(t) $
+			\item 
+				di prendere uno stato iniziale $ x(0^{-}) = \hat x + \alpha \tilde x $ con $ \alpha \in \R $
+		\end{itemize}
+		Per il principio di sovrapposizione degli effetti:
+		\[
+			y_l(t) = \hat y_l(t) + \alpha \tilde y_l(t) = \hat y_l(t)
+		\]
+		Abbiamo che ottenuto che non possiamo distinguere univocamente lo stato iniziale partendo da $ y_l(t) $.
+		
+		\begin{definition}
+			Definiamo $ X_{NO} $ l'insieme degli stati indistinguibili dallo stato zero:
+			\[
+				\tilde x \triangleq \left\lbrace \tilde x\ \text{tale che}\ x(0^{-}) = \tilde x \quad\Rightarrow\quad y_l(t) = 0 \right\rbrace
+			\]
+		\end{definition}
+	
+		Dalla conoscenza di $ \begin{cases} u(\tau)\\ y(\tau) \end{cases} \tau \in [0,t] $ non sar\'a possibile "osservare" univocamente $ x(0^{-}) $, ma solo una variazione di $ x(0^{-}) $ a meno di $ X_{NO} $.
+		
+		Propriet\'a di $ X_{NO} $:
+		\begin{itemize}
+			\item 
+				$ X_{NO} $ \'e un sottospazio lineare: se $ \tilde x_1 \in X_{NO} $ e $ \tilde x_2 \in X_{NO} $, allora $ \alpha \tilde x_1 + \beta x_2 \in X_{NO} $
+			\item 
+				$ X_{NO} $ \'e invariante rispetto ad $ A $: se $ \tilde x \in X_{NO} $, allora $ A \tilde x \in X_{NO} $
+		\end{itemize}
+	
+	\subsection{Teorema di Kalmann di Osservabilit\'a}
+		\[
+			X_{NO} \triangleq Ker\{Q\} \quad n_{NO} \triangleq dim { X_{NO} }
+		\]
+		\[
+			Q \triangleq
+			\underbrace{
+				\left. 
+				\begin{bmatrix}
+					C\\
+					CA\\
+					CA^2\\
+					\vdots\\
+					CA^{n_x-1}
+				\end{bmatrix}
+			\right\rbrace 
+			}_{n_x}
+			n_x \times n_y
+		\]
+	\subsection{Corollari del teorema di Kalmann}
+		\begin{itemize}
+			\item
+				sistema completamente osservabile $ \quad\Leftrightarrow\quad X_{NO} = Ker\{Q\} = {0} \quad\Leftrightarrow\quad n_{NO} = 0 \quad\Leftrightarrow\quad rank\{Q\} = n_x\ \text{(ha rango massimo)} $.
+			\item 
+				posso applicare il teorema di Kalmann di osservabilit\'a a gruppi di uscite o a ogni singola uscita.
+			\item 
+				sistema completamente non osservabile $ \quad\Leftrightarrow\quad X_{NO} = \R^{n_x} \quad\Leftrightarrow\quad rank\{Q\} = 0 \quad\Leftrightarrow\quad C = [0] $ cio\'e l'uscita non dipende dallo stato.
+		\end{itemize}
+	
+		\begin{Exercise}[title={Calcolare $ X_{NO} $}, difficulty=1]
+			\[
+				\dot x =
+				\begin{bmatrix}
+					-1 & 0 & 0\\
+					0 & 0 & 1\\
+					0 & 1 & 0
+				\end{bmatrix} x + Bu
+				\qquad
+				y =
+				\begin{bmatrix}
+					1 & 0 & 0\\
+					0 & 0 & 1
+				\end{bmatrix} x
+			\]
+			\[
+				Q =
+				\begin{bmatrix}
+					C\\
+					CA\\
+					CA^2 = (CA)A
+				\end{bmatrix} =
+				\begin{bmatrix}
+					1 & 0 & 0\\
+					0 & 0 & 1\\
+					\hline
+					-1 & 1 & 0\\
+					0 & 1 & 0\\
+					\hline
+					1 & 0 & 0\\
+					0 & 1 & 0
+				\end{bmatrix}
+			\]
+			$ rank\{Q\} = 3 = n_x $ il rango \'e massimo quindi il sistema \'e completamente osservabile.
+			
+			Consideriamo solo l'uscita $ y_1 $:
+			\[
+				C_1 =
+				\begin{bmatrix}
+					1 & 0 & 0
+				\end{bmatrix}
+				\quad\Rightarrow\quad
+				Q_1 =
+				\begin{bmatrix}
+					1 & 0 & 0\\
+					-1 & 1 & 0\\
+					1 & 0 & 0
+				\end{bmatrix}
+			\] 
+			$ rank\{Q_1\} = 2 $ quindi il sistema non \'e completamente osservabile da $ y_1 $. Calcoliamo $ X_{NO1} $:
+			\[
+				\tilde x =
+				\begin{bmatrix}
+					a\\
+					b\\
+					c
+				\end{bmatrix}
+				\quad\text{tale che}\quad
+				Q_1 \tilde x = 0
+			\]
+			\[
+				\begin{bmatrix}
+					1 & 0 & 0\\
+					-1 & 1 & 0\\
+					1 & 0 & 0
+				\end{bmatrix}
+				\begin{bmatrix}
+					a\\
+					b\\
+					c
+				\end{bmatrix} =
+				\begin{bmatrix}
+					0\\
+					0\\
+					0
+				\end{bmatrix}
+				\quad\Rightarrow\quad
+				\begin{cases}
+					a = 0\\
+					-a+b = 0\\
+					a = 0
+				\end{cases}
+				\quad\Rightarrow\quad X_{NO} =
+				\begin{bmatrix}
+					0\\
+					0\\
+					c
+				\end{bmatrix}
+			\]
+			Consideriamo solo $ y_2 $:
+			\[
+				C_2 =
+				\begin{bmatrix}
+					0 & 0 & 1
+				\end{bmatrix}
+				\quad\Rightarrow\quad
+				Q_2 =
+				\begin{bmatrix}
+					0 & 0 & 1\\
+					0 & 1 & 0\\
+					0 & 1 & 0
+				\end{bmatrix}
+			\] 
+			$ rank\{Q_2\} = 2 $ quindi il sistema non \'e completamente osservabile da $ y_2 $. Calcoliamo $ X_{NO2} $ analogamente a prima e otteniamo:
+			\[
+				X_{NO2} = Ker\{Q_2\} =
+				\begin{bmatrix}
+					a\\
+					0\\
+					0
+				\end{bmatrix}
+			\]
+		\end{Exercise}
+	
+	\subsection{Decomposizione di Kalmann di osservabilit\'a}
+		Prendiamo una matrice $ T = [T_1 | T_2] $ dove
+		\begin{itemize}
+			\item 
+				$ T_1 $ \'e una matrice le cui colonne sono base di $ X_{NO} $
+			\item
+				$ T_2 $ \'e una matrice le cui colonne sono base di $ X_O \triangleq X_{NO}^{\perp} $
+		\end{itemize}
+		Effettuiamo il cambio di base: $ x = Tz $:
+		\[
+			\begin{cases}
+				\dot z = T^{-1}ATz + T^{-1}Bu\\
+				y = CTz + Du
+			\end{cases}
+		\]
+		Si pu\'o dimostrare che:
+		\[
+			\begin{cases}
+				\dot z =
+				\begin{bmatrix}
+					\dot z_O\\
+					\dot z_{NO}
+				\end{bmatrix} =
+				\begin{bmatrix}
+					\tilde A_{11} & 0\\
+					\tilde A_{21} & \tilde A_{22}
+				\end{bmatrix}
+				\begin{bmatrix}
+					z_O\\
+					z_{NO}
+				\end{bmatrix}
+				+ Bu
+				\\[.5cm]
+				y =
+				\begin{bmatrix}
+					\tilde C_1 & 0
+				\end{bmatrix}
+				\begin{bmatrix}
+					z_{O}\\
+					z_{NO}
+				\end{bmatrix}
+				+ Du
+			\end{cases}
+		\]
+		dove $ z_{NO} $ \'e la componente dello stato non osservabile (perch\'e non influenza $ y $ n\'e direttamente n\'e indirettamente attraverso $ z_O $), mentre $ z_O $ \'e la componente osservabile. Quindi sar\'a possibile calcolare solo $ z_O(0^{-}) $.
 \end{document}
