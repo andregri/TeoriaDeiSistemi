@@ -77,17 +77,146 @@
 			&= det\left[ sI - (\tilde A_{11} + \tilde B_1 K T_1) \right] \cdot \underbrace{det(sI - \tilde A_{22})}_{\varphi_{NC}}
 		\end{align*}
 		
-		\paragraph{Osservazioni}
+	\subsection{Propriet\'a}
 		\begin{itemize}
 			\item
 				Ho verificato che la retroazione algebrica sullo stato non modifica $ \varphi_{NC}(s) $;
 			\item
 				$ \varphi_C(s) $ viene modificata dalla retroazione algebrica su $ x $;
+			\item 
+				la retroazione algebrica sullo stato non modifica le propriet\'a di controllabilit\'a $ X_R = X_R^{*} $: ad esempio se il sistema \'e completamente controllabile, anche dopo la retroazione lo sar\'a;
+			\item 
+				la retroazione algebrica sullo stato pu\'o modificare le propriet\'a di osservabilit\'a (in peggio);
 			\item
 				$ \varphi_C(s) $ pu\'o essere \textbf{assegnato a piacere} con una retroazione algebrica sullo stato $ x $, cio\'e \'e possibile scegliere $ K $ tale che $ det\left[ sI - (\tilde A_{11} + \tilde B_1 K T_1) \right] $ abbia autovalori arbitrari.\\
 				Definiamo \textbf{autovalori controllabili} tutti e soli gli autovalori assegnabili a piacere con retroazione algebrica sullo stato.
 		\end{itemize}
 	
+	\subsubsection{Esempio 1 di retroazione su stato che modifica osservabilit\'a}
+		\[
+			\begin{cases}
+				\dot x =
+				\begin{bmatrix}
+					1 & 0\\
+					0 & -1
+				\end{bmatrix} x +
+				\begin{bmatrix}
+					1 & 0\\
+					0 & 1
+				\end{bmatrix}
+				\begin{bmatrix}
+					u_1\\
+					u_2
+				\end{bmatrix}
+				\\
+				y =
+				\begin{bmatrix}
+					1 & 1
+				\end{bmatrix} x
+			\end{cases}
+		\]
+		Studiamo l'osservabilit\'a:
+		\[
+			Q =
+			\begin{bmatrix}
+				C\\
+				CA
+			\end{bmatrix} =
+			\begin{bmatrix}
+				1 & 1\\
+				1 & -1
+			\end{bmatrix}
+		\]
+		il sistema \'e completamente osservabile perch\'e il rango di $ Q $ \'e massimo: $ rank(Q) = 2 $. Effettuiamo una retroazione sullo stato $ u = Kx + v $ con $ K = \left[ \begin{smallmatrix} 0 & 0\\ 0 & 2 \end{smallmatrix} \right] $:
+		\[
+			(A+BK) =
+			\begin{bmatrix}
+				1 & 0\\
+				0 & -1
+			\end{bmatrix} +
+			\begin{bmatrix}
+				0 & 0\\
+				0 & 2
+			\end{bmatrix} =
+			\begin{bmatrix}
+				1 & 0\\
+				0 & 1
+			\end{bmatrix}
+		\]
+		Studiamo l'osservabilit\'a nel sistema retroazionato:
+		\[
+			Q^{*} =
+			\begin{bmatrix}
+				1 & 1\\
+				1 & 1
+			\end{bmatrix}
+		\]
+		$ rank(Q^{*}) = 1 $ quindi abbiamo perso osservabilit\'a.
+		
+	\subsubsection{Esempio 1 di retroazione su stato che modifica osservabilit\'a}
+		\[
+			\begin{cases}
+				\dot x =
+				\begin{bmatrix}
+					1 & 0\\
+					0 & -1
+				\end{bmatrix} x +
+				\begin{bmatrix}
+					1\\
+					1
+				\end{bmatrix} u
+				\\
+				y =
+				\begin{bmatrix}
+					1 & 1
+				\end{bmatrix} x
+			\end{cases}
+		\]
+		\[
+			Q =
+			\begin{bmatrix}
+				1 & 1\\
+				1 & 1
+			\end{bmatrix}
+			\qquad\Rightarrow\quad\text{il sistema \'e completamente osservabile}
+		\]
+		Effettuiamo la retroazione sullo stato $ u = kx + v $ con $ K = \left[ \begin{smallmatrix} 0 & 1 \end{smallmatrix} \right] $
+		\[
+			A* = (A+BK) =
+			\begin{bmatrix}
+				1 & 0\\
+				0 & -1
+			\end{bmatrix} +
+			\begin{bmatrix}
+				1\\
+				1
+			\end{bmatrix}
+			\begin{bmatrix}
+				0 & 1
+			\end{bmatrix} =
+			\begin{bmatrix}
+				1 & 0\\
+				0 & -1
+			\end{bmatrix} +
+			\begin{bmatrix}
+				0 & 1\\
+				0 & 1
+			\end{bmatrix} =
+			\begin{bmatrix}
+				1 & 1\\
+				0 & 0
+			\end{bmatrix}
+		\]
+		\[
+			Q^{*} =
+			\begin{bmatrix}
+				1 & 1\\
+				1 & 1
+			\end{bmatrix}
+			\quad\Rightarrow\quad rank(Q^{*}) = 1 
+		\]
+		anche in questo caso abbiamo perso osservabilit\'a.
+		
 	\subsection{Sistema stabilizzabile}
 		Un sistema \'e \textbf{stabilizzabile} (cio\'e \'e possibile renderlo asintoticamente stabile) se e solo se la sua parte non controllabile \'e asintoticamente stabile ($ \Leftrightarrow $ gli autovalori di $ \varphi_{NC}(s) $ sono tutti a $ \Re < 0 $).
 	

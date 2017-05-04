@@ -1,0 +1,109 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	\section{Retroazione algebrica sull'uscita}
+		Consideriamo il sistema $ S $ dove dall'uscita eliminiamo il termine $ Du $ per eliminare i possibili loop algebrici che si avrebbero con una retroazione:
+		\[
+			S:
+			\begin{cases}
+				\dot x = Ax+Bu\\
+				y = Cx
+			\end{cases}
+		\]
+		
+		Effettuiamo la retroazione $ u = Ky +v $:
+		\[
+			S^{*}:
+			\begin{cases}
+				\dot x = Ax + B(Ky+v) = (A+BKC)x + Bv = A^{*}x + Bv\\
+				y = Cx
+			\end{cases}
+		\]
+		
+		Si pu\'o osservare che:
+		\begin{itemize}
+			\item 
+				la retroazione appena effettuata \'e simile alla retroazione algebrica sullo stato $ u = \hat K x+ v $: infatti la retroazione algebrica sull'uscita \'e una particolare retroazione algebrica sullo stato, ma con pi\'u vincoli.
+			\item 
+				la retroazione algebrica sullo stato non modifica le propriet\'a di raggiungibilit\'a.
+		\end{itemize}
+		Grazie a queste due propriet\'a otteniamo che:
+		\begin{center}
+			\fbox{
+				\begin{minipage}{.8\linewidth}
+					La retroazione algebrica sull'uscita NON modifica le propriet\'a di controllabilit\'a del sistema
+				\end{minipage}
+			}
+		\end{center}
+		Analogamente per l'osservabilit\'a:
+		\begin{center}
+			\fbox{
+				\begin{minipage}{.8\linewidth}
+					La retroazione algebrica sull'uscita NON modifica le propriet\'a di osservabilit\'a del sistema
+				\end{minipage}
+			}
+		\end{center}
+		\textbf{Dimostriamo} quest'ultima propriet\'a:
+		supponiamo che $ \hat{\vec x} \in X_{NO}^{*} $ cio\'e che $ \hat{\vec x} $ sia indistinguibile dallo stato zero dopo la retroazione, dove
+		\[
+			X_{NO}^{*} = ker(Q^{*}) = ker
+			\begin{bmatrix}
+				C\\
+				CA^{*}\\
+				C(A^{*})^2\\
+				\vdots\\
+				C(A^{*})^{n_x-1}
+			\end{bmatrix} =
+			\begin{bmatrix}
+				C\\
+				C(A+BKC)\\
+				C(A+BKC)^2\\
+				\vdots\\
+				C(A+BKC)^{n_x-1}
+			\end{bmatrix}
+		\]
+		quindi per definizione di kernel $ Q^{*} \vec x = 0 $:
+		\[
+			\begin{bmatrix}
+				C\\
+				C(A+BKC)\\
+				C(A+BKC)^2\\
+				\vdots\\
+				C(A+BKC)^{n_x-1}
+			\end{bmatrix} \hat{\vec x} =
+			\begin{bmatrix}
+				0\\
+				0\\
+				0\\
+				\vdots\\
+				0
+			\end{bmatrix}
+		\]
+		effettuiamo il conto riga per riga:
+		\begin{enumerate}
+			\item
+				$ C \hat{\vec x} = 0 $
+			\item
+				$ C(A+BKC) \hat{\vec x} = CA \hat{\vec x} + CBK\underbrace{C \hat{\vec x}}_{=0} = 0 \quad\Rightarrow\quad CA \hat{\vec x} = 0 $
+			\item 
+				$ C(A+BKC)^2 \hat{\vec x} = C(A^2 + ABKC + BKCA + BKCBKC) \hat{\vec x} = $
+				\\
+				$ = CA^2 \hat{\vec x} + ABK \underbrace{C \hat{\vec x}}_{=0} + BK\underbrace{CA \hat{\vec x}}_{=0} + BKCBK\underbrace{C \hat{\vec x}}_{=0} = CA^2 \hat{\vec x} $
+			\item $ \dots $
+			\item[n.]
+				$ C A^{n_x-1} \hat{\vec x} = 0 $
+		\end{enumerate}
+		\[
+			\Rightarrow\quad
+			\begin{bmatrix}
+				C\\
+				CA\\
+				\vdots\\
+				CA^{n_x-1}
+			\end{bmatrix} 
+			= Q \hat{\vec x} = \hat{\vec x} = 0
+			\quad\Rightarrow\quad
+			\hat{\vec x} \in Ker(Q) = X_{NO}
+		\]
+		c.v.d.
+\end{document}
