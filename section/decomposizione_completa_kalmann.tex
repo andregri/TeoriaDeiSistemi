@@ -1,0 +1,131 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	\section{Decomposizione completa di Kalmann}
+		\'E un metodo per separare tutte le diverse parti del sistema in tutte le possibili combinazioni:
+		\begin{itemize}
+			\item controllabile e osservabile
+			\item controllabile e non osservabile
+			\item non controllabile e osservabile
+			\item non controllabile e non osservabile
+		\end{itemize}
+		\medskip
+		Definiamo 4 sottospazi:
+		\begin{itemize}
+			\item $ X_1 \triangleq X_R \cap X_{NO} $. Poich\'e $ X_R $ e $ X_{NO} $ sono invarianti rispetto ad $ A $, per come \'e definito anche $ X_1 $ lo sar\'a;
+			\item $ X_2 $ tale che $ X_1 \oplus\footnotemark X_2 = X_R $
+			\item $ X_3 $ tale che $ X_1 \oplus X_3 = X_{NO} $
+			\item $ X_4 $ tale che $ X_4 \oplus (X_R + X_{NO}) = R^{n_x} $
+		\end{itemize}
+		\footnotetext{$ \oplus $ somma diretta: corrisponde al completamento a base, cio\'e gli elementi di $ X_1 $ e $ X_2 $ devono essere linearmente indipendenti}
+		\medskip
+		$ X_1 $ \'e l'unico sottospazio definito univocamente, mentre una possibile scelta di $ X_2, X_3, X_4 $ \'e:
+		\begin{itemize}
+			\item $ X_2 = X_R \cap X_1^{\perp} = X_R \cap (X_R \cap X_{NO})^{\perp} = X_R \cap (X_R^{\perp} + X_{NO}^{\perp}) = X_R \cap (X_{NR} + X_O) $
+			\item $ X_3 = X_{NO} \cap X_1^{\perp} = \dots = X_{NO} \cap (X_{NR} + X_O) $
+			\item $ X_4 = (X_R + X_{NO})^{\perp} = X_R^{\perp} \cap X_{NO^{\perp}} = X_{NR} \cap X_O $
+		\end{itemize}
+		Se la dimensione di qualche $ X_i $ \'e nulla (cio\'e contiene solo l'origine), la $ T_i $ corrispondente sparisce dalla matrice $ T $. Se invece $ dim X_j = n_x $, cio\'e la dimensione \'e massima, allora $ T \equiv T_j $
+		\medskip
+		Prendiamo una matrice $ T \in \R^{n_x \times n_x} $ tale che:
+		\[
+			T = \left[ T_1 | T_2 | T_3 | T_4 \right]
+		\]
+		$ T_1, T_2, T_3, T_4 $ sono matrici le cui colonne sono rispettivamente base di $ X_1, X_2, X_3, X_4 $.
+		
+		Effettuiamo il cambio di base: $ x = Tz $
+		\begin{align*}
+			\dot{\vec z_1} &=
+			\begin{bmatrix}
+				\dot{\vec z_1}\\
+				\dot{\vec z_2}\\
+				\dot{\vec z_3}\\
+				\dot{\vec z_4}
+			\end{bmatrix} =
+			\begin{bmatrix}
+				\tilde{A_{11}} & \tilde{A_{12}} & \tilde{A_{13}} & \tilde{A_{14}}\\
+				0 & \tilde{A_{22}} & 0 & \tilde{A_{24}}\\
+				0 & 0 & \tilde{A_{33}} & \tilde{A_{34}}\\
+				0 & 0 & 0 & \tilde{A_{44}}
+			\end{bmatrix}
+			\begin{bmatrix}
+				\vec z_1\\
+				\vec z_2\\
+				\vec z_3\\
+				\vec z_4
+			\end{bmatrix} +
+			\begin{bmatrix}
+				\tilde B_1\\
+				\tilde B_2\\
+				0\\
+				0
+			\end{bmatrix} \vec u
+			\\
+			y &=
+			\begin{bmatrix}
+				0\\
+				\tilde C_2\\
+				0\\
+				\tilde C_4
+			\end{bmatrix}
+			\begin{bmatrix}
+				\vec z_1\\
+				\vec z_2\\
+				\vec z_3\\
+				\vec z_4
+			\end{bmatrix} + D \vec u
+		\end{align*}
+		\begin{itemize}
+			\item 
+				$ \vec z_3 $ e $ \vec z_4 $ non sono influenzate da $ \vec u $ direttamente n\'e direttamente, quindi formano la parte non raggiungibile del sistema;
+			\item 
+				$ \vec z_1 $ e $ \vec z_3 $ non influenzano $ y $ n\'e direttamente n\'e indirettamente quindi costituiscono la parte non osservabile del sistema.
+		\end{itemize}
+	
+	\subsection{Polinomio caratteristico}
+		La matrice $ \tilde A $ \'e triangolare a blocchi, i quali a loro volta sono triangolari, quindi gli autovalori sono gli elementi della diagonale:
+		\[
+			aut(\tilde A_{11}) \cup aut(\tilde A_{22}) \cup aut(\tilde A_{33}) \cup aut(\tilde A_{44})
+		\]
+		\[
+			\varphi(s) = \tilde \varphi(s) = \underbrace{det(sI-\tilde A_{11})}_{\varphi_{C,NO}(s)} \cdot \underbrace{det(sI-\tilde A_{22})}_{\varphi_{C,O}(s)} \cdot \underbrace{det(sI-\tilde A_{33})}_{\varphi_{NC,NO}(s)} \cdot \underbrace{\det(sI \tilde A_{44})}_{\varphi_{NC,O}(s)}
+		\]
+		
+	\subsection{Matrice di trasferimento}
+		La matrice di trasferimento non viene modificata dal cambiamento di base:
+		\[
+			T(s) = \tilde T(s) \quad\Rightarrow\quad C(sI-A)^{-1}B+D = \tilde C(sI- \tilde A)^{-1} \tilde B + D
+		\]
+		\[
+			\tilde T(s) = \tilde C
+			\begin{bmatrix}
+				(sI-\tilde A_{11}) & -\tilde A_{12} & -\tilde A_{13} & -\tilde A_{14}\\
+				0 & (sI-\tilde A_{22}) & 0 & -\tilde A_{24}\\
+				0 & 0 & (sI-\tilde A_{33}) & -\tilde A_{34}\\
+				0 & 0 & 0 & -\tilde A_{44}
+			\end{bmatrix} \tilde B + D
+		\]
+		\[
+			\begin{bmatrix}
+				0 & \tilde C_2 & 0 & \tilde C_4
+			\end{bmatrix}
+			\begin{bmatrix}
+				(sI-\tilde A_{11})^{-1} & * & * & *\\
+				0 & (sI-\tilde A_{22})^{-1} & * & *\\
+				0 & 0 & (sI-\tilde A_{33}) & *\\
+				0 & 0 & 0 & -\tilde A_{44}
+			\end{bmatrix}
+			\begin{bmatrix}
+				\tilde B_1\\
+				\tilde B_2\\
+				0\\
+				0
+			\end{bmatrix} + D
+		\]
+		\[
+			\Rightarrow\quad \tilde T(s) = \tilde C_2 (sI- \tilde A_{22})^{-1} \tilde B_{22} + D
+		\]
+		dipende da tutti e soli gli autovalori controllabili e osservabili. Allora $ \varphi_{C,O}(s) $ \'e il polinomio caratteristico associato alla matrice $ \tilde T(s) $, ma per quanto detto prima $ T(s) = \tilde T(s) $. Quindi $ \varphi_{C,O}(s) $ \'e il polinomio caratteristico associato alla matrice $ T(s) = C(sI-A)^{-1}B+D $ (o indifferentemente associato a $ C(sI-A)^{-1}B $ perch\'e $ D $ \'e una matrice numerica e non modifica $ \varphi_{C,O}(s) $).
+		
+		Per i sistemi SISO, $ T(s) $ \'e scalare, quindi $ \varphi_{C,O}(s) $ coincide con il denominatore di $ T(s) $.
+\end{document}
