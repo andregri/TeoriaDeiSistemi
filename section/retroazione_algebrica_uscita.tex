@@ -288,9 +288,9 @@
 	
 	\subsection{Stabilit\'a BIBO}
 		\[
-			\text{stabilit\'a BIBO}\quad\Rightarrow\quad \varphi_{CO}(s) \text{non ha radici a}\ \Re > 0
+			\text{stabilit\'a BIBO}\quad\Rightarrow\quad \varphi_{CO}(s)\ \text{non ha radici a}\ \Re > 0
 		\]
-		$ \varphi_{CO}(s) $ \'e il polinomio caratteristico associato a $ T(s) $ prima della retroazione. Se si pu\'o calcolare $ T^{*}(s) = Y_{yv}(s) $ (dopo la retroazione), allora $ \varphi^{*0}_{CO}(s) $ sar\'a il polinomio caratteristico associato a $ T^{*}(s) $.
+		$ \varphi_{CO}(s) $ \'e il polinomio caratteristico associato a $ T(s) $ prima della retroazione. Se si pu\'o calcolare $ T^{*}(s) = T_{yv}(s) $ (dopo la retroazione), allora $ \varphi^{*0}_{CO}(s) $ sar\'a il polinomio caratteristico associato a $ T^{*}(s) $.
 		\begin{Exercise}[title={Studiare retroazione algebrica uscita attraverso l'algebra dei blocchi}]
 			Riprendiamo l'esercizio precedente e calcoliamo la funzione di trasferimento:
 			\[
@@ -323,5 +323,22 @@
 				\Rightarrow\quad \varphi^{*}_{CO}(s) = s^2 -K
 			\]
 			Abbiamo ottenuto molto pi\'u facilmente lo stesso risultato di prima.
+		\end{Exercise}
+	
+		\begin{Exercise}[title={Studiare stabilit\'a BIBO dopo retroazione sull'uscita}, difficulty=1]
+			\[
+				T(s) = \dfrac{1}{s(s-1)}
+			\]
+			si tratta di un sistema non stabile BIBO perch\'e i poli di $ T(s) $ sono $ 0 $ e $ 1 $ (una radice ha $ \Re > 0 $). Con la retroazione sull'uscita si pu\' rendere il sistema stabile BIBO?
+			\[
+				T^{*}(s) = \dfrac{\dfrac{1}{s(s+1)}}{1-\dfrac{K}{s(s-1)}} = \dfrac{1}{s^2-s-K}
+			\]
+			$ \exists K $ tale che i poli di $ T^{*}(s) $ siano tutti a $ \Re < 0 $?\\
+			Con la regola di Cartesio si trova subito una variazione (tra $ s^2 $ e $ -s $) che determina la presenza di almeno una radice a $ \Re > 0 $. Quindi il sistema retroazionato non \'e stabile BIBO per nessun $ K $. Analizziamo comunque i casi al variare di $ K $:
+			\begin{itemize}
+				\item $ K < 0 $: due radici a $ \Re > 0 $
+				\item $ K > 0 $: una radice a $ \Re > 0 $ e una radice a $ \Re < 0 $
+				\item $ K = 0 $: una radice a $ \Re > 0 $ e una radice a $ \Re = 0 $
+			\end{itemize}
 		\end{Exercise}
 \end{document}

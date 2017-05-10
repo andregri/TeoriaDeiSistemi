@@ -1,0 +1,58 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	\section{Dualit\'a}
+		Prendiamo due sistemi diversi:
+		\[
+			S:
+			\begin{cases}
+				\dot x = Ax + Bu\\
+				y = Cx
+			\end{cases}
+			\qquad
+			\hat S:
+			\begin{cases}
+				\dot{\hat x} = \hat A \hat x + \hat B \hat u\\
+				\hat y = \hat C \hat x
+			\end{cases}
+		\]
+		dove:
+		\[
+			\hat A = A^T \qquad \hat B = C^T \qquad \hat C = B^T
+		\]
+		\[
+			\Rightarrow\quad n_{\hat y} = n_u \qquad n_{\hat u} = n_y \qquad n_{\hat x} = n_x
+		\]
+		
+		Due sistemi sono \textbf{duali} se le propriet\'a di controllabilit\'a/osservabilit\'a di $ \hat S $ corrispondono \textbf{rispettivamente} a quelle di osservabilit\'a/controllabilit\'a di $ S $.
+		
+		Si dimostra con il teorema di Kalmann:
+		\[
+			\hat P =
+			\begin{bmatrix}
+				\hat A & | & \hat A \hat B & | & \dots & | & \hat{A}^{n_x-1} \hat B
+			\end{bmatrix} =
+			\begin{bmatrix}
+				C^T &|& A^T C^T &|& \dots &|& \underbrace{A^T \dots A^T}_{n_x-1 \text{volte}} C^T
+			\end{bmatrix} =
+			\begin{bmatrix}
+				C\\
+				CA\\
+				\vdots\\
+				CA^{n_x-1}
+			\end{bmatrix} = Q^T
+		\]
+		Analogamente si ottiene che $ \hat Q = P^T $.\\
+		\newline
+		Le matrici $ P $ e $ Q $ vengono solamente trasposte, quindi i ranghi non vengono modificati.\\
+		Poich\'e $ \hat A = A^T $, gli autovalori non cambiano: $ \varphi(s) = \hat \varphi(s) $. Inoltre per la relazione che lega $ \hat B $ con $ \hat C $:
+		\[
+			\varphi_C(s) = \hat \varphi_O(s) \qquad \varphi_O(s) = \hat \varphi_C(s) \qquad \varphi_{CO}(s) = \hat \varphi_{CO}(s)
+		\]
+		
+		La matrice di trasferimento:
+		\begin{align*}
+			\hat T(s) &= \hat C(sI-\hat A)^{-1} \hat B = B^T (sI-A^T)^{-1} C^T =\\
+			&= \left[ B^T (sI-A)^{-1} \right]^{T} C^T = \left[ C(sI-A)^{-1} B \right]^T = T^T(s) 
+		\end{align*}
+\end{document}
