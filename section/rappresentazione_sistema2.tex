@@ -1,0 +1,49 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	Un sistema pu\'o essere descritto in diversi modi:
+	\begin{itemize}
+		\item 
+			equazione differenziale lineare a coefficienti costanti
+		\item 
+			matrice di trasferimento (che descrive solamente la relazione tra ingresso e uscita)
+		\item 
+			equazione di stato
+	\end{itemize}
+	
+	Finora abbiamo studiato come ottenere la matrice di trasferimento partendo o dall'equazione differenziale o dall'equazione di stato.
+	
+	\section{Relazioni tra controllabilit\'a/osservabilit\'a e l'equazione differenziale}
+		\[
+			A(D)y(t) = B(D)u(t)
+		\]
+		Trasformando con Laplace si ottiene:
+		\[
+			Y(s) = Y_f(s) + Y_l(s) = T(s)U(s) + Y_l(s) = \dfrac{\bar B(s)}{\bar{\bar{A}}(s)} U(s) + \dfrac{I(s)}{A(s)} U(s)
+		\]
+		Per i sistemi causali $ I(s) $ \'e un qualsiasi polinomio di grado $ < n = \pDeg{A(s)} $. Quindi in $ Y_l(s) $ possono essere presenti tutti i modi di evoluzione del sistema con le loro molteplicit\'a $ \quad\Rightarrow\quad $ tutti i modi di evoluzione del sistema sono osservabili.
+		
+		Allora un equazione differenziale lineare a coefficienti costanti \'e \textbf{sempre} completamente osservabile perch\'e $ \varphi(s) = \varphi_O(s) = A(s) $.
+		
+		Un sistema descritto in questo modo \'e completamente controllabile se $ \varphi_C = \varphi(s) = A(s) $, ma essendo sempre osservabile, deve valere anche  $ \varphi_{CO}(s) = \varphi(s) = A(s) $. Poich\'e $ \varphi_{CO}(s) $ \'e il polinomio caratteristico associato a $ T(s) = \sfrac{\bar B(s)}{\bar A(s)} $ per sistemi SISO, allora $ \varphi_{CO}(s) = \bar A(s) $.
+		
+		Eventuali semplificazioni tra $ A(s) $ e $ B(s) $ corrispondono a perdite di controllabilit\'a:
+		\begin{align*}
+			B(s) &= \bar B(s) \cdot P(s)\\
+			A(s) &= \underbrace{\bar{A}(s)}_{C} \cdot \underbrace{P(s)}_{NC}
+		\end{align*}
+		dove $ \bar A(s) $ e $ \bar B(s) $ sono coprimi.
+		
+		Quindi un sistema \'e completamente controllabile quando: 
+		\[
+			A(s) = \bar A(s)
+		\]
+		\newline
+		Riepilogo:
+		\begin{itemize}
+			\item $ \varphi(s) = A(s) $
+			\item $ \varphi_{C,NO}(s) = \varphi_{NC,NO}(s) = 1 $ perch\'e il sistema \'e completamente osservabile.
+			\item $ \varphi_{CO}(s) = \bar A(s) $
+			\item $ \varphi_{NC,O}(s) = P(s) $
+		\end{itemize}
+\end{document}

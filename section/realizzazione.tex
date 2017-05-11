@@ -1,0 +1,265 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	\section{Realizzazione}
+		Si tratta del problema di trovare, data $ T(s) $, $ A, B, C, D $ tali che $ T(s) = C(sI-A)^{-1}B + D $.
+		
+		Il problema della realizzazione non ha soluzione unica per i seguenti motivi:
+		\begin{itemize}
+			\item 
+				possibili cambi di base: se $ A, B, C, D $ sono una realizzazione di $ T(s) $, allora anche $ T^{-1}AT, T^{-1}B, CT, D $ lo sono $ \forall T \in \R^{n_x \times n_x} $ invertibile.
+			\item 
+				possibile aggiunta di parti non controllabili o non osservabili, dato che la funzione di trasferimento \'e influenzata solo dalla parte controllabile e osservabile.
+		\end{itemize}
+	
+		\paragraph{Esempio}
+		\[
+		T(s) = \dfrac{1}{s^2}				
+		\]
+		\'e un sistema strettamente proprio perch\'e $ \pDeg{\text{num}} < \pDeg{\text{denom}} \quad\Rightarrow\quad D = 0 $ (non c'\'e dipendenza istantanea tra ingresso e uscita).
+		
+		Consideriamo diversi sistemi e verifichiamo se sono realizzazioni di $ T(s) $:
+		\begin{itemize}
+			\item 
+				\[
+					S:
+					\begin{cases}
+						\dot x =
+						\begin{bmatrix}
+							0 & 1\\
+							0 & 0
+						\end{bmatrix} x+
+						\begin{bmatrix}
+							0\\
+							1
+						\end{bmatrix} u
+						\\
+						y =
+						\begin{bmatrix}
+							1 & 0
+						\end{bmatrix} x
+					\end{cases}
+				\]
+				Il sistema $ S $ \'e una realizzazione di $ T(s) $? Verifichiamolo:
+				\[
+					\begin{bmatrix}
+						1 & 0
+					\end{bmatrix}
+					\begin{bmatrix}
+						\dfrac{1}{s} & \dfrac{1}{s^2}\\[.5cm]
+						0 & \dfrac{1}{s}
+					\end{bmatrix}
+					\begin{bmatrix}
+						0\\
+						1
+					\end{bmatrix} = \dfrac{1}{s^2}
+				\]
+			\item 
+				effettuiamo un cambio di base attraverso la matrice $ T = \begin{smallmatrix} 0 & 1\\ 1 & 0 \end{smallmatrix} $, che inverte il ruolo degli stati:
+				\[
+					\begin{cases}
+					\dot z =
+					\begin{bmatrix}
+						0 & 0\\
+						1 & 0
+					\end{bmatrix} z+
+					\begin{bmatrix}
+						1\\
+						0
+					\end{bmatrix} u
+					\\
+					y =
+					\begin{bmatrix}
+						0 & 1
+					\end{bmatrix} z
+					\end{cases}
+				\]
+				la funzione di trasferimento non cambia:
+				\[
+					\begin{bmatrix}
+						0 & 1
+					\end{bmatrix}
+					\begin{bmatrix}
+						\dfrac{1}{s} & 0\\[.5cm]
+						\dfrac{1}{s^2} & \dfrac{1}{s}
+					\end{bmatrix}
+					\begin{bmatrix}
+						1\\
+						0
+					\end{bmatrix} = \dfrac{1}{s^2}
+				\]
+			\item 
+				\[
+					S:
+					\begin{cases}
+						\dot x =
+						\begin{bmatrix}
+							0 & 1 & 9\\
+							0 & 0 & 0\\
+							0 & 0 & \sqrt{2}
+						\end{bmatrix} x+
+						\begin{bmatrix}
+							0\\
+							1\\
+							0
+						\end{bmatrix} u
+						\\
+						y =
+						\begin{bmatrix}
+							1 & 0 & \sqrt{17}
+						\end{bmatrix} x
+					\end{cases}
+				\]
+				Si nota che $ x_3 $ non dipende da $ x_1 $ e $ x_2 $ e dal controllo, quindi costituisce la parte non controllabile:
+				\[
+					\varphi(s) = s^2(s-\sqrt{2}) \quad\text{dove}\quad \sqrt{2} \ \text{\'e l'autovalore non controllabile}
+				\]
+				Se svolgiamo i calcoli otteniamo sempre:
+				\[
+					T(s) = \dots = \dfrac{1}{s^2}
+				\]
+		\end{itemize}
+	
+	\section{Realizzazione minima}
+		Si vuole che la realizzazione sia la pi\'u compatta possibile. Si sceglie quindi:
+		\[
+			n_x = \pDeg{\text{denominatore di}\ T(s)} = \text{numero autovalori controllabili e osservabili}
+		\]
+		
+		Una realizzazione minima \'e sempre completamente controllabile e osservabile. Allora una qualsiasi realizzazione non minima non pu\'o essere completamente controllabile e osservabile.
+		
+		Tutte le realizzazioni minime di una $ T(s) $ sono in relazione tra loro mediante un opportuno cambio di base.
+		
+	\subsection{Forma Compagna Controllabile}
+		Data la funzione di trasferimento di un sistema fisicamente realizzabile:
+		\[
+			T(s) = \dfrac{b_n s^n + b_{n-1} s^{n-1} + \ldots + b_0}{s^n + a_{n-1} s^{n-1} + \ldots + a_1 s + a_0}
+			\qquad
+			\begin{aligned}
+				\pDeg{Num} \leq n\\
+				\pDeg{Denom} = n
+			\end{aligned}
+		\]
+		la forma compagna controllabile \'e:
+		\[
+			\begin{aligned}
+				\dot{\vec x} &=
+				\begin{bmatrix}
+					0 & 1 & 0 & \dots & 0\\
+					0 & 0 & 1 & \dots & 0\\
+					\vdots & \vdots & \vdots & \ddots & \vdots\\
+					0 & 0 & 0 & \dots & 1\\
+					-a_0 & -a_1 & -a_2 & \dots & -a_{n-1}
+				\end{bmatrix} \vec x+
+				\begin{bmatrix}
+					0\\
+					0\\
+					\vdots\\
+					0\\
+					1
+				\end{bmatrix} u
+				\\
+				y &=
+				\begin{bmatrix}
+					\tilde b_0 & \tilde b_1 & \dots & \tilde b_{n-1}
+				\end{bmatrix} \vec x + b_n u
+			\end{aligned}
+		\]
+		Come calcolare i $ \tilde b_i $?
+		\[
+			T(s) = \dfrac{\bar B(s)}{\bar{\bar A}(s)} =
+		\]
+		\[
+			\begin{array}{cccc|c}
+				b_n s^n & +b_{n-1} s^{n-1} & +\dots & +b_0 & s^n + a_{n-1} s^{n-1} + \ldots + a_1 s + a_0
+				\\\cline{5-5}
+				b_n s^n & +a_{n-1} b_n s^{n-1} & +\dots & +a_0 b_n & b_n
+				\\\cline{1-4}
+				0 & +(b_{n-1} - a_{n-1} b_n) s^{n-1} & +\dots & +(b_0 - a_0 b_n)
+			\end{array}
+		\]
+		\newline
+		\[
+			\Rightarrow\quad T(s) = b_n + \dfrac{(b_{n-1} - a_{n-1} b_n)s^{n-1} + \dots + (b_0 - a_0 b_n)}{s^n + a_{n-1} s^{n-1} + \dots + a_0} = b_n + \dfrac{\tilde b_{n-1} s^{n-1} + \dots + \tilde b_1 s + \tilde b_0}{s^n + a_{n-1} s^{n-1} + \dots + a_0} = b_n + \tilde T(s)
+		\]
+		dove i coefficienti del resto della divisione sono $ \tilde b_i \triangleq b_i - a_i b_n $
+		\[
+			Y_f(s) = T(s) U(s) \quad\Rightarrow\quad y_f(t) = b_n u(t) + \ldots
+		\]
+		$ b_n $ rappresenta la dipendenza istantanea tra l'ingresso e l'uscita.\\
+		\newline
+		La forma compagna controllabile \'e una realizzazione minima di $ T(s) $.
+		
+		\begin{Exercise}[title={Calcolare la forma compagna controllabile}, difficulty=1]
+			\[
+				T(s) = \dfrac{s^2-1}{s^2+2s+3} \quad\Rightarrow\quad n = \pDeg{\text{Denom}}
+			\]
+			Si pu\'o calcolare la FCC seguendo due strade:
+			\begin{itemize}
+				\item 
+					calcolandosi gli elementi delle matrici con le formule:
+					\[
+						\begin{aligned}
+							a_0 &= 3\\
+							a_1 &= 2
+						\end{aligned}
+						\qquad
+						\begin{aligned}
+							b_0 &= -1\\
+							b_1 &= 0\\
+							b_2 &= 1
+						\end{aligned}
+						\qquad\Rightarrow\quad
+						\begin{aligned}
+							\tilde b_0 &= b_0 - a_0 b_2 = -4\\
+							\tilde b_1 &= b_1 - a_1 b_2 = -2
+						\end{aligned}
+					\]
+					\[
+						\dot x = 
+						\begin{bmatrix}
+							0 & 1\\
+							-3 & -2
+						\end{bmatrix} x+
+						\begin{bmatrix}
+							0\\
+							1
+						\end{bmatrix} u
+						\\
+						y =
+						\begin{bmatrix}
+							-4 & -2
+						\end{bmatrix} x + u
+					\]
+					otteniamo lo stesso risultato: $ \tilde b_0 = -4 $, $ \tilde b_1 = -2 $
+				\item 
+					eseguendo la divisione tra polinomi:
+					\[
+						\begin{array}{ccc|c}
+							s^2 & & -1 & s^2 + 2s + 3
+							\\\cline{4-4}
+							s^2 & +2s & +3 & 1
+							\\\cline{1-3}
+							0 & -2s & -4 &
+						\end{array}
+					\]
+			\end{itemize} 
+		\end{Exercise}
+	
+	\subsection{Forma completamente osservabile}
+		se la FCC \'e:
+		\[
+			\begin{cases}
+				\dot{\vec x} = A_C \vec x + B_C u\\
+				y = C_C \vec x + D_C u
+			\end{cases}
+		\]
+		\[
+			\Rightarrow\quad\text{FCO}\quad
+			\begin{cases}
+				\dot{\vec z} = A_C^T \vec z + C_C^T u\\
+				y = B_C^T \vec z + D_C u
+			\end{cases}
+		\]
+		La forma compagna osservabile \'e la \textbf{duale} della forma compagna controllabile.
+\end{document}
