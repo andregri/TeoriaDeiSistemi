@@ -48,11 +48,11 @@
 		Quindi la tensione sul condensatore non dipende istantaneamente dalla tensione applicata dal generatore ($ v_{in} $ per $ t>0 $), ma dipende anche dalla condizioni iniziali ($ v_{in}\ \mbox{per}\ t<0$).
 		
 		Scriviamo le equazioni di questo sistema dinamico:
-		\begin{align*}
-			v_R &= Ri \quad\Rightarrow\quad i = \dfrac{v_R}{R} = \dfrac{v_{in}-v_{out}}{R}\\
-			v_{in} &= v_R + v_{out}\\
-			\dot v_{out} &= \frac{1}{C}i 
-		\end{align*}
+		\[
+			v_R = Ri \quad\Rightarrow\quad i = \dfrac{v_R}{R} = \dfrac{v_{in}-v_{out}}{R} , \quad  \quad
+			 v_{in} = v_R + v_{out} , \quad  \quad
+			\dot v_{out} = \frac{1}{C}i 
+		\]
 		Mettendo assieme queste equazioni otteniamo:
 		\[ \Rightarrow\quad i = C \cdot v_{out} = \dfrac{v_{in}-v_{out}}{R} \]
 		
@@ -65,10 +65,10 @@
 		\begin{itemize}
 			\item
 				un'equazione differenziale lineare a coefficienti costanti:
-				\begin{align*}
-					RC \dot y(t) &= u(t) - y(t)\\
-					\Rightarrow\quad & \dot y(t) + \dfrac{1}{RC} y = \dfrac{1}{RC} u
-				\end{align*}
+				\[
+					RC \dot y(t) = u(t) - y(t) \quad \quad
+					\Rightarrow\quad  \dot y(t) + \dfrac{1}{RC} y = \dfrac{1}{RC} u
+				\]
 				
 				$ R $ e $ C $ sono due parametri che per\'o sono sempre uniti nell'equazione del sistema. Infatti $ RC $ \'e la costante di tempo $ \tau $.
 			\item
@@ -101,22 +101,22 @@
 		Finora abbiamo studiato esempi di sistemi lineari descritti da equazioni lineari. Nel mondo fisico per\'o praticamente tutti i sistemi sono non lineari.
 		
 	\subsection{Massa-molla}
+		\'E un modello che descrive la forza elastica, ma non completamente.\\
+		Infatti la molla ha una struttura fisica: anche se applichiamo una forza sempre maggiore, la molla raggiunge la sua lunghezza minima (completamente compressa). Quindi la forza elastica diventa una forza vincolare.\\
 		\begin{figure}[h!]
-			\centering
 			\begin{subfigure}[b]{0.4\linewidth}
 				\includegraphics[width=\linewidth]{1.introduzione/massa_molla}
 				\caption{$F_{el}(t)=-kx(t)$}
 			\end{subfigure}
 			\begin{subfigure}[b]{0.4\linewidth}
 				\begin{tikzpicture}[scale=.5]
-					\begin{axis}
-						\addplot[color=red]{-x};
-					\end{axis}
+				\begin{axis}
+				\addplot[color=red]{-x};
+				\end{axis}
 				\end{tikzpicture}
 				\caption{$F_{el}(t)=-kx(t)$}
 			\end{subfigure}
 		\end{figure}
-		\'E un modello che descrive la forza elastica, ma non completamente.\\ Infatti la molla ha una struttura fisica: anche se applichiamo una forza sempre maggiore, la molla raggiunge la sua lunghezza minima (completamente compressa). Quindi la forza elastica diventa una forza vincolare.\\
 		Questo modello matematico non considera i casi limite nei quali si perde la linearit\'a.\\
 		Quindi i modelli matematici che descrivono le leggi fisiche attraverso i sistemi lineari sono solo approssimazioni per "piccole variazioni''.
 		
@@ -142,17 +142,17 @@
 		\end{equation}
 		dove $S \dot{h(t)}$ rappresenta la variazione di volume rispetto al tempo.\\
 		Inoltre non conosciamo $l(t)$ e dobbiamo ricavarlo: consideriamo una particella d'acqua che scende dalla cima della vasca fino all'uscita inferiore e calcoliamone il bilancio energetico.
-		\begin{align*}
-			\not{m} gh &= \frac{1}{2} \not{m} v^2\\
-			gh &= \frac{1}{2} v^2\\
-			v(t) &= \sqrt{2gh(t)}\\
-			l(t) &= E \sqrt{2gh(t)}\\
-			S \dot{h(t)} &= u(t) - E \sqrt{2gh(t)}
-		\end{align*}
+		\[
+			\not{m} gh = \frac{1}{2} \not{m} v^2 \quad \rightarrow
+			gh = \frac{1}{2} v^2 \; \rightarrow \;
+			v(t) = \sqrt{2gh(t)} ; \rightarrow \;
+			l(t) = E \sqrt{2gh(t)} \; \rightarrow \;
+			S \dot{h(t)} = u(t) - E \sqrt{2gh(t)}
+		\]
 		\begin{equation} \label{eq.vasca_non_lineare}
 			\dot{h(t)} = - \frac{E}{S} \sqrt{2g} \sqrt{h(t)} + \frac{1}{S} u(t)
 		\end{equation}
-		Poiché la derivata dell'uscita non \'e una combinazione lineare degli ingressi, questa \'e un'equazione differenziale non lineare.\\
+		Poich\'e la derivata dell'uscita non \'e una combinazione lineare degli ingressi, questa \'e un'equazione differenziale non lineare.\\
 		Inoltre esistono dei vincoli fisici che in questa equazione non vengono considerati: 
 		\(
 			\begin{cases}
@@ -166,19 +166,17 @@
 		Consideriamo il sistema della vasca nel paragrafo precedente: fissiamo un altezza $ \bar{h} $ e supponiamo che $u(t) \equiv \bar{u} = e \sqrt{2g \bar{h}}$. Ne segue che $ \dot{h}(\bar{t}) =0 $.\\
 		Questa situazione \'e detta condizione di equilibrio e $( \bar{h} , \bar{u}) $ \'e il punto di equilibrio.\\
 		Riscriviamo l'equazione \ref{eq.vasca_non_lineare}:
-		\begin{align*}	
-				&\dot{h(t)} = f(h(t),u(t))\\		
-				%	
-				\intertext{Adesso calcoliamo l'approssimazione di Taylor fino al primo ordine intorno a $ (\bar{h},\bar{u}) $ :} \\
-				%
-				&f(h(t),u(t)) = f(\bar{h},\bar{u}) + \left. \frac{\partial f(h,u)}{\partial h} \right|_{(\bar{h},\bar{u})} (h(t) - \bar{h}) + \left. \frac{\partial f(h,u)}{\partial u} \right|_{(\bar{h},\bar{u})} (u(t) - \bar{u}) + \mbox{Resto}\\
-				%
-				\intertext{poich\'e $ f(\bar{h},\bar{u}) =0$}\\
-				%
-				\left. \frac{\partial f(h,u)}{\partial h} \right|_{(\bar{h},\bar{u})} &= - \frac{E}{2S} \sqrt{2g} \left. \frac{1}{\sqrt{h}} \right|_{(\bar{h},\bar{u})} = - \frac{E}{2S} \sqrt{\frac{2g}{\bar{h}}} = - \alpha \quad (\alpha > 0)\\
-				%
-				\left. \frac{\partial f(h,u)}{\partial u} \right|_{(\bar{h},\bar{u})} &= \frac{1}{S} = \beta \quad (\beta > 0)  
-		\end{align*}
+		\[ \dot{h(t)} = f(h(t),u(t)) \]
+		Adesso calcoliamo l'approssimazione di Taylor fino al primo ordine intorno a \( (\bar{h},\bar{u}) \) :
+		\[
+			f(h(t),u(t)) = f(\bar{h},\bar{u}) + \left. \frac{\partial f(h,u)}{\partial h} \right|_{(\bar{h},\bar{u})} (h(t) - \bar{h}) + \left. \frac{\partial f(h,u)}{\partial u} \right|_{(\bar{h},\bar{u})} (u(t) - \bar{u}) + \mbox{Resto}
+		\]
+		poich\'e $ f(\bar{h},\bar{u}) =0$\\
+		\[
+			\left. \frac{\partial f(h,u)}{\partial h} \right|_{(\bar{h},\bar{u})} = - \frac{E}{2S} \sqrt{2g} \left. \frac{1}{\sqrt{h}} \right|_{(\bar{h},\bar{u})} = - \frac{E}{2S} \sqrt{\frac{2g}{\bar{h}}} = - \alpha \quad (\alpha > 0)\\
+			%
+			\left. \frac{\partial f(h,u)}{\partial u} \right|_{(\bar{h},\bar{u})} = \frac{1}{S} = \beta \quad (\beta > 0)  
+		\]
 		Definiamo:
 		\[ \delta h(t) \triangleq h(t)- \bar{h} \quad \text{la variazione di $h$ rispetto al punto di equilibrio;} \]
 		\[ \delta u(t) \triangleq u(t)- \bar{u} \quad \text{la variazione di $u$ rispetto al punto di equilibrio;} \]
