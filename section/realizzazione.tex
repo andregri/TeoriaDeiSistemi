@@ -142,6 +142,12 @@
 		\]
 		la forma compagna controllabile \'e:
 		\[
+			\begin{cases}
+				\dot{\vec x} = A_C \vec x + B_C u\\
+				y = C_C \vec x + D_C u
+			\end{cases}
+		\]
+		\[
 			\begin{aligned}
 				\dot{\vec x} &=
 				\begin{bmatrix}
@@ -246,20 +252,128 @@
 			\end{itemize} 
 		\end{Exercise}
 	
-	\subsection{Forma completamente osservabile}
-		se la FCC \'e:
-		\[
-			\begin{cases}
-				\dot{\vec x} = A_C \vec x + B_C u\\
-				y = C_C \vec x + D_C u
-			\end{cases}
-		\]
+	\subsection{Forma Completamente Osservabile}
 		\[
 			\Rightarrow\quad\text{FCO}\quad
 			\begin{cases}
-				\dot{\vec z} = A_C^T \vec z + C_C^T u\\
-				y = B_C^T \vec z + D_C u
+				\dot{\vec z} = A_C^T \vec z + C_C^T u &= A_O x + B_O u\\
+				y = B_C^T \vec z + D_C u &= C_O x + D_O u
 			\end{cases}
 		\]
 		La forma compagna osservabile \'e la \textbf{duale} della forma compagna controllabile.
+		\[
+			\begin{aligned}
+				\dot{\vec x} &=
+				\begin{bmatrix}
+					0 & 0 & \dots & 0 & -a_0 \\
+					1 & 0 & \dots & 0 & -a_1 \\
+					0 & 1 & \dots & 0 & -a_2 \\
+					\vdots & \vdots & \ddots & \vdots & \vdots \\
+					0 & 0 & \dots & 1 & -a_{n-1}
+				\end{bmatrix} \vec x+
+				\begin{bmatrix}
+					\tilde b_0\\
+					\tilde b_1\\
+					\tilde b_2\\
+					\vdots\\
+					\tilde b_n
+				\end{bmatrix} u
+				\\
+				y &=
+				\begin{bmatrix}
+					0 & 0 & \dots & 0 & 1
+				\end{bmatrix} \vec x + b_n u
+			\end{aligned}
+		\]
+		
+		\paragraph{Esempio} integratore
+			\[
+				T(s) = \dfrac{1}{s} \quad\Rightarrow\quad n=1 \qquad
+				a_0 = 0 \qquad
+				\begin{aligned}
+					b_0 &= 1\\
+					b_1 &= 0
+				\end{aligned}
+			\]
+			Quando la $ T(s) $ \'e strettamente propria $ \quad\Rightarrow\quad \tilde b_i \equiv b_i $ perch\'e $ b_n = 0 $.
+			\[
+				\begin{cases}
+					\dot x = [-a_0] x + [1] u\\
+					y = [b_0] x + b_n u
+				\end{cases}
+				\quad\Rightarrow\quad
+				\begin{cases}
+					\dot x = u\\
+					y = x
+				\end{cases}
+			\]
+			
+		\paragraph{Esempio}
+			\[
+				T(s) = \dfrac{3}{s+2} = \dfrac{s+2-2-3}{s+2} = 1+\dfrac{-5}{s+2}
+			\]
+			\[
+				\begin{cases}
+					\dot x = -2x + u\\
+					y = -5x + u
+				\end{cases}
+			\]
+			
+	\subsection{Propriet\'a di FCC e FCO}
+		\begin{itemize}
+			\item 
+				\[
+					A_C = A_O^T =
+					\begin{bmatrix}
+						0 & 1 & \dots & 0\\
+						\vdots & \vdots & \ddots & \vdots\\
+						0 & 0 & \dots & 1\\
+						-a_0 & -a_1 & \dots & -a_{n-1}
+					\end{bmatrix}
+					\quad\Rightarrow\quad
+					\varphi(s) = s^n + a_{n-1} s^{n-1} + \ldots + a_0
+				\]
+				FCC e FCO non servono solo a realizzare una funzione di trasferimento, ma sono utilizzabili anche per "assegnazione di autovalori".
+				\paragraph{Esempio} voglio ottenere gli autovalori $ s_1 = 0, s_2 = -1, s_3 = 1 $, cio\'e
+					\[
+						\varphi(s) = s(s+1)(s-1) = s(s^2-1) = s^3 - s
+					\]
+					La forma compagna controllabile di questo sistema sarebbe:
+					\[
+						\dot x =
+						\begin{bmatrix}
+							0 & 1 & 0\\
+							0 & 0 & 1\\
+							0 & 1 & 0
+						\end{bmatrix} x+
+						\begin{bmatrix}
+							0\\
+							0\\
+							1
+						\end{bmatrix} u
+					\]
+			\item 
+				Supponiamo sia dato un sistema qualsiasi in FCC (non \'e detto che sia ottenuto da una $ T(s) $) al quale applichiamo il teorema di Kalmann di controllabilit\'a:
+				\[
+					P_C =
+					\begin{bmatrix}
+						B | AB | \dots | A^{n_x-1}B
+					\end{bmatrix} =
+					\begin{bmatrix}
+						0 		& 0 		& 0 		& \dots 	& \dots 	& 1\\
+						\vdots 	& \vdots 	& 0			& 1 		& \dots		& *\\
+						\vdots 	& \vdots	& \vdots	& \vdots	& \vdots	& \vdots\\
+						0 		& 0 		& 1 		& *		 	& \dots 	& *\\
+						1 		& -a_{n_x-1} & * 		& * 	& \dots		& *
+					\end{bmatrix}
+				\]
+				Poich\'e le colonne sono tutte linearmente indipendenti (qualunque valore ci sia al posto degli asterischi), il rango \'e massimo: $ rank \left\lbrace P_C \right\rbrace = n_x $ 
+				La coppia $ A_C B_C $ \'e sempre completamente controllabile. Se $ \pDeg{\varphi_{CO}(s)} < n_x $, allora si ha perdita di osservabili\'a.
+			\item 
+				Un sistema in FCO \'e sempre completamente osservabile. Se  $ \pDeg{\varphi_{CO}(s)} < n_x $, allora si ha perdita di controllabilit\'a.
+			\item 
+				Se si usano FCC o FCO per una realizzazione minima di una $ T(s) $, il risultato \'e sempre controllabile e osservabile.
+				
+				Quindi se avessimo un sistema descritto attraverso un'equazione differenziale lineare a coefficienti costanti (Nota: il sistema \'e completamente osservabile), calcolate la FCC o la FCO, metteremmo in equazione di stato solo la parte controllabile \& osservabile del sistema, ma non il resto.
+		\end{itemize}
 \end{document}
