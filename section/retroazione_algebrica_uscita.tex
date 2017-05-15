@@ -179,7 +179,7 @@
 						0\\
 						1
 					\end{bmatrix} u
-					\\
+					\\[.5cm]
 					y =
 					\begin{bmatrix}
 						1 & 0
@@ -191,7 +191,19 @@
 			Studiamo velocemente il sistema:
 			\begin{itemize}
 				\item 
-					se nella matrice compare un denominatore di grado massimo, allora esso sar\'a il polinomio caratteristico: $ \varphi(s) = s^2 $
+					\[
+						(sI-A)^{-1} =
+						\begin{bmatrix}
+							s & -1\\
+							0 & s
+						\end{bmatrix}^{-1} =
+						\begin{bmatrix}
+							\dfrac{1}{s} & \dfrac{1}{s^2}\\[.5cm]
+							0 & \dfrac{1}{s}
+						\end{bmatrix}
+						\quad\Rightarrow\quad
+						\varphi(s) = mcm\left\lbrace s, s, s^2 \right\rbrace = s^2
+					\]
 				\item 
 					poich\'e $ m(s) \subseteq\cdot \varphi(s) $, i possibili polinomi minimi sono: $ s $ e $ s^2 $. Verifichiamo se $ s $ \'e polinomio annullante per $ A $, cio\'e $ m(A) = 0 $. Tuttavia $ A \neq 0 $, $ A $ non \'e una matrice nulla, quindi significa che $ m(s) = s^2 $ (infatti $ A^2 = 0 $).
 				\item 
@@ -201,7 +213,7 @@
 					\[
 						(sI-A)^{-1}B=
 						\begin{bmatrix}
-							\dfrac{1}{s} & \dfrac{1}{s^2}\\
+							\dfrac{1}{s} & \dfrac{1}{s^2}\\[.5cm]
 							0 & \dfrac{1}{s}
 						\end{bmatrix}
 						\begin{bmatrix}
@@ -209,11 +221,11 @@
 							1
 						\end{bmatrix} =
 						\begin{bmatrix}
-							\dfrac{1}{s^2}\\
+							\dfrac{1}{s^2}\\[.5cm]
 							\dfrac{1}{s}
 						\end{bmatrix}
 					\]
-					calcoliamo velocemente $ \varphi_C(s) = s^2 \equiv m_C(s) $.\\
+					Trucchetto: se nella matrice compare un denominatore di grado massimo, allora esso sar\'a il polinomio caratteristico: $ \varphi_C(s) = s^2 $. Inoltre $ \varphi_C(s) \equiv m_C(s) $.\\
 					Oppure col teorema di Kalmann:
 					\[
 						P =
