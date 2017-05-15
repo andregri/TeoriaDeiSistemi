@@ -20,22 +20,21 @@
 		\begin{figure}[h!]
 			\centering
 			\begin{circuitikz} \draw
-				(0,0)	to[V, v=$ v_{in} $] (0,4)
-						to[short](1,4)
-						to[R, l_=$ r $, v^<=$ v_R $](3,4)
-						to[short, i=$ i $](4,4)
+				(0,0)	to[V, v=$ v_{in} $] (0,3)
+						to[short](1,3)
+						to[R, l_=$ r $, v^<=$ v_R $](3,3)
+						to[short, i=$ i $](4,3)
 						to[C, l_=$ C $, v^<=$ v_1 $](4,0)
 						to[short](0,0)
 				;
 			\end{circuitikz}
 			\begin{subfigure}{0.48\linewidth}
-				\vspace{-4cm}
+				\vspace{-2cm}
 				\includegraphics[width=\linewidth]{1.introduzione/rc_plot}
 				\caption{grafico di $v_{out}$}
 				\label{graph:rc}
 			\end{subfigure}
 		\end{figure}
-		\newpage
 		Supponiamo che: 
 		\[
 			\begin{cases}
@@ -88,7 +87,7 @@
 	\section{Variabili di un sistema}
 			\begin{figure}[h!]
 				\centering
-				\includegraphics[width=.5\textwidth]{1.introduzione/sistema}
+				\includegraphics[width=.3\textwidth]{1.introduzione/sistema}
 			\end{figure}
 			\begin{itemize}
 				\item ingressi regolabili $ \underline u(t) $
@@ -109,7 +108,7 @@
 				\caption{$F_{el}(t)=-kx(t)$}
 			\end{subfigure}
 			\begin{subfigure}[b]{0.4\linewidth}
-				\begin{tikzpicture}[scale=.7]
+				\begin{tikzpicture}[scale=.5]
 					\begin{axis}
 						\addplot[color=red]{-x};
 					\end{axis}
@@ -133,7 +132,7 @@
 		\]
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=.5\textwidth]{1.introduzione/vasca}
+			\includegraphics[width=.3\textwidth]{1.introduzione/vasca}
 		\end{figure}
 		u(t) \'e l'ingresso che possiamo controllare attraverso un rubinetto.\\
 		l(t) e h(t) sono entrambe possibili uscite, ma scegliamo $y(t) \equiv h(t)$ perch\'e \'e misurabile pi\'u facilmente. Infatti non \'e detto che le uscite siano sempre misurabili.\\

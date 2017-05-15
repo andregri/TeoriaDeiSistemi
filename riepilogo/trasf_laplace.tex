@@ -5,7 +5,8 @@
 	%
 	\subsection{Propriet\'{a}}
 	\label{subsec:prop_laplace}
-	%space between rows
+	\bgroup
+	\def\arraystretch{0.2} %  serve per impostare l'interlinea
 	\begin{tabular}{|>{\centering\arraybackslash}m{1.5in}|>{\centering\arraybackslash}m{4.5in}|}
 		\hline
 		\hyperref[linear]{Linearit\'{a}} & $$\Lapl{f(t)=\alpha f_{1}(t) + \beta f_{2}(t)}{F(s)=\alpha F_{1}(s) + \beta F_{2}(s)}$$\\
@@ -16,7 +17,7 @@
 		\hline
 		\hyperref[deriv_t]{Derivata in t} & $$ \Lapl{\dot{f}(t)}{sF(s)-f(0^{-})} $$\\
 		\hline
-		\hyperref[deriv_n_t]{Derivata n-esima in t} & \parbox{4.5in}{$$ \frac{\mathrm{d^n}}{\mathrm{d}t^n}f(t) \quad \xrightarrow{\Lt} $$\\$$ s^n F(s) - s^{n-1} f(0^{-}) - s^{n-2} f^{(1)}(0^{-}) -\ _{\dots}\ - s f^{(n-2)}(0^{-}) - f^{(n-1)}(0^{-}) $$} \\
+		\hyperref[deriv_n_t]{Derivata n-esima in t} & $$\frac{\mathrm{d^n}}{\mathrm{d}t^n}f(t) \Lapl \quad s^n F(s) - s^{n-1} f(0^{-}) - s^{n-2} f^{(1)}(0^{-}) -\ _{\dots}$$ $${\dots}\ - s f^{(n-2)}(0^{-}) - f^{(n-1)}(0^{-}) $$\\
 		\hline
 		\hyperref[int_t]{Integrale in t} & $$ \Lapl{\int_{0^{-}}^{t} f(\tau) \mathrm{d}\tau}{\frac{1}{s} F(s)} $$\\
 		\hline
@@ -25,8 +26,11 @@
 		\hyperref[deriv_s]{Derivata n-esima in s} & $$ \Lapl{t^n f(t)}{(-1)^n \frac{\mathrm{d}^n}{\mathrm{d}s^n} F(s)} $$\\
 		\hline
 	\end{tabular}
+	\egroup
 	%
 	\subsection{Trasformate notevoli}
+	\bgroup
+	\def\arraystretch{0.2} %  serve per impostare l'interlinea
 	\begin{tabular}{|>{\centering\arraybackslash}m{1.5in}|>{\centering\arraybackslash}m{4.5in}|}
 		\hline
 		\hyperref[trasf_impulso]{Impulso}& $$ \Lapl{\delta (t)}{1} $$\\
@@ -48,4 +52,5 @@
 		\hyperref[trasf_t_coseno]{Polinomio e coseno} & $$ \Lapl{t \cdot \cos(wt)}{\frac{s^2-w^2}{(s^2+w^2)^2}} $$\\
 		\hline
 	\end{tabular}
+	\egroup
 \end{document}
