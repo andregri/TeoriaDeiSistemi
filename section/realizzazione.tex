@@ -374,6 +374,12 @@
 			\item 
 				Se si usano FCC o FCO per una realizzazione minima di una $ T(s) $, il risultato \'e sempre controllabile e osservabile.
 				
-				Quindi se avessimo un sistema descritto attraverso un'equazione differenziale lineare a coefficienti costanti (Nota: il sistema \'e completamente osservabile), calcolate la FCC o la FCO, metteremmo in equazione di stato solo la parte controllabile \& osservabile del sistema, ma non il resto.
+				Quindi se avessimo un sistema descritto attraverso un'equazione differenziale lineare a coefficienti costanti (Nota: il sistema \'e completamente osservabile), metteremmo in equazione di stato solo la parte controllabile \& osservabile del sistema, ma non il resto. In base a $ P(s) $ (il polinomio in comune tra $ A(s) $ e $ B(s) $) conviene utilizzare una forma compagna rispetto all'altra:
+				\begin{itemize}
+					\item 
+						se $ P(s) = 1 $, il sistema \'e completamente controllabile \& osservabile, quindi \'e indifferente usare FCC o FCO.
+					\item 
+						se $ P(s) \neq 1 $, conviene usare la FCO (perch\'e l'equazione differenziale \'e sempre completamente osservabile).
+				\end{itemize}
 		\end{itemize}
 \end{document}
