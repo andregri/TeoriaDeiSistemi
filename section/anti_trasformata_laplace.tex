@@ -222,9 +222,9 @@
 	\rule{\linewidth}{0.4pt}
 	\paragraph{Poli reali:} $ p = \sigma \in \R $
 	%1
-	\[ \aLapl{\frac{1}{s-\sigma}}{e^{\sigma t} 1(t)} \]
 	\begin{figure}[h!]
 		\centering
+		\[ \aLapl{\frac{1}{s-\sigma}}{e^{\sigma t} 1(t)} \]
 		\begin{subfigure}{0.3\textwidth}
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_reali1_1}
 		\end{subfigure}
@@ -235,10 +235,9 @@
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_reali1_3}
 		\end{subfigure}
 	\end{figure}\\
-	\rule{\linewidth}{0.4pt}
 	%2
-	\[ \aLapl{\frac{1}{(s-\sigma)^2}}{t e^{\sigma t} 1(t)} \]
 	\begin{figure}[h!]
+		\[ \aLapl{\frac{1}{(s-\sigma)^2}}{t e^{\sigma t} 1(t)} \]
 		\centering
 		\begin{subfigure}{0.3\textwidth}
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_reali2_1}
@@ -250,9 +249,9 @@
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_reali2_3}
 		\end{subfigure}
 	\end{figure}\\
-	\rule{\linewidth}{0.4pt}
-	\[ \aLapl{\frac{1}{(s-\sigma)^n}}{\frac{1}{(n-1)!} t^{n-1} e^{\sigma t} 1(t)} \]
+	%3
 	\begin{figure}[h!]
+		\[ \aLapl{\frac{1}{(s-\sigma)^n}}{\frac{1}{(n-1)!} t^{n-1} e^{\sigma t} 1(t)} \]
 		\centering
 		\begin{subfigure}{0.3\textwidth}
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_reali3_1}
@@ -268,11 +267,10 @@
 	%
 	\noindent
 	\rule{\linewidth}{0.4pt}\\%
-	\rule{\linewidth}{0.4pt}%
 	\paragraph{Poli complessi:} $ p = \sigma \pm jw \quad w \neq 0 $
 	%1
-	\[ \aLapl{ \frac{c}{s-p} + \frac{c^*}{s-p^*} }{ e^{\sigma t} (A \sin wt + B \cos wt) = D e^{\sigma t} \cos (wt + \phi) }  \]
 	\begin{figure}[h!]
+		\[ \aLapl{ \frac{c}{s-p} + \frac{c^*}{s-p^*} }{ e^{\sigma t} (A \sin wt + B \cos wt) = D e^{\sigma t} \cos (wt + \phi) }  \]
 		\centering
 		\begin{subfigure}{0.3\textwidth}
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_complessi1_1}
@@ -284,10 +282,9 @@
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_complessi1_3}
 		\end{subfigure}
 	\end{figure}\\
-	\rule{\linewidth}{0.4pt}
 	%2
-	\[ \aLapl{ \frac{c}{(s-p)^2} + \frac{c^*}{(s-p^*)^2} }{ D t e^{\sigma t} \cos (wt + \phi) } \]
 	\begin{figure}[h!]
+		\[ \aLapl{ \frac{c}{(s-p)^2} + \frac{c^*}{(s-p^*)^2} }{ D t e^{\sigma t} \cos (wt + \phi) } \]
 		\centering
 		\begin{subfigure}{0.3\textwidth}
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_complessi2_1}
@@ -299,10 +296,9 @@
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_complessi2_3}
 		\end{subfigure}
 	\end{figure}\\
-	\rule{\linewidth}{0.4pt}
 	%3
-	\[ \aLapl{ \frac{c}{(s-p)^n} + \frac{c^*}{(s-p^*)^n} }{ D \frac{1}{(n-1)!} t^n e^{\sigma t} \cos (wt + \phi) } \]
 	\begin{figure}[h!]
+		\[ \aLapl{ \frac{c}{(s-p)^n} + \frac{c^*}{(s-p^*)^n} }{ D \frac{1}{(n-1)!} t^n e^{\sigma t} \cos (wt + \phi) } \]
 		\centering
 		\begin{subfigure}{0.3\textwidth}
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_complessi3_1}
@@ -315,7 +311,6 @@
 		\end{subfigure}
 	\end{figure}
 	%
-	\newpage
 	\section{Teorema del valore iniziale}
 	\[ f(0^+) = \lim\limits_{s \rightarrow +\infty} s F(s) \]
 	Questo teorema non richiede particolari ipotesi, ma nel caso delle funzioni razionali non strettamente proprie $ (m \geq n) $ bisogna applicarlo sul resto della divisione.
