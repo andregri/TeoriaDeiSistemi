@@ -14,7 +14,7 @@
 				\]
 			\end{subfigure}
 			\begin{subfigure}{0.4\textwidth}
-				\includegraphics[width=.5\textwidth]{2.funzioni_generalizzate/gradino}
+				\includegraphics[width=.5\textwidth]{funzioni_generalizzate/gradino}
 			\end{subfigure}
 		\end{figure}
 		Presenta una discontinuità in $t=0$.
@@ -32,7 +32,7 @@
 				\]
 			\end{subfigure}
 			\begin{subfigure}{0.4\textwidth}
-				\includegraphics[width=.5\textwidth]{2.funzioni_generalizzate/rampa}
+				\includegraphics[width=.5\textwidth]{funzioni_generalizzate/rampa}
 			\end{subfigure}
 		\end{figure}
 		In $t=0$ \'e continua, ma presenta una discontinuit\'a di prima specie nella derivata.
@@ -50,7 +50,7 @@
 				\]
 			\end{subfigure}
 			\begin{subfigure}{0.4\textwidth}
-				\includegraphics[width=.5\textwidth]{2.funzioni_generalizzate/parabola}
+				\includegraphics[width=.5\textwidth]{funzioni_generalizzate/parabola}
 			\end{subfigure}
 		\end{figure}
 		Risulta continua e con derivata continua anche in $t=0$.	
@@ -90,7 +90,7 @@
 				\]
 			\end{subfigure}
 			\begin{subfigure}{0.4\textwidth}
-				\includegraphics[width=.5\textwidth]{2.funzioni_generalizzate/impulso}
+				\includegraphics[width=.5\textwidth]{funzioni_generalizzate/impulso}
 			\end{subfigure}
 		\end{figure}
 		%
@@ -115,7 +115,7 @@
 				\]
 			\end{subfigure}
 			\begin{subfigure}{0.4\textwidth}
-				\includegraphics[width=.5\textwidth]{2.funzioni_generalizzate/doppietto}
+				\includegraphics[width=.5\textwidth]{funzioni_generalizzate/doppietto}
 			\end{subfigure}
 		\end{figure}
 		
@@ -161,7 +161,7 @@
 		Dividiamo il grafico \ref{fig:grafico_f} in sezioni e per ognuna scriviamo la funzione 'finestrata' (cioè moltiplicata per un rettangolo di base pari alla larghezza della sezione):
 		\begin{figure}[h!]
 			\centering
-			\resizebox{.4\columnwidth}{!}{\input{img/2.funzioni_generalizzate/esercizi/derivata_funzione_def_tratti}}
+			\resizebox{.4\columnwidth}{!}{\input{img/funzioni_generalizzate/esercizi/derivata_funzione_def_tratti}}
 			\caption{Grafico di $ f(t) $}
 			\label{fig:grafico_f}
 		\end{figure}
@@ -179,7 +179,7 @@
 					\intertext{se sostiutiamo: $ (t-6) \cdot \gr[t-3] = (t-3) \cdot \gr[t-3] - 3 \cdot \gr[t-3] = ram(t-3) - 3 \cdot \gr[t-3] $}
 					f(t) &= 2 \cdot ram(t) &&- 2 \cdot ram(t-1) &&+ram(t-3) &&- 3 \cdot \gr[t-3] \nonumber\\
 					\dot{f(t)} &= 2 \cdot \textbf{1}(t) &&- 2 \cdot \gr[t-1] &&+ \gr[t-3] && - 3 \cdot \delta(t-3)
-					\label{derivata_es2.11.2}
+					\label{derivata_es11.2}
 				\end{align}
 			\item si usano le derivate del prodotto:
 			$$ \dot{f(t)} = \big[ 2 \cdot \gr[t] + 2t \cdot \delta(t) \big]\ -\ 2 \cdot \gr[t-1]\ -\ 2 \cdot (t-1) \cdot \delta(t-1)\ +\ \gr[t-3]\ +\ (t-6) \cdot \delta(t-3) $$
@@ -189,7 +189,7 @@
 				\item $ (t-1) \cdot \delta(t-1) = 0$: analogo al punto precedente
 				\item $ (t-6) \cdot \delta(t-3) = - 3 \cdot \delta(t-3) $: la retta $ y=t-6 $ calcolata in $ t=3 $ vale -3. 
 			\end{itemize}
-			Dopo queste semplificazioni si ottiene l'espressione \ref{derivata_es2.11.2}.
+			Dopo queste semplificazioni si ottiene l'espressione \ref{derivata_es11.2}.
 		\end{enumerate}
 	\end{Exercise}
 \end{document}
