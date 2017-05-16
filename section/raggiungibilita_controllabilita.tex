@@ -405,6 +405,9 @@
 		\end{Exercise}
 	
 		\begin{Exercise}[title={Studiare la controllabilit\'a di due vasche in parallelo}, difficulty=2]
+			\begin{center}
+				\includegraphics[width=.7\textwidth]{raggiungibilita_controllabilita/vasche_parallelo}
+			\end{center}
 			Consideriamo l'esempio del sistema non lineare delle vasche:
 			\[ \dot h = \dfrac{1}{S}u - \dfrac{E}{S}\sqrt{2gh} \]
 			Linearizzato attorno al punto di equilibrio $ (\tilde h, \tilde u) $:
@@ -629,6 +632,9 @@
 			\end{bmatrix} u
 		\]
 		Con questo cambiamento di base abbiamo ottenuto che le prime $ n_R $ componenti sono raggiungibili, le ultime $ n_{NR} $ non sono raggiungibili. Abbiamo messo in ordine la struttura della matrice. Strutturalmente $ z_{NR} $ \'e non raggiungibile perch\'e \'e indipendente dal controllo, invece $ z_R $ \'e completamente raggiungibile.
+		\begin{figure}[h!]
+			\centering\includegraphics[width=.7\textwidth]{raggiungibilita_controllabilita/decomposizione_controllabilita}
+		\end{figure}
 		
 		\begin{Exercise}[title={Calcolo di $ X_R $ e decomposizione di raggiungibilit\'a}, difficulty=1]
 			Dato il sistema:
