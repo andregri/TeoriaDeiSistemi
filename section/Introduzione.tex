@@ -104,10 +104,12 @@
 		\'E un modello che descrive la forza elastica, ma non completamente.\\
 		Infatti la molla ha una struttura fisica: anche se applichiamo una forza sempre maggiore, la molla raggiunge la sua lunghezza minima (completamente compressa). Quindi la forza elastica diventa una forza vincolare.\\
 		\begin{figure}[h!]
+			\centering
 			\begin{subfigure}[b]{0.4\linewidth}
-				\includegraphics[width=\linewidth]{1.introduzione/massa_molla}
+				\includegraphics[width=.8\linewidth]{1.introduzione/massa_molla}
 				\caption{$F_{el}(t)=-kx(t)$}
 			\end{subfigure}
+			\quad \quad
 			\begin{subfigure}[b]{0.4\linewidth}
 				\begin{tikzpicture}[scale=.5]
 				\begin{axis}
@@ -143,9 +145,9 @@
 		dove $S \dot{h(t)}$ rappresenta la variazione di volume rispetto al tempo.\\
 		Inoltre non conosciamo $l(t)$ e dobbiamo ricavarlo: consideriamo una particella d'acqua che scende dalla cima della vasca fino all'uscita inferiore e calcoliamone il bilancio energetico.
 		\[
-			\not{m} gh = \frac{1}{2} \not{m} v^2 \quad \rightarrow
+			\not{m} gh = \frac{1}{2} \not{m} v^2 \; \rightarrow \;
 			gh = \frac{1}{2} v^2 \; \rightarrow \;
-			v(t) = \sqrt{2gh(t)} ; \rightarrow \;
+			v(t) = \sqrt{2gh(t)} \; \rightarrow \;
 			l(t) = E \sqrt{2gh(t)} \; \rightarrow \;
 			S \dot{h(t)} = u(t) - E \sqrt{2gh(t)}
 		\]
@@ -173,8 +175,9 @@
 		\]
 		poich\'e $ f(\bar{h},\bar{u}) =0$\\
 		\[
-			\left. \frac{\partial f(h,u)}{\partial h} \right|_{(\bar{h},\bar{u})} = - \frac{E}{2S} \sqrt{2g} \left. \frac{1}{\sqrt{h}} \right|_{(\bar{h},\bar{u})} = - \frac{E}{2S} \sqrt{\frac{2g}{\bar{h}}} = - \alpha \quad (\alpha > 0)\\
-			%
+			\left. \frac{\partial f(h,u)}{\partial h} \right|_{(\bar{h},\bar{u})} = - \frac{E}{2S} \sqrt{2g} \left. \frac{1}{\sqrt{h}} \right|_{(\bar{h},\bar{u})} = - \frac{E}{2S} \sqrt{\frac{2g}{\bar{h}}} = - \alpha \quad (\alpha > 0)\]
+			\\
+		\[
 			\left. \frac{\partial f(h,u)}{\partial u} \right|_{(\bar{h},\bar{u})} = \frac{1}{S} = \beta \quad (\beta > 0)  
 		\]
 		Definiamo:

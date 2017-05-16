@@ -14,13 +14,14 @@
 	$$ \bar{\sigma} \in \R \qquad \bar{\sigma} = inf\left\lbrace \Re{(s)} \colon \exists F(s) = \Lbrace{f(t)} \right\rbrace $$
 	In parole povere si prendono tutti i numeri complessi per cui esiste la trasformata di Laplace. Quindi $ \bar{\sigma} $ è l'estremo inferiore di questo insieme (non \'e detto che sia anche il minimo).
 	\begin{figure}[h!]
-		\centering\includegraphics[width=.4\textwidth]{3.trasformata_laplace/ascissa_convergenza}
+		\centering\includegraphics[width=.3\textwidth]{3.trasformata_laplace/ascissa_convergenza}
 	\end{figure}
 	%
 	\paragraph{Teorema 1} Se la trasformata di Laplace esiste per qualche $s=\bar{s}$, allora essa esiste anche $ \forall s\ \text{tale che}\ \Re{(s)} > \Re{\bar{(s)}} $.\\
-	In pratica l'ascissa di convergenza definisce il limite a destra del quale la trasformata esiste sempre.
+	$\rightarrow$ In pratica l'ascissa di convergenza definisce il limite a destra del quale la trasformata esiste sempre.
 	%
-	\paragraph{Teorema 2} La trasformata di Laplace \'{e} "analitica" $ \forall s \colon \Re{(s)} > \bar{\sigma}$. Analitica significa che \'e continua e derivabile $\infty$ volte.\footnote{In pratica, se una $f$ non \'e continua n\'e derivabile in alcuni punti, la sua trasformata lo \' comunque: \'e pi\'u facile lavorare con quest'ultima.}
+	\paragraph{Teorema 2} La trasformata di Laplace \'{e} "analitica" $ \forall s \colon \Re{(s)} > \bar{\sigma}$. Analitica significa che \'e continua e derivabile $\infty$ volte.\\
+	$\rightarrow$ In pratica, se una $f$ non \'e continua n\'e derivabile in alcuni punti, la sua trasformata lo \'e comunque: \'e pi\'u facile lavorare con quest'ultima.
 	%	
 	\section{Propriet\'{a}}
 	%
@@ -40,11 +41,10 @@
 	\linebreak
 	Dimostrazione: chiamiamo $ \bar{f}(t) = f(t-T)\ 1(t-T) $. Con il gradino non consideriamo tutto ci\'{o} che accade prima di $T$, altrimenti la trasformata sarebbe stata diversa e avrebbe incluso anche il tratto $(0^{-},+ \infty)$.
 	\begin{align*}
-		\Lbrace{\bar{f}(t)} &= \LaplDef{\bar{f}(t)}{s}{t} =\\
-		&= \int_{0^{-}}^{T^{-}} \bar{f}(t) e^{-st} \mathrm{d}t + \int_{T^{-}}^{+ \infty} \bar{f}(t) e^{-st} \mathrm{d}t =\\
+		\Lbrace{\bar{f}(t)} &= \LaplDef{\bar{f}(t)}{s}{t} = \int_{0^{-}}^{T^{-}} \bar{f}(t) e^{-st} \mathrm{d}t + \int_{T^{-}}^{+ \infty} \bar{f}(t) e^{-st} \mathrm{d}t =\\
 		&= 0+ \int_{T^{-}}^{+ \infty} f(t-T)\ 1\ e^{-st} \mathrm{d}t=
-		\qquad &&\text{il gradino vale 1 in } (T^{-},+ \infty) \\
-		&= \int_{0^{-}}^{+ \infty} f(\tau) e^{-s(\tau+T)} \mathrm{d}\tau = \qquad &&\text{ho cambiato variabile} \quad \tau=t-T\\
+		&&\text{il gradino vale 1 in } (T^{-},+ \infty) \\
+		&= \int_{0^{-}}^{+ \infty} f(\tau) e^{-s(\tau+T)} \mathrm{d}\tau = &&\text{ho cambiato variabile} \quad \tau=t-T\\
 		&= e^{-sT} \LaplDef{f(\tau)}{s}{\tau} = e^{-sT} F(s)
 	\end{align*}
 	%
@@ -52,40 +52,30 @@
 	\label{trasl_s}
 	$$ \Lapl{f(t)}{F(s)} \quad \Rightarrow \quad \Lapl{e^{at}f(t)}{F(s-a)}$$
 	Dimostrazione: chiamo $\tilde{f}(t) = e^{at} f(t) $:\\
-	\begin{align*}
-		\Lbrace{\tilde{f}(t)} &= \LaplDef{\tilde{f}(t)}{s}{t} =\\
-		&= \LaplDef{e^{at}f(t)}{s}{t} = \\
-		&= \int_{0^{-}}^{+ \infty} f(t) e^{-(s-a)t} \mathrm{d}t = F(s-a)
-	\end{align*}
+	\[
+		\Lbrace{\tilde{f}(t)} = \LaplDef{\tilde{f}(t)}{s}{t} = \LaplDef{e^{at}f(t)}{s}{t} = \int_{0^{-}}^{+ \infty} f(t) e^{-(s-a)t} \mathrm{d}t = F(s-a)
+	\]
 	%
 	\subsection{Derivata in t}
 	\label{deriv_t}
 	$$ \Lapl{f(t)}{F(s)} \quad \Rightarrow \quad \Lapl{\dot{f}(t)}{sF(s)-f(0^{-})} $$
 	Dimostrazione:
 	\begin{align*}
-		\Lbrace{\dot{f}(t)} &= \LaplDef{\dot{f}(t)}{s}{t}\\
-		\text{Integro per parti ricordando} &\text{ che} \quad \int f(x)^{'}g(x)\mathrm{d}x = f(x)g(x) - \int f(x)g(x)^{'} \mathrm{d}x\\
+		\Lbrace{\dot{f}(t)} &= \LaplDef{\dot{f}(t)}{s}{t} \quad \rightarrow \text{Integro per parti} \rightarrow \left( \int f^{'}(x)g(x)\mathrm{d}x = f(x)g(x) - \int f(x)g^{'}(x) \mathrm{d}x \right)\\
 		&= \left[ f(t)e^{-st} \right]_{0^{-}}^{+\infty} - \LaplDef{f(t)(-s)}{s}{t} =\\
-		&= 0 - f(0^{-}) + s \LaplDef{f(t)}{s}{t} 
+		&= 0 - f(0^{-}) + s \LaplDef{f(t)}{s}{t} = sF(s)-f(0^{-})
 	\end{align*}
 	%
 	\subsection{Derivata n-esima in t}
 	\label{deriv_n_t}
 	\begin{align*}
 		\Lapl{g(t)=\dot{f}(t)}{&G(s) = sF(s) - f(0^{-})}\\
-		\Lapl{\dot{g}(t) = \ddot{f}(t)}{&sG(s) - g(0^{-})}= \quad \text{per la propriet\'{a} della derivata in t}\\
-		=\ &s[sF(s) - f(0^{-})] - \dot{f}(0^{-})\\
-	\end{align*}
-	Quindi:
-	$$ \Lapl{\ddot{f}(t)}{s^2 F(s) - s f(0^{-}) - \dot{f}(0^{-})} $$
-	\linebreak
-	Per $n=3$:
-	$$ \Lapl{\frac{\mathrm{d^3}}{\mathrm{d}t^3}f(t)}{s^3 F(s) - s^2 f(0^{-}) - s f^{(1)}(0^{-}) - f^{(2)}(0^{-})} $$
-	\linebreak
-	Per $n$:
-	\begin{align*}
-		\Lapl{\frac{\mathrm{d^n}}{\mathrm{d}t^n}f(t)}{&s^n F(s) - s^{n-1} f(0^{-}) - s^{n-2} f^{(1)}(0^{-}) -\ _{\dots}\ - s f^{(n-2)}(0^{-}) - f^{(n-1)}(0^{-})} = \\
-		&= s^n F(s) - \sum_{k = 1}^{n} s^{n-k} f^{(k - 1)}(0^{-})
+		\Lapl{\dot{g}(t) = \ddot{f}(t)}{&sG(s) - g(0^{-})}= \quad \text{Per la propriet\'{a} (\ref{deriv_t})} \quad
+		=\ s[sF(s) - f(0^{-})] - \dot{f}(0^{-})\\
+		\text{Quindi:} \quad \Lapl{\ddot{f}(t)}{&s^2 F(s) - s f(0^{-}) - \dot{f}(0^{-})} \\
+		\text{Per } n=3 \text{:} \quad \Lapl{\frac{\mathrm{d^3}}{\mathrm{d}t^3}f(t)}{&s^3 F(s) - s^2 f(0^{-}) - s f^{(1)}(0^{-}) - f^{(2)}(0^{-})} \\
+		\text{Per } n \text{:} \quad		\Lapl{\frac{\mathrm{d^n}}{\mathrm{d}t^n}f(t)}{&s^n F(s) - s^{n-1} f(0^{-}) - s^{n-2} f^{(1)}(0^{-}) -\ _{\dots}\ - s f^{(n-2)}(0^{-}) - f^{(n-1)}(0^{-})} = \\
+		= &s^n F(s) - \sum_{k = 1}^{n} s^{n-k} f^{(k - 1)}(0^{-})
 	\end{align*}
 	%
 	\subsection{Integrale in t}
@@ -93,17 +83,9 @@
 	$$ \Lapl{\int_{0^{-}}^{t} f(\tau) \mathrm{d}\tau}{\frac{1}{s} F(s)} $$
 	%
 	Dimostrazione:
-	\begin{align*}
-		g(t) &= \int_{0^{-}}^{t} f(\tau) \mathrm{d}\tau\\
-		\dot{g}(t) &= f(t)\\
-		g(0) &= 0
-	\end{align*}
-	Per la propriet\'{a} della derivata in t:
-	\begin{align*}
-		F(s) = \Lbrace{f(t)} = \Lbrace{\dot{g}(t)} &= s \Lbrace{g(t)} - g(0^{-}) = \\
-		&= s G(s) - 0\\
-		&\Rightarrow G(s) = \frac{1}{s} F(s)
-	\end{align*}
+	$$ g(t) = \int_{0^{-}}^{t} f(\tau) \mathrm{d}\tau \quad 		\dot{g}(t) = f(t) \quad g(0) = 0 $$
+	Per la propriet\'{a} della derivata in t (\ref{deriv_t}):
+	$$ 	F(s) = \Lbrace{f(t)} = \Lbrace{\dot{g}(t)} = s \Lbrace{g(t)} - g(0^{-}) = s G(s) - 0 \quad \Rightarrow \quad G(s) = \frac{1}{s} F(s) $$
 	%
 	\subsection{Derivata in s}
 	\label{deriv_s}
@@ -112,13 +94,13 @@
 	\Lapl{t^n f(t)}{&(-1)^n \frac{\mathrm{d}^n}{\mathrm{d}s^n} F(s)}
 	\end{align*}
 	Dimostrazione ($n=1$): dalla definizione ho che:
-	\begin{align*}
-		\frac{\mathrm{d}}{\mathrm{d}s} F(s) & = \frac{\mathrm{d}}{\mathrm{d}s} \LaplDef{f(t)}{s}{t} =\\
-		\intertext{Uso la regola di derivazione sotto segno di integrale}
-		& = \LaplDef{f(t) \pder{}{s}}{s}{t}\\
-		& = \LaplDef{f(t)(-t)}{s}{t} =\\
-		& = - \LaplDef{t f(t)}{s}{t}=\Lbrace{t f(t)}
-	\end{align*}
+	\[
+		\frac{\mathrm{d}}{\mathrm{d}s} F(s) = \frac{\mathrm{d}}{\mathrm{d}s} \LaplDef{f(t)}{s}{t} =
+	\]
+	Uso la regola di derivazione sotto segno di integrale
+	\[
+		= \LaplDef{f(t) \pder{}{s}}{s}{t} = \LaplDef{f(t)(-t)}{s}{t} = - \LaplDef{t f(t)}{s}{t}=\Lbrace{t f(t)}
+	\]
 	%
 	\section{Trasformate di funzioni notevoli}
 	\subsection{Impulso}
@@ -160,24 +142,19 @@
 	$$ \Lapl{e^{\sigma t}\ 1(t)}{\frac{1}{s-\sigma}} $$
 	%
 	\subsection{Alcune $f$ composte: Polinomio ed Esponenziale}
+	Partiamo dal grado 1: $ \qquad t\ e^{\sigma t} 1(t) = t\ f(t) $
 	\begin{align*}
-		\intertext{Partiamo dal grado 1:}
+		\text{Per la propriet\'{a} (\ref{deriv_s}):} \qquad \Lapl{t\ f(t)}{&(-1) \der{}{s} F(s)}\\
 		%
-		t\ e^{\sigma t} 1(t) &= t\ f(t)\\
+		\text{Quindi:} \qquad \Lapl{f(t) = e^{\sigma t} 1(t)}{&F(s) = \frac{1}{s-\sigma}}\\
 		%
-		\intertext{Per la propriet\'{a} 7:}
-		\Lapl{t\ f(t)}{&(-1) \der{}{s} F(s)}\\
-		%
-		\intertext{Quindi:}
-		\Lapl{f(t) = e^{\sigma t} 1(t)}{&F(s) = \frac{1}{s-\sigma}}\\
 		\Rightarrow \quad \Lapl{t e^{\sigma t} 1(t)}{&(-1) \der{}{s} \frac{1}{s-\sigma}} = (-1) \frac{-1}{(s-\sigma)^2} = \frac{1}{(s-\sigma)^2}
-		%
-		\intertext{Generalizziamo al grado n:}
-		\text{chiamo} \quad &f(t) = t^n 1(t)
-		%
-		\intertext{Quindi per la presenza dell'esponenziale sto effettuando una traslazione in s:}
-		\Lapl{e^{\sigma t} f(t)}{&F(s-\sigma) = n! \frac{1}{(s-\sigma)^{n+1}}}
 	\end{align*}
+		Generalizziamo al grado $n$: \quad chiamo \quad $f(t) = t^n 1(t)$\\
+		Quindi per la presenza dell'esponenziale sto effettuando una traslazione in s:
+		\[
+			\Lapl{e^{\sigma t} f(t)}{F(s-\sigma) = n! \frac{1}{(s-\sigma)^{n+1}}}
+		\]
 	%
 	\subsection{Seno}
 	\label{trasf_seno}
@@ -201,7 +178,7 @@
 	%
 	\subsection{Seno e Coseno (2)}
 	Gli stessi risultati possono essere ottenuti sfruttando la propriet\'{a} (\ref{deriv_t}) di derivazione in t.\\
-	\linebreak\linebreak
+	\rule{\linewidth}{0.4pt}
 	Ad esempio partiamo dal seno:
 	$$ \sin(wt) \quad \xrightarrow{\der{}{t}} \quad w \cos(wt) \quad \xrightarrow{\der{}{t}} \quad -w^2 \sin(wt) $$
 	Conosciamo la trasformata della funzione seno:
@@ -215,7 +192,7 @@
 	$$ -w^2 \sin(wt) = \der{}{t} w\cos(wt) \quad\Rightarrow\quad \Lbrace{-w^2 \sin(wt)} = \Lbrace{\der{}{t} w\cos(wt)} $$
 	$$ \Lbrace{\der{}{t} w\cos(wt)} = s \frac{sw}{s^2+w^2} - w\cos(w\ 0^-) = \frac{s^2w}{s^2+w^2} - w = \frac{-w^3}{s^2+w^2}$$
 	$$ \Rightarrow \quad \left( - \frac{1}{w^2} \right) \cdot \Lbrace{-w^2 \sin(wt)} = \left[ \frac{-w^3}{s^2+w^2} \right] \cdot \left( - \frac{1}{w^2} \right) = \frac{w}{s^2+w^2} $$
-	\linebreak\linebreak
+	\rule{\linewidth}{0.4pt}
 	Analogamente partendo dal coseno:
 	$$ \cos(wt) \quad \xrightarrow{\der{}{t}} \quad -w\sin(wt) \quad \xrightarrow{\der{}{t}} \quad -w^2\cos(wt) $$	
 	Calcoliamo la trasformata della sua derivata:
@@ -268,8 +245,12 @@
 	%
 	\subsection{Polinomio grado 1, esponenziale e coseno}
 	Utilizziamo la propriet\'{a} della derivata in s (\ref{deriv_s}):
-	$$ \Lbrace{t\ e^{\sigma t} \cos(wt) 1(t)} = t f(t) = -\der{}{s} \left( \frac{s-\sigma}{(s-\sigma)^2+w^2} \right) = -\frac{(s-\sigma)^2+w^2-2(s-\sigma)(s-\sigma)}{[(s-\sigma)^2+w^2]^2} = \frac{(s-\sigma)^2-w^2}{[(s-\sigma)^2+w^2]^2} $$
-	%
+	\[
+	 	\Lbrace{t\ e^{\sigma t} \cos(wt) 1(t)} = t f(t) = -\der{}{s} \left( \frac{s-\sigma}{(s-\sigma)^2+w^2} \right) =
+	 \]
+	 \[	
+	 	=-\frac{(s-\sigma)^2+w^2-2(s-\sigma)(s-\sigma)}{[(s-\sigma)^2+w^2]^2} = \frac{(s-\sigma)^2-w^2}{[(s-\sigma)^2+w^2]^2}
+	 \]
 	\subsection{Polinomio grado 2, esponenziale e coseno}
 	\begin{enumerate}
 		\item utilizziamo la propriet\'{a} di derivazione in s (\ref{deriv_s}):

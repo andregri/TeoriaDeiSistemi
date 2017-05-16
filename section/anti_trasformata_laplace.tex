@@ -20,15 +20,20 @@
 	\section{Esempi introduttivi}
 	\begin{enumerate}
 		\item $ \quad \aLbrace{\dfrac{1}{s}} = 1 \cdot 1(t) $
+		%
 		\item $ \quad \aLbrace{\frac{1}{s-2}} = e^{2t} 1(t) \qquad \text{\hyperref[trasl_s]{traslazione in s}}$
+		%
 		\item $ \quad \aLbrace{\dfrac{1}{s+2}} = e^{-2t} 1(t) \qquad \text{\hyperref[trasl_s]{traslazione in s}}$
+		%
 		\item $ \quad \aLbrace{\dfrac{1}{s^2}} = \left. \dfrac{1}{n!} t^n 1(t) \right|_{n=1} = t \cdot 1(t) \qquad \text{\hyperref[deriv_n_t]{derivata n-esima in t}}$\\
-		\linebreak
-		In generale:
-		\[ \aLapl{\frac{1}{s^m}}{\frac{1}{(m-1)!} t^{m-1} \cdot 1(t)} \]
+		%
+		\subitem $ \text{In generale: } \aLapl{\frac{1}{s^m}}{\frac{1}{(m-1)!} t^{m-1} \cdot 1(t)} $
+		%
 		\item $ \quad \aLbrace{\frac{1}{(s-a)^m}} = \aLbrace{ \left. \frac{1}{\bar{s}^{m}} \right|_{\bar{s} = s-a}} = \frac{1}{(m-1)!} t^{m-1} e^{at} 1(t) \qquad \text{\hyperref[trasl_s]{traslazione in s}} $
+		%
 		\item $ \quad \aLbrace{\frac{3}{s^2+4s+13}} = ? $\\
 		\linebreak
+		%
 		Completiamo i quadrati del denominatore:
 		\[ s^2+4s+13 = s^2+2 \cdot (\color{red}2\color{black}s) \color{red}+ 2^2 - 2^2\color{black} +9 = (s+2)^2+(3)^2 \]
 		In generale se abbiamo un polinomio di secondo grado del tipo:
@@ -85,9 +90,7 @@
 		\[ c_{l,n_l} = \left. (s-p_l)^{n_l} \cdot F(s) \right|_{s=p_l} \]
 		\item Deriviamo l'espressione e calcoliamola in $p_l$:
 		\[ c_{l,n_l-1} = \left. \der{}{s} (s-p_l)^{n_l} \cdot F(s) \right|_{s=p_l} \]
-		\linebreak
 		\[ \dots \]
-		\linebreak
 		\item Continuando a derivare stando attenti ai coefficienti dovuti alla derivazione:
 		\begin{equation}
 		\label{residuo}
