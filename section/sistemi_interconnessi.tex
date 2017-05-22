@@ -1,0 +1,442 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+	Il sistema $ S $ \'e costituito da $ N $ sottosistemi $ S^{(i)} $ con $ i = 1...N $, ognuno con il suo vettore $ \vec x^{(i)} $.
+	\[
+		\begin{aligned}
+			&\text{vettore degli ingressi esogeni}
+			\\
+			&\vec u =
+			\begin{bmatrix}
+				u_1\\
+				\vdots\\
+				u_{n_u}
+			\end{bmatrix}
+		\end{aligned}
+		\qquad\qquad
+		\begin{aligned}
+			&\text{vettore degli uscite}
+			\\
+			&\vec y =
+			\begin{bmatrix}
+				y_1\\
+				\vdots\\
+				y_{n_y}
+			\end{bmatrix}
+		\end{aligned}
+	\]
+	\[
+		\begin{aligned}
+			&\text{vettore degli ingressi di $ S^{(i)} $}
+			\\
+			&\vec u =
+			\begin{bmatrix}
+				u_1\\
+				\vdots\\
+				u_{n_u}
+			\end{bmatrix}
+		\end{aligned}
+		\qquad\qquad
+		\begin{aligned}
+			&\text{vettore degli uscite di $ S^{(i)} $}
+			\\
+			&\vec y =
+			\begin{bmatrix}
+				y_1\\
+				\vdots\\
+				y_{n_y}
+			\end{bmatrix}
+		\end{aligned}
+	\]
+	
+	\section{Studio delle propriet\'a strutturali}
+		\begin{enumerate}
+			\item 
+				Mettere in equazione di stato ogni singolo sistema $ S^{(i)} $ con realizzazione minima
+				\[
+					S^{(i)}:
+					\begin{cases}
+						\dot{\vec x}^{(i)} = A^{(i)} \vec x^{(i)} + B^{(i)} \vec u^{(i)}\\
+						\dot{\vec y}^{(i)} = C^{(i)} \vec x^{(i)} + D^{(i)} \vec u^{(i)}
+					\end{cases}
+				\]
+			\item 
+				Scrivo le equazioni di interconnessione, cio\'e esprimo $ \vec u^{(i)} $ e $ \vec y $ come funzione (combinazione lineare) di tutte le uscite $ \vec y^{(i)} $ e di tutti gli ingressi esogeni $ \vec u $.
+			\item 
+				Per sostituzioni successive, elimino le dipendenze da $ \vec u^{(i)} $ e da $ \vec y^{(i)} $. Otteniamo un sistema lineare:
+				\[
+					\begin{cases}
+						\dot{\vec x} = A \vec x + B \vec u\\
+						\vec y = C \vec x + D \vec u
+					\end{cases}
+				\]
+				NB: non devono essere presenti loop algebrici, altrimenti questo passaggio non ha fine.
+			\item 
+				Studio delle propriet\'a strutturali (Controllabilit\'a, Osservabilit\'a, Stabilit\'a) del sistema di equazioni di stato cos\'i ottenuto
+		\end{enumerate}
+	
+		\paragraph{Esempio}
+			\[
+				\begin{aligned}
+					T^{(1)}(s) &= \dfrac{1}{s+1}\\
+					\varphi_{CO}^{(1)}(s) &= s+1
+				\end{aligned}
+				\qquad\qquad
+				\begin{aligned}
+					T^{(2)}(s) &= \dfrac{s+1}{s}\\
+					\varphi_{CO}^{(2)}(s) &= s
+				\end{aligned}
+			\]
+			Si tratta di un sistema di ordine 2. Eseguiamo tutti i passaggi:
+			\begin{enumerate}
+				\item 
+					\[
+						S^{(1)}:
+						\begin{cases}
+							\dot x^{(1)} = -x^{(1)} + u^{(1)}\\
+							y^{(1)} = x^{(1)}
+						\end{cases}
+						\qquad
+						S^{(2)}.
+						\begin{cases}
+							\dot x^{(2)} = u^{(2)}\\
+							y^{(2)} = x^{(2)} + u^{(2)}
+						\end{cases}
+					\]
+				\item 
+					\[
+						u^{(1)} = u \qquad u^{(2)} = y^{(1)} \qquad y = y^{(2)}
+					\]
+				\item 
+					\[
+						\begin{aligned}
+							\dot x^{(1)} &= -x^{(1)} + u\\
+							y^{(1)} &= x^{(1)}\\
+							\dot x^{(2)} &= y^{(1)} = x^{(1)}\\
+							y^{(2)} &= x^{(2)} + y^{(1)} = x^{(2)} + x^{(1)}\\
+							y &= y^{(2)} = x^{(2)} + u^{(2)} = x^{(2)} + y^{(1)} = x^{(2)} + x^{(1)}
+						\end{aligned}
+					\]
+					\[
+						\Rightarrow\quad S:
+						\begin{cases}
+							\dot{\vec x} =
+							\begin{bmatrix}
+								-1 & 0\\
+								1 & 0
+							\end{bmatrix} \vec x +
+							\begin{bmatrix}
+								1\\
+								0
+							\end{bmatrix} u
+							\\
+							y =
+							\begin{bmatrix}
+								1 & 1
+							\end{bmatrix} \vec x
+						\end{cases}
+					\]
+				\item 
+					\[
+						\varphi(s) = det(sI-A) = det
+						\begin{bmatrix}
+							s+1 & 0\\
+							-1 & s
+						\end{bmatrix} = s(s+1)
+						\qquad
+						m(s) \equiv \varphi(s)\ \text{perch\'e}\ m(s) \subseteq\cdot \varphi(s)
+					\]
+					Il sistema \'e semplicemente stabile perch\'e c'\'e un autovalore a $ \Re = 0 $ e uno a $ \Re < 0 $
+					\[
+						P =
+						\begin{bmatrix}
+							1 & | & -1\\
+							0 & | & 1
+						\end{bmatrix}
+						\quad\Rightarrow\quad
+						rank(P) = 2
+					\]
+					Il sistema \'e completamente controllabile.
+					\[
+						Q =
+						\begin{bmatrix}
+							1 & 1\\
+							\cline{1-2}
+							0 & 0
+						\end{bmatrix}
+						\quad\Rightarrow\quad
+						rank(Q) = 1
+					\]
+					Il sistema non \'e completamente osservabile.
+					\[
+						(sI-A)^{-1} =
+						\begin{bmatrix}
+							\dfrac{1}{s+1} & 0\\
+							\dfrac{1}{s(s+1)} & \dfrac{1}{s}
+						\end{bmatrix}
+					\]
+					\[
+						(sI-A)^{-1}B =
+						\begin{bmatrix}
+							\dfrac{1}{s+1}\\
+							\dfrac{1}{s(s+1)}
+						\end{bmatrix}
+						\quad\Rightarrow\quad
+						\varphi_C(s) = s(s+1)
+					\]
+					\[
+						C(sI-A)^{-1} = 
+						\begin{bmatrix}
+							\dfrac{1}{s+1}+\dfrac{1}{s(s+1)} & \dfrac{1}{s}
+						\end{bmatrix} =
+						\begin{bmatrix}
+							\dfrac{1}{s} & \dfrac{1}{s}
+						\end{bmatrix}
+						\quad\Rightarrow\quad
+						\varphi_O(s) = s
+					\]
+			\end{enumerate}
+		
+			\begin{Exercise}[title={Studiare propriet\'a di sistemi interconnessi}, difficulty=3]
+				Sono dati i sistemi:
+				\[
+					S^{(1)}:
+					\begin{cases}
+						\dot{\vec x}^{(1)} =
+						\begin{bmatrix}
+							0 & 1\\
+							-1 & 2
+						\end{bmatrix}
+						\vec x^{(1)} +
+						\begin{bmatrix}
+							0\\
+							1
+						\end{bmatrix} u^{(1)}
+						\\
+						y^{(1)} =
+						\begin{bmatrix}
+							1 & 1\\
+							0 & 1
+						\end{bmatrix} \vec x^{(1)}
+					\end{cases}
+				\]
+				\[
+					S^{(2)}: T(s)^{(2)}=\dfrac{1}{s+1}
+				\]
+				Sono due sistemi strettamente propri quindi non ci sono loop algebrici. Metto in equazione di stato il 2° sistema:
+				\[
+					S^{(2)}:
+					\begin{cases}
+						\dot x^{(2)} = -x^{(2)} + u^{(2)}\\
+						y^{(2)} = x^{(2)}
+					\end{cases}
+				\]
+				\begin{enumerate}
+					\item 
+						\begin{align*}
+							\dot x^{(1)}_1 = x^{(1)}_2\\
+							\dot x^{(1)}_2 = -x^{(1)}_1 + 2x^{(1)}_2 + u^{(1)}\\
+							y^{(1)}_1 = x^{(1)}_1 + x^{(1)}_2\\
+							y^{(1)}_2 = x^{(1)}_2
+						\end{align*}
+					\item 
+						\begin{align*}
+							u^{(1)} = y^{(2)} + u\\
+							u^{(2)} = y^{(1)}_1\\
+							y_1 = y^{(1)}_1\\
+							y_2 = y^{(1)}_2\\
+							y_3 = y^{(2)}
+						\end{align*}
+					\item 
+						\begin{align*}
+							\dot x^{(1)}_2 = -x^{(1)}_1 + 2x^{(1)}_2 + y^{(2)} + u = -x^{(1)}_1 + 2x^{(1)}_2 + x^{(2)} + u\\
+							\dot x^{(2)} = -x^{(2)} + y^{(1)}_1 = -x^{(2)} + x^{(1)}_1 + x^{(1)}_2\\
+							y_1 = x^{(1)}_1 + x^{(1)}_2\\
+							y_2 = x^{(1)}_2\\
+							y_3 = x^{(2)}
+						\end{align*}
+						\[
+							\begin{aligned}
+								\dot{\vec x} = 
+								\begin{bmatrix}
+									0 & 1 & 0\\
+									-1 & 2 & 1\\
+									1 & 1 & -1
+								\end{bmatrix} \vec x+
+								\begin{bmatrix}
+									0\\
+									1\\
+									0
+								\end{bmatrix} u
+								\\
+								\vec y = 
+								\begin{bmatrix}
+									1 & 1 & 0\\
+									0 & 1 & 0\\
+									0 & 0 & 1
+								\end{bmatrix} \vec x +
+								\begin{bmatrix}
+									0\\
+									0\\
+									0
+								\end{bmatrix} u
+							\end{aligned}
+						\]
+					\item 
+						\begin{itemize}
+							\item Controllabilit\'a:
+								\[
+									P=
+									\begin{bmatrix}
+										0 &|& 1 &|& 2\\
+										1 &|& 2 &|& 4\\
+										0 &|& 1 &|& 2
+									\end{bmatrix}
+									\quad\Rightarrow\quad
+									rank(P) =2
+								\]
+							\item Osservabilit\'a:
+								\[
+									Q=
+									\begin{bmatrix}
+										1 & 1 & 0\\
+										0 & 1 & 0\\
+										0 & 0 & 1\\
+										\cline{1-3}\\
+										&\dots&
+									\end{bmatrix}
+								\]
+								Poich\'e gi\'a $ rank(C) = 3 $, il sistema \'e completamente osservabile.
+								
+								Calcoliamo completamente $ Q $ per studiare l'osservabilit\'a da ogni singola uscita:
+								\[
+									Q=
+									\begin{bmatrix}
+										1 & 1 & 0\\
+										0 & 1 & 0\\
+										0 & 0 & 1\\
+										\cline{1-3}\\
+										-1 & 3 & 1\\
+										-1 & 2 & 1\\
+										1 & 1 & -1\\
+										\cline{1-3}\\
+										-2 & 6 & 2\\
+										-1 & 4 & 1\\
+										-2 & 2 & 2
+									\end{bmatrix}
+								\]
+								Le prime righe di ogni sottomatrice non sono linearmente indipendenti, quindi il sistema non \'e completamente osservabile da $ y_1 $.\\
+								Le seconde righe di ogni sottomatrice non sono linearmente indipendenti, quindi il sistema non \'e completamente osservabile da $ y_2 $.\\
+								Le terze righe di ogni sottomatrice sono linearmente indipendenti(bisogna calcolare tutti i minori), quindi il sistema non \'e completamente osservabile da $ y_3 $.\\
+							\item Stabilit\'a:
+								\[
+									\varphi(s) = det
+									\begin{bmatrix}
+										s & -1 & 0\\
+										1 & s-2 & -1\\
+										-1 & -1 & s+1
+									\end{bmatrix} =
+									(-s-1)+(s+1)(s^2-2s+1) = (s+1)(s^2-2s+1-1) =(s+1)s(s-2)
+								\]
+								poich\'e $ m(s) \subseteq\cdot \varphi(s) $, allora $ m(s) \equiv \varphi(s) $. Il sistema \'e instabile.
+							\item Stabilit\'a BIBO:\\
+								se nella matrice di trasferimento scompaiono gli autovalori $ 0 $ e $ +2 $, sarebbe stabile BIBO, cio\'e se $ \varphi_{CO}(s) = \dfrac{1}{s+1} $ o $ \varphi_{CO}(s) = 1 $. Ma abbiamo trovato che $ \pDeg{\varphi_C(s)} = 2 $ e $ \pDeg{\varphi_{O}(s)} = 3 $, quindi $ \pDeg{\varphi_{CO}(s)} = 2 $ (\'e l'intersezione dei gradi $ \varphi_C(s) $ e $ \varphi_O(s) $), cio\'e conterr\'a almeno uno di quei due autovalori ($ 0 $ o $ +2 $). Il sistema \'e instabile BIBO.
+						\end{itemize}
+				\end{enumerate}
+			\end{Exercise}
+		
+		Molte delle propriet\'a strutturali possono essere desunte sfruttando relazioni note tra i polinomi.
+		\paragraph{Esempio}
+			\[
+				T(s) = \dfrac{1}{s^2}
+			\]
+			\begin{itemize}
+				\item Stabilit\'a BIBO:\\
+					non \'e stabile perch\'e c'\'e una radice a $ \Re = 0 $
+				\item Stabilit\'a:\\
+					\[
+						\varphi_{CO}(s) = s^2 \equiv m_{CO}(s)
+					\]
+					\begin{itemize}
+						\item 
+							$ \varphi_{CO}(s) \subseteq \varphi(s) $ ($ s^2 \subseteq \varphi(s) $) allora $ \varphi(s) $ avr\'a una radice a $ \Re = 0 $. Il sistema non pu\'o essere asintoticamente stabile.
+						\item 
+							$ m_{CO}(s) \subseteq m(s) $ ($ s^2 \subseteq m(s) $) allora $ m(s) $ ha una radice a $ \Re = 0 $ con molteplicit\'a 2. Il sistema \'e instabile.
+					\end{itemize}
+			\end{itemize}
+		
+	\section{Sistemi serie/parallelo}
+		Il polinomio caratteristico di polinomi connessi unicamente serie e/o parallelo \'e dato dal prodotto dei singoli polinomi caratteristici.
+		\paragraph{Dimostrazione serie}
+			\[
+				S^{(1)}:
+				\begin{cases}
+					\dot x^{(1)} = A^{(1)} x^{(1)} + B^{(1)} u^{(1)}\\
+					y^{(1)} = C^{(1)} x^{(1)} + D^{(1)} u^{(1)}
+				\end{cases}
+				\qquad
+				S^{(2)}:
+				\begin{cases}
+					\dot x^{(2)} = A^{(2)} x^{(2)} + B^{(2)} u^{(2)}\\
+					y^{(2)} = C^{(2)} x^{(2)} + D^{(2)} u^{(2)}
+				\end{cases}
+			\]
+			Le equazioni di interconnessione sono:
+			\[
+				u^{(2)} = y^{(1)} \qquad u^{(1)} = u \qquad y = y^{(2)}
+			\]
+			\[
+				\begin{aligned}
+					\dot x^{(2)} = A^{(2)} x^{(2)} + B^{(2)} \left[ C^{(1)} x^{(1)} + D^{(1)} u \right] = A^{(2)} x^{(2)} + B^{(2)} c^{(1)} x^{(1)} + B^{(2)} D^{(1)} u
+					\\
+					y^{(2)} = C^{(2)} x^{(2)} + D^{(2)} C^{(1)} x^{(1)} + D^{(2)} D^{(1)} u
+				\end{aligned}
+			\]
+			\[
+				\begin{cases}
+						\dot{\vec x} =
+						\begin{bmatrix}
+							A^{(1)} & 0\\
+							B^{(2)} C^{(1)} & A^{(2)}
+						\end{bmatrix} \vec x +
+						\begin{bmatrix}
+							B^{(1)}\\
+							B^{(2)} D^{(1)}
+						\end{bmatrix} \vec u
+						\\
+						\vec y =
+						\begin{bmatrix}
+							D^{(2)} C^{(2)} & C^{(2)}
+						\end{bmatrix} \vec x + 
+						D^{(2)} D^{(1)} \vec u
+				\end{cases}
+			\]
+			$ A_{serie} $ \'e una matrice triangolare a blocchi quindi:
+			\[
+				\varphi_{serie}(s) = det(sI-A_{serie}) = det(sI-A^{(1)}) \cdot det(sI-A^{(2)}) = \varphi^{(1)}(s) \cdot \varphi^{(2)}(s)
+			\]
+		\paragraph{Parallelo}
+			\[
+				\dot{\vec x} = 
+				\begin{bmatrix}
+					A^{(1)} & 0\\
+					0 & A^{(2)}
+				\end{bmatrix} \vec x +
+				\begin{bmatrix}
+					B^{(1)}\\
+					B^{(2)}
+				\end{bmatrix} u
+				\\
+				y = 
+				\begin{bmatrix}
+					C^{(1)} & C^{(2)}
+				\end{bmatrix} \vec x +
+				\left( D^{(1)} + D^{(2)} \right) u
+			\]
+			$ A_{parallelo} $ \'e una matrice diagonale:
+			\[
+				det(sI-A_{parallelo}) = det(sI-A^{(1)}) \cdot det(sI-A^{(2)}) = \varphi_{parallelo}(s) = \varphi^{(1)}(s) \cdot \varphi^{(2)}(s)
+			\]
+	\subsection{Corollario}
+		Condizione necessaria e sufficiente per asintotica stabilit\'a di un sistema serie e/o parallelo \'e l'asintotica stabilit\'a dei singoli sistemi. Non vale per la semplice stabilit\'a.
+\end{document}
