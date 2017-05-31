@@ -27,6 +27,7 @@
 \pagestyle {fancy}
 \fancyhead [L] {\slshape \rightmark}
 \fancyhead [R] {}
+\renewcommand{\headrulewidth}{0pt} % no riga in cima
 %____________________________________________
 
 \usepackage{amsthm}
@@ -42,4 +43,19 @@
 	urlcolor=cyan,
 	bookmarks=true
 }
+%____________________________________________
+%indice all'inizio di ogni sezione
+\usepackage{minitoc}
+% Commands for a minitoc:
+\setcounter{minitocdepth}{3} 
+\setlength{\mtcindent}{1pt} 
+\renewcommand{\mtifont}{\LARGE \rm} % dimensione font Titolo minitoc
+\renewcommand{\mtctitle}{Argomenti trattati:\\} %modifica Titolo minitoc
+\renewcommand{\mtcfont}{\normalsize \rm} % dimensione font minitoc
+\renewcommand{\mtcSfont}{\normalsize \rm}  % dimensione font Section
+\renewcommand{\mtcSSfont}{\normalsize \rm}  % dimensione font SubSection
+\renewcommand{\mtcPfont}{\normalsize \rm}  % dimensione font Paragraph
+\renewcommand{\mtcSPfont}{\normalsize \rm}  % dimensione font SubParagraph
+\nomtcrule %senza righe orizzontali
+\nomtcpagenumbers %senza numero di pagina
 %____________________________________________
