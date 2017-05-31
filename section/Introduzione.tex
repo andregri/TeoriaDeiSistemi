@@ -17,7 +17,7 @@
 		
 	\subsection{Circuito RC} 
 		Consideriamo il circuito RC in figura dove $v_{in}$ \'e la causa e $v_{out}$ \'e l'effetto.
-		\begin{figure}[h!]
+		\begin{figure}[H]
 			\centering
 			\begin{circuitikz} \draw
 				(0,0)	to[V, v=$ v_{in} $] (0,3)
@@ -85,7 +85,7 @@
 		
 		
 	\section{Variabili di un sistema}
-			\begin{figure}[h!]
+			\begin{figure}[H]
 				\centering
 				\includegraphics[width=.3\textwidth]{introduzione/sistema}
 			\end{figure}
@@ -101,28 +101,32 @@
 		Finora abbiamo studiato esempi di sistemi lineari descritti da equazioni lineari. Nel mondo fisico per\'o praticamente tutti i sistemi sono non lineari.
 		
 	\subsection{Massa-molla}
+		\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.4\linewidth}
+			\includegraphics[width=.8\linewidth]{introduzione/massa_molla}
+			\caption{$F_{el}(t)=-kx(t)$}
+		\end{subfigure}
+		\quad \quad
+		\begin{subfigure}[b]{0.4\linewidth}
+			\begin{tikzpicture}[scale=.5]
+			\begin{axis}
+			\addplot[color=red]{-x};
+			\end{axis}
+			\end{tikzpicture}
+			\caption{$F_{el}(t)=-kx(t)$}
+		\end{subfigure}
+		\end{figure}
 		\'E un modello che descrive la forza elastica, ma non completamente.\\
 		Infatti la molla ha una struttura fisica: anche se applichiamo una forza sempre maggiore, la molla raggiunge la sua lunghezza minima (completamente compressa). Quindi la forza elastica diventa una forza vincolare.\\
-		\begin{figure}[h!]
-			\centering
-			\begin{subfigure}[b]{0.4\linewidth}
-				\includegraphics[width=.8\linewidth]{introduzione/massa_molla}
-				\caption{$F_{el}(t)=-kx(t)$}
-			\end{subfigure}
-			\quad \quad
-			\begin{subfigure}[b]{0.4\linewidth}
-				\begin{tikzpicture}[scale=.5]
-				\begin{axis}
-				\addplot[color=red]{-x};
-				\end{axis}
-				\end{tikzpicture}
-				\caption{$F_{el}(t)=-kx(t)$}
-			\end{subfigure}
-		\end{figure}
 		Questo modello matematico non considera i casi limite nei quali si perde la linearit\'a.\\
 		Quindi i modelli matematici che descrivono le leggi fisiche attraverso i sistemi lineari sono solo approssimazioni per "piccole variazioni''.
 		
 	\subsection{Vasca}
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=.3\textwidth]{introduzione/vasca}
+		\end{figure}
 		\[
 			\begin{cases}
 				h(t) & \quad \text{altezza colonna $H_{2}O$} \quad (h(t)>0)\\
@@ -132,10 +136,6 @@
 				S & \quad \text{sezione della vasca (costante su tutta l'altezza)}
 			\end{cases}
 		\]
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=.3\textwidth]{introduzione/vasca}
-		\end{figure}
 		u(t) \'e l'ingresso che possiamo controllare attraverso un rubinetto.\\
 		l(t) e h(t) sono entrambe possibili uscite, ma scegliamo $y(t) \equiv h(t)$ perch\'e \'e misurabile pi\'u facilmente. Infatti non \'e detto che le uscite siano sempre misurabili.\\
 		Modelliamo il sistema:

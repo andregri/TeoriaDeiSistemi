@@ -14,12 +14,34 @@
 \usepackage{circuitikz}
 \usepackage{xfrac}
 \usepackage{xcolor} % Required to specify font color
+
+%____________________________________________
+\usepackage{float}
+% The default behaviour of figures is to float, so that LaTeX can find the best way to arrange them in your document and make it look better. If you have a look, this is how books are often typeset. So, usually the best thing to do is just to let LaTeX do its work and don't try to force the placement of figures at specific locations. This also means that you should avoid using phrases such as “in the following figure:”, which requires the figure to be set a specific location, and use “in Figure~\ref{..}“ instead, taking advantage of LaTeX's cross-references.
+% If for some reason you really want some particular figure to be placed “HERE”, and not where LaTeX wants to put it, then use the [H] option of the “float” package which basically turns the floating figure into a regular non-float.
+% Also note that, if you don't want to add a caption to your figure, then you don't need to use the figure environment at all! You can use the \includegraphics command anywhere in your document to insert an image.
+
+%____________________________________________
+%
+%per avere l'inizio del capitolo sempre in una pagina dispari
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+\usepackage[strict]{changepage}% http://ctan.org/pkg/changepage
+\newcommand{\evenpagechapter}{%
+	\global\let\oldchapter\chapter
+	\renewcommand\chapter{%
+		\clearpage\checkoddpage%
+		\ifoddpage\null\clearpage\fi%
+		\oldchapter
+	}%
+}
+%____________________________________________
+\usepackage[bl]{titlesec} % per personalizzare i titoli
 %____________________________________________
 
 %dimensioni pagina
 %VECCHIO:  \usepackage[a4paper, total={6in, 9in}]{geometry}
 \usepackage{geometry}
-\geometry{a4paper,top=2cm,bottom=2.5cm,left=2.5cm,right=2.5cm,heightrounded,bindingoffset=5mm}
+\geometry{a4paper,top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,heightrounded,bindingoffset=5mm}
 %____________________________________________
 
 %intestazione e piè pagina

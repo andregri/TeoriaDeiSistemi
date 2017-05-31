@@ -1,5 +1,5 @@
 % !TeX spellcheck = it_IT
-\documentclass[openright]{report}
+\documentclass{report}
 \usepackage{subfiles}
 
 \include{command/using}
@@ -8,6 +8,7 @@
 
 \begin{document}
 	\dominitoc % inizializza miniTableOfContents
+	\evenpagechapter % comando usato con il package lipsum (vedi using)
 	\pagenumbering{roman}
 	%user defined commands
 	\include{command/title}
