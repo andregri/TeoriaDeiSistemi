@@ -22,21 +22,6 @@
 % Also note that, if you don't want to add a caption to your figure, then you don't need to use the figure environment at all! You can use the \includegraphics command anywhere in your document to insert an image.
 
 %____________________________________________
-%
-%per avere l'inizio del capitolo sempre in una pagina dispari
-\usepackage{lipsum}% http://ctan.org/pkg/lipsum
-\usepackage[strict]{changepage}% http://ctan.org/pkg/changepage
-\newcommand{\evenpagechapter}{%
-	\global\let\oldchapter\chapter
-	\renewcommand\chapter{%
-		\clearpage\checkoddpage%
-		\ifoddpage\null\clearpage\fi%
-		\oldchapter
-	}%
-}
-%____________________________________________
-\usepackage[bl]{titlesec} % per personalizzare i titoli
-%____________________________________________
 
 %dimensioni pagina
 %VECCHIO:  \usepackage[a4paper, total={6in, 9in}]{geometry}
@@ -49,7 +34,6 @@
 \pagestyle {fancy}
 \fancyhead [L] {\slshape \rightmark}
 \fancyhead [R] {}
-\renewcommand{\headrulewidth}{0pt} % no riga in cima
 %____________________________________________
 
 \usepackage{amsthm}
@@ -65,19 +49,4 @@
 	urlcolor=cyan,
 	bookmarks=true
 }
-%____________________________________________
-%indice all'inizio di ogni sezione
-\usepackage{minitoc}
-% Commands for a minitoc:
-\setcounter{minitocdepth}{3} 
-\setlength{\mtcindent}{1pt} 
-\renewcommand{\mtifont}{\LARGE \rm} % dimensione font Titolo minitoc
-\renewcommand{\mtctitle}{Argomenti trattati:\\} %modifica Titolo minitoc
-\renewcommand{\mtcfont}{\normalsize \rm} % dimensione font minitoc
-\renewcommand{\mtcSfont}{\normalsize \rm}  % dimensione font Section
-\renewcommand{\mtcSSfont}{\normalsize \rm}  % dimensione font SubSection
-\renewcommand{\mtcPfont}{\normalsize \rm}  % dimensione font Paragraph
-\renewcommand{\mtcSPfont}{\normalsize \rm}  % dimensione font SubParagraph
-\nomtcrule %senza righe orizzontali
-\nomtcpagenumbers %senza numero di pagina
 %____________________________________________
