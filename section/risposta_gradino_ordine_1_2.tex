@@ -115,16 +115,16 @@
 		se $ \xi $ \'e piccolo le oscillazioni si smorzano lentamente.
 		\item $ \xi $ fissato:\\
 		se $ w_0 $ \'e grande, la frequenza aumenta e il grafico risulta pi\'u schiacciato verso l'asse y.
-	\end{itemize} 
-	\begin{figure}[h!]
+	\end{itemize}
+	\begin{figure}[H]
 		\centering
-		\begin{subfigure}{0.5\textwidth}
-			\includegraphics[width=\textwidth]{plot/risposta_gradino/sistema_ord_2_w_cost}
-		\end{subfigure}%
-		\begin{subfigure}{0.5\textwidth}
-			\includegraphics[width=\textwidth]{plot/risposta_gradino/sistema_ord_2_xi_cost}
-		\end{subfigure}
-		\caption{Grafici della risposta forzata nel tempo, al variare dei suoi parametri}
+		\includegraphics[width=0.8\textwidth]{plot/risposta_gradino/sistema_ord_2_w_cost}
+		\caption{Grafico della risposta forzata nel tempo al variare di $ \xi $, con $ w_0 $ fissato.}
+	\end{figure} 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{plot/risposta_gradino/sistema_ord_2_xi_cost}
+		\caption{Grafico della risposta forzata nel tempo al variare di $ w_0 $, con $ \xi $ fissato.}
 	\end{figure}
 	%
 	\subsubsection{Parametri}
@@ -141,7 +141,7 @@
 		Se $ \xi \leq 0.69 $ allora $ T_a \cong \frac{3}{w_0 \xi} $.\\
 		Se volessi un sistema di ordine 2 con $ T_a \leq \bar t $, dovrei imporre $ \underbrace{-w_0 \xi}_{ \re{p_{1,2}} } \leq -\frac{3}{\bar t} $.
 	\end{itemize}
-	\begin{figure}[h!]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth]{plot/risposta_gradino/parametri}
 	\end{figure}

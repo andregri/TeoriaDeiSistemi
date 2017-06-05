@@ -29,9 +29,9 @@
 	\'E prassi comune descrivere sistemi dinamici attraverso la funzione di trasferimento $ T(s) $. (\'e lecito se non ci sono parti nascoste). Se non \'e scontato che non esistano parti nascoste, allora $ T(s) $ d\'a informazioni solo riguardo la risposta forzata, ma nulla della risposta libera. \'E pericoloso se la parte nascosta non \'e stabile.\\
 	%
 	\paragraph{Esempio} supponiamo di avere il seguente sistema di cui ci danno la funzione di trasferimento $ T(s) = \frac{1}{s+1} $, mentre il sistema 2 \'e nascosto:\\
-	\begin{figure}[h!]
-		\begin{subfigure}{0.5\textwidth}
-			\includegraphics[width=8cm, height=4cm]{sistema_nascosto}
+	\begin{figure}[H]
+		\begin{subfigure}{0.4\textwidth}
+			\includegraphics[width=6cm]{sistema_nascosto}
 		\end{subfigure}
 		\begin{subfigure}{0.5\textwidth}
 			\begin{align*}
@@ -40,11 +40,10 @@
 			\end{align*}
 		\end{subfigure}
 	\end{figure}
-	\\
 	Poich\'e $ U_2(s) = 0 \quad \Rightarrow \quad Y(s) = Y_f(s) = T_1(s)U_1(s)$:
 	\begin{itemize}
 		\item La risposta forzata \'e stabile per qualunque ingresso, perch\'e l'unico polo \'e a $ \Re < 0 $.
 		\item La risposta libera ha un polo $ s = 1 $ $ (\Re > 0) $, quindi \'e instabile se le condizioni iniziali non sono nulle $ I_2(s) \neq 0 $.
 	\end{itemize}
-	In conclusione la funzione di trasferimento fornita non ci d\'a alcuna informazione sulla parte nascosta.\\ 
+	In conclusione la funzione di trasferimento fornita non ci d\'a alcuna informazione sulla parte nascosta.
 \end{document}

@@ -1,6 +1,7 @@
 \documentclass[../main.tex]{subfiles}
 
 \begin{document}
+	\section{Definizione}
 	Nella paragrafo predente abbiamo definito l'operazione di Trasformata di Laplace:
 	$$\Lapl{f(t)\ \text{definita in}\ \left[ 0^-;+\infty \right]}{F(s)=\Lbrace{f(t)}}  $$
 	Se vogliamo effettuare l'operazione inversa della trasformata:
@@ -70,7 +71,7 @@
 		&z_1, z_2, \dots z_h \quad &&\text{sono gli ZERI (le radici distinte di B(s))}\\
 		&p_1, p_2, \dots p_k \quad &&\text{sono i POLI (le radici distinte di A(s))}\\
 		&m_1, m_2, \dots m_h \quad &&\text{sono le molteplicit\'{a} degli zeri} \Rightarrow \sum_{i=1}^{h}m_i = m\\
-		&n_1, n_2, \dots n_k \quad &&\text{sono le molteplicit\'{a} dei poli} \Rightarrow \sum_{i=1}^{k}n_i = n\\
+		&n_1, n_2, \dots n_k \quad &&\text{sono le molteplicit\'{a} dei poli} \Rightarrow \sum_{i=1}^{k}n_i = n
 	\end{align*}
 	\section{Funzione razionale strettamente propria}
 	\begin{align*}
@@ -223,9 +224,13 @@
 		\item $ \re{p} > 0\ \text{oppure}\ \re{p}\ = 0\ \text{e molteplicit\'{a}} > 1 \quad \Rightarrow \quad $ non \'{e} limitata e diverge a $ \pm \infty $
 	\end{itemize}
 	\rule{\linewidth}{0.4pt}
+	%_____________________________
+	%
+	%GRAFICI POLI REALI
+	%
 	\paragraph{Poli reali:} $ p = \sigma \in \R $
 	%1
-	\begin{figure}[h!]
+	\begin{figure}[H]
 		\centering
 		\[ \aLapl{\frac{1}{s-\sigma}}{e^{\sigma t} 1(t)} \]
 		\begin{subfigure}{0.3\textwidth}
@@ -237,9 +242,9 @@
 		\begin{subfigure}{0.3\textwidth}
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_reali1_3}
 		\end{subfigure}
-	\end{figure}\\
+	\end{figure}
 	%2
-	\begin{figure}[h!]
+	\begin{figure}[H]
 		\[ \aLapl{\frac{1}{(s-\sigma)^2}}{t e^{\sigma t} 1(t)} \]
 		\centering
 		\begin{subfigure}{0.3\textwidth}
@@ -251,9 +256,9 @@
 		\begin{subfigure}{0.3\textwidth}
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_reali2_3}
 		\end{subfigure}
-	\end{figure}\\
+	\end{figure}
 	%3
-	\begin{figure}[h!]
+	\begin{figure}[H]
 		\[ \aLapl{\frac{1}{(s-\sigma)^n}}{\frac{1}{(n-1)!} t^{n-1} e^{\sigma t} 1(t)} \]
 		\centering
 		\begin{subfigure}{0.3\textwidth}
@@ -266,13 +271,14 @@
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_reali3_3}
 		\end{subfigure}
 	\end{figure}
-	\newpage
-	%
-	\noindent
 	\rule{\linewidth}{0.4pt}\\%
+	%_____________________________
+	%
+	%GRAFICI POLI COMPLESSI
+	%
 	\paragraph{Poli complessi:} $ p = \sigma \pm jw \quad w \neq 0 $
 	%1
-	\begin{figure}[h!]
+	\begin{figure}[H]
 		\[ \aLapl{ \frac{c}{s-p} + \frac{c^*}{s-p^*} }{ e^{\sigma t} (A \sin wt + B \cos wt) = D e^{\sigma t} \cos (wt + \phi) }  \]
 		\centering
 		\begin{subfigure}{0.3\textwidth}
@@ -284,9 +290,9 @@
 		\begin{subfigure}{0.3\textwidth}
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_complessi1_3}
 		\end{subfigure}
-	\end{figure}\\
+	\end{figure}
 	%2
-	\begin{figure}[h!]
+	\begin{figure}[H]
 		\[ \aLapl{ \frac{c}{(s-p)^2} + \frac{c^*}{(s-p^*)^2} }{ D t e^{\sigma t} \cos (wt + \phi) } \]
 		\centering
 		\begin{subfigure}{0.3\textwidth}
@@ -298,9 +304,9 @@
 		\begin{subfigure}{0.3\textwidth}
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_complessi2_3}
 		\end{subfigure}
-	\end{figure}\\
+	\end{figure}
 	%3
-	\begin{figure}[h!]
+	\begin{figure}[H]
 		\[ \aLapl{ \frac{c}{(s-p)^n} + \frac{c^*}{(s-p^*)^n} }{ D \frac{1}{(n-1)!} t^n e^{\sigma t} \cos (wt + \phi) } \]
 		\centering
 		\begin{subfigure}{0.3\textwidth}
@@ -313,7 +319,7 @@
 			\includegraphics[width=5cm, height=4cm]{plot/andamento_t/poli_complessi3_3}
 		\end{subfigure}
 	\end{figure}
-	%
+
 	\section{Teorema del valore iniziale}
 	\[ f(0^+) = \lim\limits_{s \rightarrow +\infty} s F(s) \]
 	Questo teorema non richiede particolari ipotesi, ma nel caso delle funzioni razionali non strettamente proprie $ (m \geq n) $ bisogna applicarlo sul resto della divisione.

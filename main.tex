@@ -7,6 +7,8 @@
 \graphicspath{{img/}{../img/}}
 
 \begin{document}
+	\dominitoc % inizializza miniTableOfContents
+	\evenpagechapter % comando usato con il package lipsum (vedi using)
 	\pagenumbering{roman}
 	%user defined commands
 	\include{command/title}
@@ -24,36 +26,72 @@
 	\pagebreak
 	%contents
 	\pagenumbering{arabic}
+	%
 	\chapter{Introduzione}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/introduzione}	
 	\pagebreak
+	%
 	\chapter{Funzioni generalizzate}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/funzioni_generalizzate}
 	\pagebreak
+	%
 	\chapter{Trasformata di Laplace}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/trasformata_laplace}
 	\pagebreak
+	%
 	\chapter{Anti-Trasformata di Laplace}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/anti_trasformata_laplace}
 	\pagebreak
+	%
 	\chapter{Sistemi lineari}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/applicazione_laplace}
 	\subfile{section/sistemi_lineari}
 	\subfile{section/stabilita}
 	\subfile{section/rappresentazione_sistema1}
 	\subfile{section/risposta_gradino_ordine_1_2}
 	\pagebreak
+	%
 	\chapter{Algebra dei blocchi}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/connessioni}
 	\subfile{section/risposta_forzata_sistemi_interconnessi}
 	\pagebreak
+	%
 	\chapter{Equazione di stato}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/equazione_stato}
 	\pagebreak
+	%
 	\chapter{Stabilit\'a e punti di equilibrio}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/punti_equilibrio}
 	\pagebreak
+	%
 	\chapter{Teoria del controllo}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/raggiungibilita_controllabilita}
 	\subfile{section/osservabilita_ricostruibilita}
 	\subfile{section/decomposizione_completa_kalmann}
@@ -61,13 +99,25 @@
 	\subfile{section/retroazione_algebrica_uscita}
 	\subfile{section/dualita}
 	\pagebreak
+	%
 	\chapter{Rappresentazione dei sistemi lineari}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/rappresentazione_sistema2}
 	\subfile{section/realizzazione}
 	\subfile{section/osservatore_asintotico}
+	%
 	\chapter{Sistemi interconnessi}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{section/sistemi_interconnessi}
+	%
 	\chapter{Riepilogo}
+	\minitoc % Crea una mini TOC del capitolo
+	\pagebreak
+	%
 	\subfile{riepilogo/trasf_laplace}
 	\subfile{riepilogo/polinomi_caratteristici}
 	\subfile{riepilogo/matrici}
