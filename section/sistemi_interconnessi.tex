@@ -2,53 +2,53 @@
 
 \begin{document}
 	\section{Sistemi e sottosistemi}
-	Il sistema $ S $ \'e costituito da $ N $ sottosistemi $ S^{(i)} $ con $ i = 1...N $, ognuno con il suo vettore $ \vec x^{(i)} $.
-	\[
-		\begin{aligned}
-			&\text{vettore degli ingressi esogeni}
-			\\
-			&\vec u =
-			\begin{bmatrix}
-				u_1\\
-				\vdots\\
-				u_{n_u}
-			\end{bmatrix}
-		\end{aligned}
-		\qquad\qquad
-		\begin{aligned}
-			&\text{vettore degli uscite}
-			\\
-			&\vec y =
-			\begin{bmatrix}
-				y_1\\
-				\vdots\\
-				y_{n_y}
-			\end{bmatrix}
-		\end{aligned}
-	\]
-	\[
-		\begin{aligned}
-			&\text{vettore degli ingressi di $ S^{(i)} $}
-			\\
-			&\vec u =
-			\begin{bmatrix}
-				u_1\\
-				\vdots\\
-				u_{n_u}
-			\end{bmatrix}
-		\end{aligned}
-		\qquad\qquad
-		\begin{aligned}
-			&\text{vettore degli uscite di $ S^{(i)} $}
-			\\
-			&\vec y =
-			\begin{bmatrix}
-				y_1\\
-				\vdots\\
-				y_{n_y}
-			\end{bmatrix}
-		\end{aligned}
-	\]
+		Il sistema $ S $ \'e costituito da $ N $ sottosistemi $ S^{(i)} $ con $ i = 1...N $, ognuno con il suo vettore $ \vec x^{(i)} $.
+		\[
+			\begin{aligned}
+				&\text{vettore degli ingressi esogeni}
+				\\
+				&\vec u =
+				\begin{bmatrix}
+					u_1\\
+					\vdots\\
+					u_{n_u}
+				\end{bmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}
+				&\text{vettore degli uscite}
+				\\
+				&\vec y =
+				\begin{bmatrix}
+					y_1\\
+					\vdots\\
+					y_{n_y}
+				\end{bmatrix}
+			\end{aligned}
+		\]
+		\[
+			\begin{aligned}
+				&\text{vettore degli ingressi di $ S^{(i)} $}
+				\\
+				&\vec u =
+				\begin{bmatrix}
+					u_1\\
+					\vdots\\
+					u_{n_u}
+				\end{bmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}
+				&\text{vettore degli uscite di $ S^{(i)} $}
+				\\
+				&\vec y =
+				\begin{bmatrix}
+					y_1\\
+					\vdots\\
+					y_{n_y}
+				\end{bmatrix}
+			\end{aligned}
+		\]
 	
 	\section{Studio delle propriet\'a strutturali}
 		\begin{enumerate}
@@ -387,7 +387,7 @@
 					y^{(2)} = C^{(2)} x^{(2)} + D^{(2)} u^{(2)}
 				\end{cases}
 			\]
-			\begin{figure}[h!]
+			\begin{figure}[H]
 				\centering\includegraphics[width=.7\textwidth]{sistemi_interconnessi/dimostrazione_serie}
 			\end{figure}
 		
@@ -444,7 +444,7 @@
 				\end{bmatrix} \vec x +
 				\left( D^{(1)} + D^{(2)} \right) u
 			\]
-			\begin{figure}[h!]
+			\begin{figure}[H]
 				\centering\includegraphics[width=.7\textwidth]{sistemi_interconnessi/dimostrazione_parallelo}
 			\end{figure}
 		
@@ -460,7 +460,7 @@
 		
 		Si consideri un sistema interconnesso $ S $ formato da $ N $ sottosistemi, ognuno dei quali \'e completamente controllabile e osservabile.
 		
-		\begin{figure}[h!]
+		\begin{figure}[H]
 			\centering\includegraphics[width=.7\textwidth]{sistemi_interconnessi/sistema_ausiliario}
 			\caption{sistema ausiliario}
 			\label{fig:sistema_ausiliario}
@@ -487,12 +487,12 @@
 			\[
 			T(s) = \dfrac{1}{s-1} \quad\Rightarrow\quad \varphi_{CO}(s) \equiv m_{CO}(s) = s-1
 			\]
-			\begin{figure}[h!]
+			\begin{figure}[H]
 				\centering\includegraphics[width=.7\textwidth]{sistemi_interconnessi/esempio_sistema_ausiliario1}
 			\end{figure}
 			
 			Costruiamo il sistema ausiliario:
-			\begin{figure}[h!]
+			\begin{figure}[H]
 				\centering\includegraphics[width=.7\textwidth]{sistemi_interconnessi/esempio_sistema_ausiliario2}
 			\end{figure}
 			\begin{itemize}
@@ -542,7 +542,7 @@
 		\begin{itemize}
 			\item 
 				cancellazione polo-zero nella serie:
-				\begin{figure}[h!]
+				\begin{figure}[H]
 					\centering\includegraphics[width=.5\textwidth]{sistemi_interconnessi/cancellazione_polo_zero}
 				\end{figure}
 			
@@ -562,7 +562,7 @@
 				Quindi $ p $ \'e controllabile ma per quanto detto prima non \'e osservabile.
 			\item 
 				cancellazione zero-polo nella serie:
-				\begin{figure}[h!]
+				\begin{figure}[H]
 					\centering\includegraphics[width=.5\textwidth]{sistemi_interconnessi/cancellazione_zero_polo}
 				\end{figure}
 			
@@ -581,7 +581,7 @@
 				\]
 			\item 
 				cancellazione nel parallelo:
-				\begin{figure}[h!]
+				\begin{figure}[H]
 					\centering\includegraphics[width=.5\textwidth]{sistemi_interconnessi/cancellazione_parallelo}
 				\end{figure}
 			
@@ -622,7 +622,7 @@
 	
 	\section{Retroazione}
 		L'unica situazione in cui il sistema non \'e completamente controllabile e osservabile gli zeri in catena diretta coincidono con i poli in catena inversa.
-		\begin{figure}[h!]
+		\begin{figure}[H]
 			\centering\includegraphics[width=.5\textwidth]{sistemi_interconnessi/retroazione}
 		\end{figure}
 	
@@ -632,7 +632,7 @@
 		\begin{itemize}
 			\item 
 				Analisi osservabilit\'a (trascuro le $ u $)
-				\begin{figure}[h!]
+				\begin{figure}[H]
 					\centering\includegraphics[width=.5\textwidth]{sistemi_interconnessi/retroazione_analisi_osservabilita}
 					\caption{analisi osservabilit\'a}
 					\label{fig:retroazione_analisi_osservabilita}
@@ -641,7 +641,7 @@
 				Questo sottosistema \ref{fig:retroazione_analisi_osservabilita} ha 2 blocchi in serie con perdit\'a di osservabilit\'a (cancellazione polo-zero) $ \quad\Rightarrow\quad $ il sistema complessivo non \'e osservabile.
 			\item 
 				Analisi controllabilit\'a (trascuro le $ y $)
-				\begin{figure}[h!]
+				\begin{figure}[H]
 					\centering\includegraphics[width=.5\textwidth]{sistemi_interconnessi/retroazione_analisi_controllabilita}
 					\caption{analisi controllabilit\'a}
 					\label{fig:retroazione_analisi_controllabilita}
@@ -651,13 +651,13 @@
 		\end{itemize}
 	
 	\section{Effetto cancellazione}
-		\begin{figure}[h!]
+		\begin{figure}[H]
 			\centering\includegraphics[width=.4\textwidth]{sistemi_interconnessi/effetto_cancellazione1}
 			\label{fig:effetto_cancellazione1}
 		\end{figure}
 	
 		Cerchiamo di cancellare un polo instabile dal sistema in figura \ref{fig:effetto_cancellazione1} aggiungendo un altro sistema in serie.
-		\begin{figure}[h!]
+		\begin{figure}[H]
 			\centering\includegraphics[width=.7\textwidth]{sistemi_interconnessi/effetto_cancellazione2}
 			\label{fig:effetto_cancellazione2}
 		\end{figure}
@@ -667,7 +667,7 @@
 		Inoltre aggiungendo il sistema all'ingresso di $ T(s)=\dfrac{1}{s-1} $, perdiamo la controllabilit\'a del polo $ +1 $. Quindi se $ u = 0 $, ma la condizione iniziale del sistema $ S^{(1)} $ non \'e nulla $ x^{(1)} \neq 0 $, il secondo sistema $ S^{(2)} $ diverger\'a.
 		
 		Potremmo allora decidere di postporre il sistema $ S^{(2)} $:
-		\begin{figure}[h!]
+		\begin{figure}[H]
 			\centering\includegraphics[width=.7\textwidth]{sistemi_interconnessi/effetto_cancellazione3}
 			\label{fig:effetto_cancellazione3}
 		\end{figure}
@@ -677,7 +677,7 @@
 		Concludiamo che cancellare algebricamente un autovalore non significa eliminarlo, ma nasconderlo dalla funzione di trasferimento.
 		
 	\subsection{Dove "finiscono" gli autovalori "cancellati"}
-		\begin{figure}[h!]
+		\begin{figure}[H]
 			\centering\includegraphics[width=.7\textwidth]{sistemi_interconnessi/effetto_cancellazione3}
 		\end{figure}
 		\[
@@ -692,7 +692,7 @@
 		$ s_1 = -1 $ \'e controllabile e osservabile, mentre $ s_2 = +1 $ \'e solo controllabile.
 		
 		Effettuiamo una retroazione algebrica sull'uscita:
-		\begin{figure}[h!]
+		\begin{figure}[H]
 			\centering\includegraphics[width=.7\textwidth]{sistemi_interconnessi/effetto_cancellazione4}
 		\end{figure}
 		
