@@ -7,7 +7,6 @@
 \graphicspath{{img/}{../img/}}
 
 \begin{document}
-	\pagenumbering{roman}
 	%user defined commands
 	\include{command/title}
 	\include{command/math}
@@ -22,38 +21,56 @@
 	\pagebreak
 	\listofexercises
 	\pagebreak
+	%___________________________
 	%contents
-	\pagenumbering{arabic}
+		
 	\chapter{Introduzione}
+		\setcounter{page}{1}
 	\subfile{section/introduzione}	
 	\pagebreak
+	%
 	\chapter{Funzioni generalizzate}
+		\setcounter{page}{1}
 	\subfile{section/funzioni_generalizzate}
 	\pagebreak
+	%	
 	\chapter{Trasformata di Laplace}
+		\setcounter{page}{1}
 	\subfile{section/trasformata_laplace}
 	\pagebreak
+	%
 	\chapter{Anti-Trasformata di Laplace}
+		\setcounter{page}{1}
 	\subfile{section/anti_trasformata_laplace}
 	\pagebreak
+	%
 	\chapter{Sistemi lineari}
+		\setcounter{page}{1}
 	\subfile{section/applicazione_laplace}
 	\subfile{section/sistemi_lineari}
 	\subfile{section/stabilita}
 	\subfile{section/rappresentazione_sistema1}
 	\subfile{section/risposta_gradino_ordine_1_2}
 	\pagebreak
+	%	
 	\chapter{Algebra dei blocchi}
+		\setcounter{page}{1}
 	\subfile{section/connessioni}
 	\subfile{section/risposta_forzata_sistemi_interconnessi}
 	\pagebreak
+	%
 	\chapter{Equazione di stato}
+		\setcounter{page}{1}
 	\subfile{section/equazione_stato}
 	\pagebreak
+	%
 	\chapter{Stabilit\'a e punti di equilibrio}
+		\setcounter{page}{1}
 	\subfile{section/punti_equilibrio}
 	\pagebreak
+	%
 	\chapter{Teoria del controllo}
+		\setcounter{page}{1}
 	\subfile{section/raggiungibilita_controllabilita}
 	\subfile{section/osservabilita_ricostruibilita}
 	\subfile{section/decomposizione_completa_kalmann}
@@ -61,14 +78,21 @@
 	\subfile{section/retroazione_algebrica_uscita}
 	\subfile{section/dualita}
 	\pagebreak
+	%
 	\chapter{Rappresentazione dei sistemi lineari}
+		\setcounter{page}{1}
 	\subfile{section/rappresentazione_sistema2}
 	\subfile{section/realizzazione}
 	\subfile{section/osservatore_asintotico}
+	%
 	\chapter{Sistemi interconnessi}
+		\setcounter{page}{1}
 	\subfile{section/sistemi_interconnessi}
+	%
 	\chapter{Riepilogo}
+		\setcounter{page}{1}
 	\subfile{riepilogo/trasf_laplace}
 	\subfile{riepilogo/polinomi_caratteristici}
 	\subfile{riepilogo/matrici}
+	%
 \end{document}
