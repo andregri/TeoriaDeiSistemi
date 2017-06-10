@@ -16,6 +16,25 @@
 \usepackage{xcolor} % Required to specify font color
 
 %____________________________________________
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{Exercise}{%
+	linecolor=blue,
+	outerlinewidth=0.8pt,
+	roundcorner=20pt,
+	innertopmargin=\baselineskip,
+	innerbottommargin=\baselineskip,
+	innerrightmargin=20pt,
+	innerleftmargin=20pt}
+%
+\mdfdefinestyle{Esempio}{%
+	linecolor=red,
+	outerlinewidth=0.8pt,
+	roundcorner=20pt,
+	innerbottommargin=\baselineskip,
+	innerrightmargin=20pt,
+	innerleftmargin=20pt}
+
+%____________________________________________
 \usepackage{float}
 % The default behaviour of figures is to float, so that LaTeX can find the best way to arrange them in your document and make it look better. If you have a look, this is how books are often typeset. So, usually the best thing to do is just to let LaTeX do its work and don't try to force the placement of figures at specific locations. This also means that you should avoid using phrases such as “in the following figure:”, which requires the figure to be set a specific location, and use “in Figure~\ref{..}“ instead, taking advantage of LaTeX's cross-references.
 % If for some reason you really want some particular figure to be placed “HERE”, and not where LaTeX wants to put it, then use the [H] option of the “float” package which basically turns the floating figure into a regular non-float.
