@@ -17,6 +17,27 @@
 
 %____________________________________________
 \renewcommand{\thepage}{\thechapter.\arabic{page}}% Page numbering style
+
+%____________________________________________
+
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{Exercise}{%
+	linecolor=blue,
+	outerlinewidth=0.8pt,
+	roundcorner=20pt,
+	innertopmargin=\baselineskip,
+	innerbottommargin=\baselineskip,
+	innerrightmargin=20pt,
+	innerleftmargin=20pt}
+%
+\mdfdefinestyle{Esempio}{%
+	linecolor=red,
+	outerlinewidth=0.8pt,
+	roundcorner=20pt,
+	innerbottommargin=\baselineskip,
+	innerrightmargin=20pt,
+	innerleftmargin=20pt}
+
 %____________________________________________
 \usepackage{float}
 % If you really want a figure to be placed “HERE”, and not where LaTeX wants to put it, use the [H] option of the “float” package which basically turns the floating figure into a regular non-float.
@@ -26,6 +47,7 @@
 %VECCHIO:  \usepackage[a4paper, total={6in, 9in}]{geometry}
 \usepackage{geometry}
 \geometry{a4paper,top=2cm,bottom=2cm,left=2.5cm,right=2.5cm,heightrounded,bindingoffset=5mm}
+\addtolength{\skip\footins}{20pt}
 %____________________________________________
 
 %intestazione e piè pagina
