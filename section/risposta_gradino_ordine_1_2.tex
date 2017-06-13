@@ -114,7 +114,7 @@
 		\end{itemize}
 		Riscriviamo la funzione di trasferimento raccogliendo $ a_0 $ a numeratore e a denominatore:
 		\[ 
-			T(s) = \frac{\frac{b_0}{a_0}}{1+\frac{a_1}{a_0}s+\frac{s^2}{a_0}} = \frac{k}{1+2\frac{\xi}{w_0}s+\frac{1}{w_0^2}s}
+			T(s) = \frac{\frac{b_0}{a_0}}{1+\frac{a_1}{a_0}s+\frac{s^2}{a_0}} = \frac{k}{1 + 2\frac{\xi}{w_0}s + \frac{1}{w_0^2}s^2}
 			\qquad
 			\begin{cases}
 				k = \frac{b_0}{a_0} \quad &\text{guadagno statico}
@@ -176,10 +176,10 @@
 		\]
 		Applichiamo il teorema del valore iniziale:
 		\[ 
-			y_f(0^+) = \lim_{t \to 0^+} = \lim_{s \to \infty} s Y_f(s) = \lim_{s \to \infty} \frac{k}{1+2\frac{\xi}{w_0}s+\frac{1}{w_0^2}s} = 0
+			y_f(0^+) = \lim_{t \to 0^+} = \lim_{s \to \infty} s Y_f(s) = \lim_{s \to \infty} \frac{k}{1 + 2\frac{\xi}{w_0}s + \frac{1}{w_0^2}s^2} = 0
 		\]
 		\[ 
-			\dot y_f(0^+) = \lim_{s \to \infty} s \left[ sY_f(s) - y_f(0^-) \right] = \lim_{s \to \infty} \frac{k\ s}{1+2\frac{\xi}{w_0}s+\frac{1}{w_0^2}s} = 0
+			\dot y_f(0^+) = \lim_{s \to \infty} s \left[ sY_f(s) - y_f(0^-) \right] = \lim_{s \to \infty} \frac{k\ s}{1 + 2\frac{\xi}{w_0}s + \frac{1}{w_0^2}s^2} = 0
 		\]
 		cio\'e parte con pendenza nulla dall'origine.
 		
@@ -231,7 +231,7 @@
 	\subsubsection{$ \spadesuit \quad \xi \geq 1 $}
 		I poli sono entrambi reali e negativi:
 		\[ 
-			T(s) = \frac{k}{1+2\frac{\xi}{w_0}s+\frac{1}{w_0^2}s} = \frac{k}{(1+s\tau_1)(1+s\tau_2)}
+			T(s) = \frac{k}{1 + 2\frac{\xi}{w_0}s  +\frac{1}{w_0^2}s^2} = \frac{k}{(1+s\tau_1)(1+s\tau_2)}
 		\]
 		\[ 
 			p_1 = -\frac{1}{\tau_1} \qquad p_2 = -\frac{1}{\tau_2}
