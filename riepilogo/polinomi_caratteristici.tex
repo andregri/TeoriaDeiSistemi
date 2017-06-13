@@ -18,4 +18,26 @@
 			\hline
 		\end{tabular}
 		\egroup
+		
+	\section{Stabilit\'a BIBO}
+		Un sistema \'{e} stabile BIBO se e solo se $ \nexists $ poli di $ T(s) $ (radici del denominatore di $ T(s) $) a $ \Re > 0 $.
+		
+	\section{Stabilit\'a}
+		\begin{itemize}
+			\item
+				\textbf{asintoticamente stabile} se tutte le radici di $ m(s) $ hanno $ \Re < 0 $;
+			\item
+				\textbf{instabile} se $ m(s) $ ha almeno una radice a $ \Re > 0 $ oppure esiste almeno una radice a $ \Re = 0 $ ma tutte con molteplicit\'a $ >1 $ in $ m(s) $;
+			\item
+				\textbf{semplicemente stabile} in tutte le altre situazioni: nessuna radice a $ \Re > 0 $ e esiste almeno una radice a $ \Re = 0 $ con molteplicit\'a $ =1 $ in $ m(s) $.
+		\end{itemize}
+	
+	\section{Relazioni tra le due stabilit\'a}
+		\[
+			\begin{aligned}
+				\text{asintoticamente stabile} &\quad\Rightarrow\quad \text{stabile BIBO}
+				\\
+				\text{NON stabile BIBO} &\quad\Rightarrow\quad \text{NON asintoticamente stabile}
+			\end{aligned}
+		\]
 \end{document}
