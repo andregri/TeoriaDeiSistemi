@@ -93,238 +93,249 @@
 			\item 
 				la retroazione algebrica sullo stato pu\'o modificare le propriet\'a di osservabilit\'a (in peggio o in meglio);
 			\item
-				$ \varphi_C(s) $ pu\'o essere \textbf{assegnato a piacere} con una retroazione algebrica sullo stato $ x $, cio\'e \'e possibile scegliere $ K $ tale che $ det\left[ sI - (\tilde A_{11} + \tilde B_1 K T_1) \right] $ abbia autovalori arbitrari.\\
-				Definiamo \textbf{autovalori controllabili} tutti e soli gli autovalori assegnabili a piacere con retroazione algebrica sullo stato.
+				$ \varphi_C(s) $ pu\'o essere \textbf{assegnato a piacere} con una retroazione algebrica sullo stato $ x $, cio\'e \'e possibile scegliere $ K $ tale che $ det\left[ sI - (\tilde A_{11} + \tilde B_1 K T_1) \right] $ abbia autovalori arbitrari.
+				
+				\begin{definition}
+					Definiamo \textbf{autovalori controllabili} tutti e soli gli autovalori assegnabili a piacere con retroazione algebrica sullo stato.
+				\end{definition}
 		\end{itemize}
 	
-	\subsubsection{Esempio 1 di retroazione su stato che modifica l'osservabilit\'a in peggio}
-		\[
-			\begin{cases}
-				\dot x =
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Retroazione su stato che modifica l'osservabilit\'a in peggio}
+			\[
+				\begin{cases}
+					\dot x =
+					\begin{bmatrix}
+						1 & 0\\
+						0 & -1
+					\end{bmatrix} x +
+					\begin{bmatrix}
+						1 & 0\\
+						0 & 1
+					\end{bmatrix}
+					\begin{bmatrix}
+						u_1\\
+						u_2
+					\end{bmatrix}
+					\\[1em]
+					y =
+					\begin{bmatrix}
+						1 & 1
+					\end{bmatrix} x
+				\end{cases}
+			\]
+			Studiamo l'osservabilit\'a:
+			\[
+				Q =
+				\begin{bmatrix}
+					C\\
+					CA
+				\end{bmatrix} =
+				\begin{bmatrix}
+					1 & 1\\
+					1 & -1
+				\end{bmatrix}
+			\]
+			il sistema \'e completamente osservabile perch\'e il rango di $ Q $ \'e massimo: $ rank(Q) = 2 $. Effettuiamo una retroazione sullo stato $ u = Kx + v $ con $ K = \begin{bmatrix} 0 & 0\\ 0 & 2 \end{bmatrix} $:
+			\[
+				(A+BK) =
 				\begin{bmatrix}
 					1 & 0\\
 					0 & -1
-				\end{bmatrix} x +
+				\end{bmatrix} +
+				\begin{bmatrix}
+					0 & 0\\
+					0 & 2
+				\end{bmatrix} =
 				\begin{bmatrix}
 					1 & 0\\
 					0 & 1
 				\end{bmatrix}
+			\]
+			Studiamo l'osservabilit\'a nel sistema retroazionato:
+			\[
+				Q^{*} =
 				\begin{bmatrix}
-					u_1\\
-					u_2
-				\end{bmatrix}
-				\\
-				y =
-				\begin{bmatrix}
+					1 & 1\\
 					1 & 1
-				\end{bmatrix} x
-			\end{cases}
-		\]
-		Studiamo l'osservabilit\'a:
-		\[
-			Q =
-			\begin{bmatrix}
-				C\\
-				CA
-			\end{bmatrix} =
-			\begin{bmatrix}
-				1 & 1\\
-				1 & -1
-			\end{bmatrix}
-		\]
-		il sistema \'e completamente osservabile perch\'e il rango di $ Q $ \'e massimo: $ rank(Q) = 2 $. Effettuiamo una retroazione sullo stato $ u = Kx + v $ con $ K = \left[ \begin{smallmatrix} 0 & 0\\ 0 & 2 \end{smallmatrix} \right] $:
-		\[
-			(A+BK) =
-			\begin{bmatrix}
-				1 & 0\\
-				0 & -1
-			\end{bmatrix} +
-			\begin{bmatrix}
-				0 & 0\\
-				0 & 2
-			\end{bmatrix} =
-			\begin{bmatrix}
-				1 & 0\\
-				0 & 1
-			\end{bmatrix}
-		\]
-		Studiamo l'osservabilit\'a nel sistema retroazionato:
-		\[
-			Q^{*} =
-			\begin{bmatrix}
-				1 & 1\\
-				1 & 1
-			\end{bmatrix}
-		\]
-		$ rank(Q^{*}) = 1 $ quindi abbiamo perso osservabilit\'a.
+				\end{bmatrix}
+			\]
+			$ rank(Q^{*}) = 1 $ quindi abbiamo perso osservabilit\'a.
+		\end{mdframed}
 		
-	\subsubsection{Esempio 2 di retroazione su stato che modifica l'osservabilit\'a in peggio}
-		\[
-			\begin{cases}
-				\dot x =
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Retroazione su stato che modifica l'osservabilit\'a in peggio}
+			\[
+				\begin{cases}
+					\dot x =
+					\begin{bmatrix}
+						1 & 0\\
+						0 & -1
+					\end{bmatrix} x +
+					\begin{bmatrix}
+						1\\
+						1
+					\end{bmatrix} u
+					\\[1em]
+					y =
+					\begin{bmatrix}
+						1 & 1
+					\end{bmatrix} x
+				\end{cases}
+			\]
+			\[
+				Q =
+				\begin{bmatrix}
+					1 & 1\\
+					1 & 1
+				\end{bmatrix}
+				\qquad\Rightarrow\quad\text{il sistema \'e completamente osservabile}
+			\]
+			Effettuiamo la retroazione sullo stato $ u = kx + v $ con $ K = \begin{bmatrix} 0 & 1 \end{bmatrix} $
+			\[
+				A* = (A+BK) =
 				\begin{bmatrix}
 					1 & 0\\
 					0 & -1
-				\end{bmatrix} x +
+				\end{bmatrix} +
 				\begin{bmatrix}
 					1\\
 					1
-				\end{bmatrix} u
-				\\
-				y =
+				\end{bmatrix}
 				\begin{bmatrix}
-					1 & 1
-				\end{bmatrix} x
-			\end{cases}
-		\]
-		\[
-			Q =
-			\begin{bmatrix}
-				1 & 1\\
-				1 & 1
-			\end{bmatrix}
-			\qquad\Rightarrow\quad\text{il sistema \'e completamente osservabile}
-		\]
-		Effettuiamo la retroazione sullo stato $ u = kx + v $ con $ K = \left[ \begin{smallmatrix} 0 & 1 \end{smallmatrix} \right] $
-		\[
-			A* = (A+BK) =
-			\begin{bmatrix}
-				1 & 0\\
-				0 & -1
-			\end{bmatrix} +
-			\begin{bmatrix}
-				1\\
-				1
-			\end{bmatrix}
-			\begin{bmatrix}
-				0 & 1
-			\end{bmatrix} =
-			\begin{bmatrix}
-				1 & 0\\
-				0 & -1
-			\end{bmatrix} +
-			\begin{bmatrix}
-				0 & 1\\
-				0 & 1
-			\end{bmatrix} =
-			\begin{bmatrix}
-				1 & 1\\
-				0 & 0
-			\end{bmatrix}
-		\]
-		\[
-			Q^{*} =
-			\begin{bmatrix}
-				1 & 1\\
-				1 & 1
-			\end{bmatrix}
-			\quad\Rightarrow\quad rank(Q^{*}) = 1 
-		\]
-		anche in questo caso abbiamo perso osservabilit\'a.
-		
-	\subsubsection{Esempio 1 di retroazione su stato che modifica l'osservabilit\'a in meglio}
-		\[
-			\begin{cases}
-				\dot x =
+					0 & 1
+				\end{bmatrix} =
 				\begin{bmatrix}
 					1 & 0\\
 					0 & -1
-				\end{bmatrix} x+
+				\end{bmatrix} +
+				\begin{bmatrix}
+					0 & 1\\
+					0 & 1
+				\end{bmatrix} =
+				\begin{bmatrix}
+					1 & 1\\
+					0 & 0
+				\end{bmatrix}
+			\]
+			\[
+				Q^{*} =
+				\begin{bmatrix}
+					1 & 1\\
+					1 & 1
+				\end{bmatrix}
+				\quad\Rightarrow\quad rank(Q^{*}) = 1 
+			\]
+			anche in questo caso abbiamo perso osservabilit\'a.
+		\end{mdframed}
+		
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Retroazione su stato che modifica l'osservabilit\'a in meglio}
+			\[
+				\begin{cases}
+					\dot x =
+					\begin{bmatrix}
+						1 & 0\\
+						0 & -1
+					\end{bmatrix} x+
+					\begin{bmatrix}
+						1 & 0\\
+						0 & 1
+					\end{bmatrix} u
+					\\[1em]
+					y = 
+					\begin{bmatrix}
+						1 & 0
+					\end{bmatrix} x
+				\end{cases}
+			\]
+			Studiamo l'osservabilit\'a:
+			\[
+				Q = 
 				\begin{bmatrix}
 					1 & 0\\
-					0 & 1
-				\end{bmatrix} u
-				\\
-				y = 
-				\begin{bmatrix}
 					1 & 0
-				\end{bmatrix} x
-			\end{cases}
-		\]
-		Studiamo l'osservabilit\'a:
-		\[
-			Q = 
-			\begin{bmatrix}
-				1 & 0\\
-				1 & 0
-			\end{bmatrix}
-		\]
-		il sistema non \'e completamente osservabile. Applichiamo quindi una retroazione algebrica sullo stato: $ u = Kx + v $
-		\[
-			A^{*} = A+BK = A+IK = A + K
-		\]
-		Potendo scegliere a piacere gli elementi di $ K $, sommiamo ad $ A $, una costante arbitraria. Per esempio: $ K \triangleq \left[ \begin{smallmatrix} 0 & 1\\ 0 & 0 \end{smallmatrix} \right] $
-		\[
-			A^{*} = 
-			\begin{bmatrix}
-				1 & 1\\
-				0 & -1
-			\end{bmatrix}
-			\quad\Rightarrow\quad
-			Q^{*} =
-			\begin{bmatrix}
-				1 & 0\\
-				1 & 1
-			\end{bmatrix}
-		\]
-		Il rango di $ Q^{*} $ \'e massimo quindi il sistema retroazionato \'e completamente osservabile.
-		
-	\subsubsection{Esempio 2 di retroazione su stato che modifica l'osservabilit\'a in meglio}
-		\[
-			\begin{cases}
-				\dot x =
+				\end{bmatrix}
+			\]
+			il sistema non \'e completamente osservabile. Applichiamo quindi una retroazione algebrica sullo stato: $ u = Kx + v $
+			\[
+				A^{*} = A+BK = A+IK = A + K
+			\]
+			Potendo scegliere a piacere gli elementi di $ K $, sommiamo ad $ A $, una costante arbitraria. Per esempio: $ K \triangleq \begin{bmatrix} 0 & 1\\ 0 & 0 \end{bmatrix} $
+			\[
+				A^{*} = 
+				\begin{bmatrix}
+					1 & 1\\
+					0 & -1
+				\end{bmatrix}
+				\quad\Rightarrow\quad
+				Q^{*} =
+				\begin{bmatrix}
+					1 & 0\\
+					1 & 1
+				\end{bmatrix}
+			\]
+			Il rango di $ Q^{*} $ \'e massimo quindi il sistema retroazionato \'e completamente osservabile.
+		\end{mdframed}
+	
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Retroazione su stato che modifica l'osservabilit\'a in meglio}
+			\[
+				\begin{cases}
+					\dot x =
+					\begin{bmatrix}
+						0 & 0\\
+						0 & 0
+					\end{bmatrix} x+
+					\begin{bmatrix}
+						1\\
+						0
+					\end{bmatrix} u
+					\\[1em]
+					y = 
+					\begin{bmatrix}
+						1 & 0
+					\end{bmatrix} x
+				\end{cases}
+			\]
+			\[
+				Q=
+				\begin{bmatrix}
+					1 & 0\\
+					0 & 0
+				\end{bmatrix}
+			\]
+			Il sistema non \'e completamente osservabile. Applichiamo la retroazione sullo stato e scegliamo: $ K \triangleq \begin{bmatrix} 0 & 1 \end{bmatrix} $, cio\'e $ u = x_2 + v $. Prima $ x_1 $ dipendeva solo da $ u $, ma non da $ x_2 $, mentre adesso $ x_2 $ dipende da $ x_1 $, perch\'e $ u $ dipende da $ x_1 $.
+			\[
+				A^{*} = A+BK = 
 				\begin{bmatrix}
 					0 & 0\\
 					0 & 0
-				\end{bmatrix} x+
+				\end{bmatrix} + 
 				\begin{bmatrix}
 					1\\
 					0
-				\end{bmatrix} u
-				\\
-				y = 
+				\end{bmatrix}
 				\begin{bmatrix}
-					1 & 0
-				\end{bmatrix} x
-			\end{cases}
-		\]
-		\[
-			Q=
-			\begin{bmatrix}
-				1 & 0\\
-				0 & 0
-			\end{bmatrix}
-		\]
-		Il sistema non \'e completamente osservabile. Applichiamo la retroazione sullo stato e scegliamo: $ K \triangleq \left[ \begin{smallmatrix} 0 & 1 \end{smallmatrix} \right] $, cio\'e $ u = x_2 + v $. Prima $ x_1 $ dipendeva solo da $ u $, ma non da $ x_2 $, mentre adesso $ x_2 $ dipende da $ x_1 $, perch\'e $ u $ dipende da $ x_1 $.
-		\[
-			A^{*} = A+BK = 
-			\begin{bmatrix}
-				0 & 0\\
-				0 & 0
-			\end{bmatrix} + 
-			\begin{bmatrix}
-				1\\
-				0
-			\end{bmatrix}
-			\begin{bmatrix}
-				0 & 1
-			\end{bmatrix} = 
-			\begin{bmatrix}
-				0 & 1\\
-				0 & 0
-			\end{bmatrix}
-			\quad\Rightarrow\quad
-			Q^{*} =
-			\begin{bmatrix}
-				C\\
-				CA^{*}
-			\end{bmatrix} =
-			\begin{bmatrix}
-				1 & 0\\
-				0 & 1
-			\end{bmatrix}
-		\]
-		il rango di $ Q^{*} $ \'e 2, allora il sistema \'e completamente osservabile.
+					0 & 1
+				\end{bmatrix} = 
+				\begin{bmatrix}
+					0 & 1\\
+					0 & 0
+				\end{bmatrix}
+				\quad\Rightarrow\quad
+				Q^{*} =
+				\begin{bmatrix}
+					C\\
+					CA^{*}
+				\end{bmatrix} =
+				\begin{bmatrix}
+					1 & 0\\
+					0 & 1
+				\end{bmatrix}
+			\]
+			il rango di $ Q^{*} $ \'e 2, allora il sistema \'e completamente osservabile.
+		\end{mdframed}
 		
 	\subsection{Sistema stabilizzabile}
 		Un sistema \'e \textbf{stabilizzabile} (cio\'e \'e possibile renderlo asintoticamente stabile) se e solo se la sua parte non controllabile \'e asintoticamente stabile ($ \Leftrightarrow $ gli autovalori di $ \varphi_{NC}(s) $ sono tutti a $ \Re < 0 $).

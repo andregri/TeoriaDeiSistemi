@@ -19,9 +19,11 @@
 			Un sistema \'e completamente ricostruibile \textbf{se e solo se}, dati $ y(\tau) $ e $ u(\tau) $ per $ \tau \in [0,t] $, \'e possibile calcolare univocamente $ x(t) $.
 		\end{definition}
 	
-		Poich\'e $ x(t) $ \'e sempre funzione della condizione iniziale $ x(0^{-}) $ e della sequenza di controllo $ u(\tau) $ con $ \tau \in [0,t] $, se un sistema \'e osservabile allora sar\'a anche ricostruibile. Non vale necessariamente il viceversa. Per i sistemi LTI a tempo continuo valgono entrambe le implicazioni:
+		Poich\'e $ x(t) $ \'e sempre funzione della condizione iniziale $ x(0^{-}) $ e della sequenza di controllo $ u(\tau) $ con $ \tau \in [0,t] $, se un sistema \'e osservabile allora sar\'a anche ricostruibile. Non vale necessariamente il viceversa.
+		
+		Per i sistemi LTI a tempo continuo valgono entrambe le implicazioni:
 		\begin{center}
-			un sistema \'e osservabile $ \Leftrightarrow $ \'e ricostruibile.
+			un sistema LTI \'e osservabile $ \Leftrightarrow $ \'e ricostruibile.
 		\end{center}
 		Per dimostrarlo partiamo dall'equazione di Lagrange da cui \'e evidente che $ x(t) $ dipenda da $ x(0^{-}), u(.) $:
 		\[
@@ -58,12 +60,12 @@
 		\[
 			y_l(t) = \hat y_l(t) + \alpha \tilde y_l(t) = \hat y_l(t)
 		\]
-		Abbiamo che ottenuto che non possiamo distinguere univocamente lo stato iniziale partendo da $ y_l(t) $.
+		Abbiamo ottenuto che non possiamo distinguere univocamente lo stato iniziale partendo da $ y_l(t) $.
 		
 		\begin{definition}
 			Definiamo $ X_{NO} $ l'insieme degli stati indistinguibili dallo stato zero:
 			\[
-				\tilde x \triangleq \left\lbrace \tilde x\ \text{tale che}\ x(0^{-}) = \tilde x \quad\Rightarrow\quad y_l(t) = 0 \right\rbrace
+				X_{NO} \triangleq \left\lbrace \tilde x\ \text{tale che}\ x(0^{-}) = \tilde x \quad\Rightarrow\quad y_l(t) = 0 \right\rbrace
 			\]
 		\end{definition}
 	
@@ -106,126 +108,125 @@
 			\item 
 				posso applicare il teorema di Kalmann di osservabilit\'a a gruppi di uscite o a ogni singola uscita.
 			\item 
-				sistema completamente non osservabile $ \quad\Leftrightarrow\quad X_{NO} = \R^{n_x} \quad\Leftrightarrow\quad rank\{Q\} = 0 \quad\Leftrightarrow\quad C = [0] $ cio\'e l'uscita non dipende dallo stato.
+				sistema completamente NON osservabile $ \quad\Leftrightarrow\quad X_{NO} = \R^{n_x} \quad\Leftrightarrow\quad rank\{Q\} = 0 \quad\Leftrightarrow\quad C = [0] $ cio\'e l'uscita non dipende dallo stato.
 		\end{itemize}
 	
-		\hrule
-		\begin{Exercise}[title={Calcolare $ X_{NO} $}, difficulty=1]
-		\hrule\medskip
-			\[
-				\dot x =
-				\begin{bmatrix}
-					-1 & 0 & 0\\
-					0 & 0 & 1\\
-					0 & 1 & 0
-				\end{bmatrix} x + Bu
-				\qquad
-				y =
-				\begin{bmatrix}
-					1 & 0 & 0\\
-					0 & 0 & 1
-				\end{bmatrix} x
-			\]
-			\[
-				Q =
-				\begin{bmatrix}
-					C\\
-					CA\\
-					CA^2 = (CA)A
-				\end{bmatrix} =
-				\begin{bmatrix}
-					1 & 0 & 0\\
-					0 & 0 & 1\\
-					\hline
-					-1 & 1 & 0\\
-					0 & 1 & 0\\
-					\hline
-					1 & 0 & 0\\
-					0 & 1 & 0
-				\end{bmatrix}
-			\]
-			$ rank\{Q\} = 3 = n_x $ il rango \'e massimo quindi il sistema \'e completamente osservabile.
-			
-			Consideriamo solo l'uscita $ y_1 $:
-			\[
-				C_1 =
-				\begin{bmatrix}
-					1 & 0 & 0
-				\end{bmatrix}
-				\quad\Rightarrow\quad
-				Q_1 =
-				\begin{bmatrix}
-					1 & 0 & 0\\
-					-1 & 1 & 0\\
-					1 & 0 & 0
-				\end{bmatrix}
-			\] 
-			$ rank\{Q_1\} = 2 $ quindi il sistema non \'e completamente osservabile da $ y_1 $. Calcoliamo $ X_{NO1} $:
-			\[
-				\tilde x =
-				\begin{bmatrix}
-					a\\
-					b\\
-					c
-				\end{bmatrix}
-				\quad\text{tale che}\quad
-				Q_1 \tilde x = 0
-			\]
-			\[
-				\begin{bmatrix}
-					1 & 0 & 0\\
-					-1 & 1 & 0\\
-					1 & 0 & 0
-				\end{bmatrix}
-				\begin{bmatrix}
-					a\\
-					b\\
-					c
-				\end{bmatrix} =
-				\begin{bmatrix}
-					0\\
-					0\\
-					0
-				\end{bmatrix}
-				\quad\Rightarrow\quad
-				\begin{cases}
-					a = 0\\
-					-a+b = 0\\
-					a = 0
-				\end{cases}
-				\quad\Rightarrow\quad X_{NO} =
-				\begin{bmatrix}
-					0\\
-					0\\
-					c
-				\end{bmatrix}
-			\]
-			Consideriamo solo $ y_2 $:
-			\[
-				C_2 =
-				\begin{bmatrix}
-					0 & 0 & 1
-				\end{bmatrix}
-				\quad\Rightarrow\quad
-				Q_2 =
-				\begin{bmatrix}
-					0 & 0 & 1\\
-					0 & 1 & 0\\
-					0 & 1 & 0
-				\end{bmatrix}
-			\] 
-			$ rank\{Q_2\} = 2 $ quindi il sistema non \'e completamente osservabile da $ y_2 $. Calcoliamo $ X_{NO2} $ analogamente a prima e otteniamo:
-			\[
-				X_{NO2} = Ker\{Q_2\} =
-				\begin{bmatrix}
-					a\\
-					0\\
-					0
-				\end{bmatrix}
-			\]
-			\hrule
-		\end{Exercise}
-	
+		\begin{mdframed}[style=Exercise]
+			\begin{Exercise}[title={Calcolare $ X_{NO} $}, difficulty=1]
+				\[
+					\dot x =
+					\begin{bmatrix}
+						-1 & 0 & 0\\
+						0 & 0 & 1\\
+						0 & 1 & 0
+					\end{bmatrix} x + Bu
+					\qquad
+					y =
+					\begin{bmatrix}
+						1 & 0 & 0\\
+						0 & 0 & 1
+					\end{bmatrix} x
+				\]
+				\[
+					Q =
+					\begin{bmatrix}
+						C\\
+						CA\\
+						CA^2 = (CA)A
+					\end{bmatrix} =
+					\begin{bmatrix}
+						1 & 0 & 0\\
+						0 & 0 & 1\\
+						\hline
+						-1 & 1 & 0\\
+						0 & 1 & 0\\
+						\hline
+						1 & 0 & 0\\
+						0 & 1 & 0
+					\end{bmatrix}
+				\]
+				$ rank\{Q\} = 3 = n_x $ il rango \'e massimo quindi il sistema \'e completamente osservabile.
+				
+				Consideriamo solo l'uscita $ y_1 $:
+				\[
+					C_1 =
+					\begin{bmatrix}
+						1 & 0 & 0
+					\end{bmatrix}
+					\quad\Rightarrow\quad
+					Q_1 =
+					\begin{bmatrix}
+						1 & 0 & 0\\
+						-1 & 1 & 0\\
+						1 & 0 & 0
+					\end{bmatrix}
+				\] 
+				$ rank\{Q_1\} = 2 $ quindi il sistema non \'e completamente osservabile da $ y_1 $. Calcoliamo $ X_{NO1} $:
+				\[
+					\tilde x =
+					\begin{bmatrix}
+						a\\
+						b\\
+						c
+					\end{bmatrix}
+					\quad\text{tale che}\quad
+					Q_1 \tilde x = 0
+				\]
+				\[
+					\begin{bmatrix}
+						1 & 0 & 0\\
+						-1 & 1 & 0\\
+						1 & 0 & 0
+					\end{bmatrix}
+					\begin{bmatrix}
+						a\\
+						b\\
+						c
+					\end{bmatrix} =
+					\begin{bmatrix}
+						0\\
+						0\\
+						0
+					\end{bmatrix}
+					\quad\Rightarrow\quad
+					\begin{cases}
+						a = 0\\
+						-a+b = 0\\
+						a = 0
+					\end{cases}
+					\quad\Rightarrow\quad X_{NO} =
+					\begin{bmatrix}
+						0\\
+						0\\
+						c
+					\end{bmatrix}
+				\]
+				Consideriamo solo $ y_2 $:
+				\[
+					C_2 =
+					\begin{bmatrix}
+						0 & 0 & 1
+					\end{bmatrix}
+					\quad\Rightarrow\quad
+					Q_2 =
+					\begin{bmatrix}
+						0 & 0 & 1\\
+						0 & 1 & 0\\
+						0 & 1 & 0
+					\end{bmatrix}
+				\] 
+				$ rank\{Q_2\} = 2 $ quindi il sistema non \'e completamente osservabile da $ y_2 $. Calcoliamo $ X_{NO2} $ analogamente a prima e otteniamo:
+				\[
+					X_{NO2} = Ker\{Q_2\} =
+					\begin{bmatrix}
+						a\\
+						0\\
+						0
+					\end{bmatrix}
+				\]
+			\end{Exercise}
+		\end{mdframed}
+
 	\subsection{Decomposizione di Kalmann di osservabilit\'a}
 		Prendiamo una matrice $ T = [T_1 | T_2] $ dove
 		\begin{itemize}
@@ -333,7 +334,7 @@
 		Gli autovalori osservabili sono quelli che caratterizzano, con la loro molteplicit\'a, tutte le possibili uscite (i modi di evoluzione dell'uscita) al variare di $ x(0^{-}) $. $ \varphi_O(s) $ pu\'o essere ottenuto come polinomio caratteristico associato a $ \tilde C (sI-\tilde A)^{-1} $ o equivalentemente a $ C(sI-A)^{-1} $.\\
 		(Un discorso analogo vale per il polinomio minimo $ m_O(s) \subseteq \cdot \varphi_O(s) $).
 		\[
-			\text{sistema completamente osservabile} \quad\Leftrightarrow\quad \pDeg{\varphi_O(s)} = n_x \quad\text{cioe\'e se}\ \varphi_O(s) \equiv \varphi(s)
+			\text{sistema completamente osservabile} \quad\Leftrightarrow\quad \pDeg{\varphi_O(s)} = n_x \quad\text{cio\'e se}\ \varphi_O(s) \equiv \varphi(s)
 		\]
 		
 	\subsection{Studio dell'osservabilit\'a}
@@ -348,161 +349,164 @@
 			n_O = dim(X_O) = n_x - dim(X_{NO}) = \pDeg{\varphi_O(s)}
 		\]
 		
-		\begin{Exercise}[title={Studiare l'osservabilit\'a di due vasche in parallelo}]
-			Consideriamo la linearizzazione del sistema attorno a un punto di equilibrio:
-			\[
-				\begin{cases}
-					\dot x=
-					\begin{bmatrix}
-						-\alpha_1 & 0\\
-						0 & -\alpha_2
-					\end{bmatrix} x + Bu	
-					\\
-					y = S_1 x_1 + S_2 x_2
-				\end{cases}
-			\]
-			\begin{itemize}
-				\item 
-					$ \alpha_1 = \dfrac{E_1}{2S_1} \sqrt{\dfrac{2g}{\bar h_1}} \qquad \alpha_2 = \dfrac{E_2}{2S_2} \sqrt{\dfrac{2g}{\bar h_2}} $ 
-				\item 
-					$ x_1 \triangleq h_1 - \bar h_1 \qquad x_2 \triangleq h_2 - \bar h_2 $\\
-					rappresenta la variazione di altezza del volume d'acqua nella vasca rispetto il livello del punto di equilibrio. \'E una quantit\'a che possiamo conoscere ad esempio misurandola con un galleggiante.
-				\item 
-					$ y $ \'e la somma delle variazioni di volume delle vasche rispetto al loro punto di equilibrio. Anch'essa \'e una quantit\'a misurabile per esempio con una bilancia sotto le due vasche. 
-			\end{itemize}
-		
-			Studiamo l'osservabilit\'a del sistema, cio\'e se \'e possibile ricavare il volume di ciascuna vasca partendo dal volume totale.
-			
-			\paragraph{Metodo con teorema di Kalmann}
-				\[
-					Q =
-					\begin{bmatrix}
-						S_1 & S_2\\
-						-\alpha_1 S_1 & -\alpha_2 S_2
-					\end{bmatrix}
-				\]
-				\[
-					det\left\lbrace Q \right\rbrace = -\alpha_2 S_1 S_2 + \alpha_1 S_1 S_2 = S_1 S_2 (\alpha_1 - \alpha_2)
-				\]
-				
-				\begin{itemize}
-					\item 
-						se $ \alpha_1 \neq \alpha_2 $ il sistema \'e osservabile posso risalire al volume delle vasche partendo dal modo di evoluzione dell'uscita $ y $.
-					\item 
-						se $ \alpha_1 = \alpha_2 = \alpha $ il sistema non \'e osservabile.
-				\end{itemize}
-			
-				In quest'ultimo caso calcoliamo $ X_{NO} $:
-				\[
-					\tilde x =
-					\begin{bmatrix}
-						a\\
-						b
-					\end{bmatrix} \in X_{NO}
-					\quad\Leftrightarrow\quad 
-					\begin{bmatrix}
-						S_1 & S_2\\
-						-\alpha_1 S_1 & -\alpha_2 S_2
-					\end{bmatrix}
-					\begin{bmatrix}
-						a\\
-						b
-					\end{bmatrix} =
-					\begin{bmatrix}
-						0\\
-						0
-					\end{bmatrix}
-				\]
-				\[
-					\Rightarrow\quad aS_1 + bS_2 = 0 \quad\Rightarrow\quad b = -\dfrac{S_1}{S_2}a \quad\Rightarrow\quad X_{NO} =
-					\begin{bmatrix}
-						a\\
-						-\dfrac{S_1}{S_2}a
-					\end{bmatrix}
-				\]
-				
-				Significa che se il sistema si trova nella situazione in cui:
-				\begin{itemize}
-					\item 
-						il livello della prima vasca \'e $ \bar h + a $;
-					\item 
-						il livello della seconda vasca \'e $ \bar h - \dfrac{S_1}{S_2}a $;
-					\item 
-						applichiamo il controllo $ \bar u $ del punto di equilibrio
-				\end{itemize}
-				e misuriamo il volume delle due vasche attraverso la "bilancia", otteniamo un valore costante $ (y_l = 0) $, anche se lo stato del sistema sta variando.
-				
-			\paragraph{Metodo con polinomio caratteristico}
-				\[
-					C(sI-A)^{-1} =
-					\begin{bmatrix}
-						S_1 & S_2
-					\end{bmatrix}
-					\begin{bmatrix}
-						\dfrac{1}{s+\alpha_1} & 0\\
-						0 & \dfrac{1}{s+\alpha_2}
-					\end{bmatrix} =
-					\begin{bmatrix}
-						\dfrac{S_1}{s+\alpha_1} & \dfrac{S_2}{s+\alpha_2}
-					\end{bmatrix}
-				\]
-				\[
-					\varphi_O(s) = mcm\left\lbrace (s+\alpha_1), (s+\alpha_2) \right\rbrace =
-					\begin{cases}
-						(s+\alpha) \qquad\text{se}\ \alpha_1 = \alpha_2 = \alpha\\
-						(s+\alpha_1)(s+\alpha_2) \qquad\text{se}\ \alpha_1 \neq \alpha_2
-					\end{cases}
-				\]
-				
-				Calcoliamo la trasformata di Laplace dell'uscita:
-				\[
-					Y(s) = C(sI-A)^{-1} x(0^{-}) = \dfrac{S_1}{s+\alpha_1}x_1(0^{-}) + \dfrac{S_2}{s+\alpha_2}x_2(0^{-})
-				\]
-				\[
-					y(t) = S_1x_1(0^{-}) e^{-\alpha_1 t} + S_2x_2(0^{-}) e^{-\alpha_2 t}
-				\]
-				
-				Nel caso non osservabile $ \alpha_1 = \alpha_2 = \alpha $:
-				\[
-					Y(s) = [S_1 x_1(0^{-}) + S_2 x_2(0^{-})] \dfrac{1}{s+\alpha}
-				\]
-				\[
-					y(t) = [S_1 x_1(0^{-}) + S_2 x_2(0^{-})] e^{-\alpha t}
-				\]
-				Poich\'e il sistema non \'e osservabile non possiamo ottenere $ x_1(0^{-}) $ e $ x_2(0^{-}) $ separatamente, ma solo $ \left[ S_1 x_1(0^{-}) + S_2 x_2(0^{-}) \right] $.
-			
-			\paragraph{Sistema con due uscite}
-				Consideriamo adesso il caso in cui abbiamo due misure:
+		\begin{mdframed}[style=Exercise]
+			\begin{Exercise}[title={Studiare l'osservabilit\'a di due vasche in parallelo}]
+				Consideriamo la linearizzazione del sistema attorno a un punto di equilibrio:
 				\[
 					\begin{cases}
-						y_1 = x_1\\
-						y_2 = x_2
+						\dot x=
+						\begin{bmatrix}
+							-\alpha_1 & 0\\
+							0 & -\alpha_2
+						\end{bmatrix} x + Bu	
+						\\
+						y = S_1 x_1 + S_2 x_2
 					\end{cases}
-					\quad\Rightarrow\quad
-					C =
-					\begin{bmatrix}
-						1 & 0\\
-						0 & 1
-					\end{bmatrix}
 				\]
-				Si vede subito che il sistema \'e completamente osservabile perch\'e lo stato coincide con le uscite, ma si pu\'o ricavare rigorosamente con il teorema di Kalmann: basta osservare che $ rank\left\lbrace C \right\rbrace = 2 = n_x $.
+				\begin{itemize}
+					\item 
+						$ \alpha_1 = \dfrac{E_1}{2S_1} \sqrt{\dfrac{2g}{\overset{}{\bar h_1}}} \qquad \alpha_2 = \dfrac{E_2}{2S_2} \sqrt{\dfrac{2g}{\overset{}{\bar h_2}}} $ 
+					\item 
+						$ x_1 \triangleq h_1 - \bar h_1 \qquad x_2 \triangleq h_2 - \bar h_2 $\\
+						rappresenta la variazione di altezza del volume d'acqua nella vasca rispetto il livello del punto di equilibrio. \'E una quantit\'a che possiamo conoscere ad esempio misurandola con un galleggiante.
+					\item 
+						$ y $ \'e la somma delle variazioni di volume delle vasche rispetto al loro punto di equilibrio. Anch'essa \'e una quantit\'a misurabile per esempio con una bilancia sotto le due vasche. 
+				\end{itemize}
+			
+				Studiamo l'osservabilit\'a del sistema, cio\'e se \'e possibile ricavare il volume di ciascuna vasca partendo dal volume totale.
 				
-				La trasformata dell'uscita nel caso $ \alpha_1 = \alpha_2 = \alpha $ \'e:
-				\[
-					Y(s) = C(sI-A)^{-1} x(0^{-}) =
-					\begin{bmatrix}
-						\dfrac{1}{s+\alpha} & 0\\
-						0 & \dfrac{1}{s+\alpha}
-					\end{bmatrix} x(0^{-}) =
-					\begin{bmatrix}
-						\dfrac{1}{s+\alpha} x_1(0^{-})\\
-						\dfrac{1}{s+\alpha} x_2(0^{-})
-					\end{bmatrix}
-				\]
-				\[
-					\varphi_O(s) = mcm\left\lbrace (s+\alpha), (s+\alpha), (s+\alpha)^2 \right\rbrace = (s+\alpha)^2
-				\]
+				\paragraph{Metodo con teorema di Kalmann}
+					\[
+						Q =
+						\begin{bmatrix}
+							S_1 & S_2\\
+							-\alpha_1 S_1 & -\alpha_2 S_2
+						\end{bmatrix}
+					\]
+					\[
+						det\left\lbrace Q \right\rbrace = -\alpha_2 S_1 S_2 + \alpha_1 S_1 S_2 = S_1 S_2 (\alpha_1 - \alpha_2)
+					\]
+					
+					\begin{itemize}
+						\item 
+							se $ \alpha_1 \neq \alpha_2 $ il sistema \'e osservabile posso risalire al volume delle vasche partendo dal modo di evoluzione dell'uscita $ y $.
+						\item 
+							se $ \alpha_1 = \alpha_2 = \alpha $ il sistema non \'e osservabile.
+					\end{itemize}
 				
-				Nonostante abbiamo un solo autovalore $ s = \alpha $ con molteplicit\'a $ 2 $, il sistema \'e comunque osservabile, grazie al fatto che si hanno due uscite.
-		\end{Exercise}
+					In quest'ultimo caso calcoliamo $ X_{NO} $:
+					\[
+						\tilde x =
+						\begin{bmatrix}
+							a\\
+							b
+						\end{bmatrix} \in X_{NO}
+						\quad\Leftrightarrow\quad 
+						\begin{bmatrix}
+							S_1 & S_2\\
+							-\alpha_1 S_1 & -\alpha_2 S_2
+						\end{bmatrix}
+						\begin{bmatrix}
+							a\\
+							b
+						\end{bmatrix} =
+						\begin{bmatrix}
+							0\\
+							0
+						\end{bmatrix}
+					\]
+					\[
+						\Rightarrow\quad aS_1 + bS_2 = 0 \quad\Rightarrow\quad b = -\dfrac{S_1}{S_2}a \quad\Rightarrow\quad X_{NO} =
+						\begin{bmatrix}
+							a\\
+							-\dfrac{S_1}{S_2}a
+						\end{bmatrix}
+					\]
+					
+					Significa che se il sistema si trova nella situazione in cui:
+					\begin{itemize}
+						\item 
+							il livello della prima vasca \'e $ \bar h + a $;
+						\item 
+							il livello della seconda vasca \'e $ \bar h - \dfrac{S_1}{S_2}a $;
+						\item 
+							applichiamo il controllo $ \bar u $ del punto di equilibrio
+					\end{itemize}
+					e misuriamo il volume delle due vasche attraverso la "bilancia", otteniamo un valore costante $ (y_l = 0) $, anche se lo stato del sistema sta variando.
+					
+				\paragraph{Metodo con polinomio caratteristico}
+					\[
+						C(sI-A)^{-1} =
+						\begin{bmatrix}
+							S_1 & S_2
+						\end{bmatrix}
+						\begin{bmatrix}
+							\dfrac{1}{s+\alpha_1} & 0\\
+							0 & \dfrac{1}{s+\alpha_2}
+						\end{bmatrix} =
+						\begin{bmatrix}
+							\dfrac{S_1}{s+\alpha_1} & \dfrac{S_2}{s+\alpha_2}
+						\end{bmatrix}
+					\]
+					\[
+						\varphi_O(s) = mcm\left\lbrace (s+\alpha_1), (s+\alpha_2) \right\rbrace =
+						\begin{cases}
+							(s+\alpha) \qquad\text{se}\ \alpha_1 = \alpha_2 = \alpha\\
+							(s+\alpha_1)(s+\alpha_2) \qquad\text{se}\ \alpha_1 \neq \alpha_2
+						\end{cases}
+					\]
+					
+					Calcoliamo la trasformata di Laplace dell'uscita:
+					\[
+						Y(s) = C(sI-A)^{-1} x(0^{-}) = \dfrac{S_1}{s+\alpha_1}x_1(0^{-}) + \dfrac{S_2}{s+\alpha_2}x_2(0^{-})
+					\]
+					\[
+						y(t) = S_1x_1(0^{-}) e^{-\alpha_1 t} + S_2x_2(0^{-}) e^{-\alpha_2 t}
+					\]
+					
+					Nel caso non osservabile $ \alpha_1 = \alpha_2 = \alpha $:
+					\[
+						Y(s) = [S_1 x_1(0^{-}) + S_2 x_2(0^{-})] \dfrac{1}{s+\alpha}
+					\]
+					\[
+						y(t) = [S_1 x_1(0^{-}) + S_2 x_2(0^{-})] e^{-\alpha t}
+					\]
+					Poich\'e il sistema non \'e osservabile non possiamo ottenere $ x_1(0^{-}) $ e $ x_2(0^{-}) $ separatamente, ma solo $ \left[ S_1 x_1(0^{-}) + S_2 x_2(0^{-}) \right] $.
+				
+				\paragraph{Sistema con due uscite}
+					Consideriamo adesso il caso in cui abbiamo due misure:
+					\[
+						\begin{cases}
+							y_1 = x_1\\
+							y_2 = x_2
+						\end{cases}
+						\quad\Rightarrow\quad
+						C =
+						\begin{bmatrix}
+							1 & 0\\
+							0 & 1
+						\end{bmatrix}
+					\]
+					Si vede subito che il sistema \'e completamente osservabile perch\'e lo stato coincide con le uscite, ma si pu\'o ricavare rigorosamente con il teorema di Kalmann: basta osservare che $ rank\left\lbrace C \right\rbrace = 2 = n_x $.
+					
+					La trasformata dell'uscita nel caso $ \alpha_1 = \alpha_2 = \alpha $ \'e:
+					\[
+						Y(s) = C(sI-A)^{-1} x(0^{-}) =
+						\begin{bmatrix}
+							\dfrac{1}{s+\alpha} & 0\\
+							0 & \dfrac{1}{s+\alpha}
+						\end{bmatrix} x(0^{-}) =
+						\begin{bmatrix}
+							\dfrac{1}{s+\alpha} x_1(0^{-})
+							\\[1em]
+							\dfrac{1}{s+\alpha} x_2(0^{-})
+						\end{bmatrix}
+					\]
+					\[
+						\varphi_O(s) = mcm\left\lbrace (s+\alpha), (s+\alpha), (s+\alpha)^2 \right\rbrace = (s+\alpha)^2
+					\]
+					
+					Nonostante abbiamo un solo autovalore $ s = \alpha $ con molteplicit\'a $ 2 $, il sistema \'e comunque osservabile, grazie al fatto che si hanno due uscite.
+			\end{Exercise}
+		\end{mdframed}
 \end{document}
