@@ -2,9 +2,9 @@
 
 \begin{document}
 	\section{Osservatore asintotico dello stato}
-		$ \forall u(.) $, $ \forall \vec x(0^{-}) $, $ \forall \vec z(0^{-}) $, il sistema "Osservatore" \'e definito \textbf{osservatore asintotico} se:
+		$ \forall u(.) $, $ \forall \vec x(0^{-}) $, $ \forall \vec z(0^{-}) $, il sistema \textit{Osservatore} \'e definito \textbf{osservatore asintotico} se:
 		\[
-			\vec x(t) - \vec{\hat x(t)} \underset{t \rightarrow \infty}{\longrightarrow} 0
+			\vec x(t) - \vec{\hat x}(t) \underset{t \rightarrow \infty}{\longrightarrow} 0
 		\]
 		Consideriamo i sistemi:
 		\[
@@ -20,6 +20,11 @@
 				\vec{\hat x} = \vec z
 			\end{cases}
 		\]
+		
+		\begin{figure}[H]
+			\centering\includegraphics[width=.5\textwidth]{rappresentazione_sistema2/osservatore_asintotico}
+		\end{figure}
+		
 		$ A, B, C $ note e $ x(0^{-}) $ incognito, dobbiamo determinare $ \hat A, \hat B, L $, tale che l'errore di stima $ \vec e(t) $:
 		\[
 			\vec e(t) \triangleq \vec x(t) - \vec{\hat x}(t) \underset{t \rightarrow \infty}{\longrightarrow} 0
@@ -29,7 +34,7 @@
 			\dot{\vec e}(t) &= \vec{\dot x}(t) - \dot{\vec{\hat{x}}}(t) = A \vec x(t) + B \vec u(t) - \left[ \hat A \vec z(t) + \hat B \vec u(t) + L \vec y(t) \right] =
 			\\
 			&= A \vec x(t) + B \vec u(t) - \hat{\vec z(t)} - \hat B \vec u(t) - LC \vec x(t) =
-			\\\intertext{Scelgo}
+			\\\intertext{Scelgo $ \quad \hat B = B \qquad \hat A = A - LC $}
 			&= (A-LC) \left[ \vec x(t) - \vec z(t) \right] = (A-LC) \vec e(t)			
 		\end{align*}
 		$ \vec e(t) $ evolve come lo stato di un sistema autonomo lineare con matrice $ (A-LC) $. Se $ L $ \'e tale che sia asintoticamente stabile (tutti gli autovalori a $ \Re < 0 $), si ottiene un osservatore asintotico.
@@ -50,7 +55,9 @@
 		autovalori di $ (A^T + C^T K) $ sono assegnabili a piacere con la scelta di $ K $.\\
 		Quindi se scegliamo $ L = -K^T $, allora $ (A-LC)^T = (A+K^TC)^T = A^T + C^TK $, cio\'e assegniamo $ L $ in modo che gli autovalori osservabili siano assegnabili a piacere in $ (A-LC) $.
 		
-		Un sistema \'e \textit{detettabile} se e solo se gli autovalori osservabili sono tutti a $ \Re < 0 $. Quindi se un sistema \'e \textit{detettabile}, \'e possibile costruire un osservatore asintotico.
+		\begin{definition}
+			Un sistema \'e \textit{detettabile} se e solo se gli autovalori osservabili sono tutti a $ \Re < 0 $. Quindi se un sistema \'e \textit{detettabile}, \'e possibile costruire un osservatore asintotico.
+		\end{definition}
 		
 	\subsection{Osservatore di Luenberger}
 		\[
@@ -71,14 +78,22 @@
 		\]
 		
 	\subsection{Osservatore per controllo}
-		\[
-			\begin{cases}
-				\dot x = Ax + Bu\\
-				y = Cx\\
-				\dot z = Az + Bu + L(y-Cz)\\
-				u = Kz + v
-			\end{cases}
-		\]
+		\begin{figure}[H]
+			\begin{subfigure}{0.5\textwidth}
+				\[
+					\begin{cases}
+						\dot x = Ax + Bu\\
+						y = Cx\\
+						\dot z = Az + Bu + L(y-Cz)\\
+						u = Kz + v
+					\end{cases}
+				\]
+			\end{subfigure}
+			\begin{subfigure}{0.5\textwidth}
+				\centering\includegraphics[width=1.1\textwidth]{rappresentazione_sistema2/osservatore_controllo}
+			\end{subfigure}
+		\end{figure}
+		
 		Cambio $ z $ con $ e = x-z $:
 		\[
 			\begin{cases}
@@ -122,119 +137,121 @@
 		
 		Quindi per i sistemi lineari vale il \textbf{principio di separazione}: osservatore e regolatore possono essere progettati separatamente.
 		
-		\begin{Exercise}[title={Stabilizzazione di un sistema con osservatore}, difficulty=1]
-			\[
-				T(s) = \dfrac{1}{s^2}
-			\]
-			Abbiamo visto che si tratta di un sistema instabile e che non pu\'o essere stabilizzato con una retroazione algebrica sull'uscita. Proviamo quindi a stabilizzarlo con un osservatore asintotico.
-			
-			Realizziamo il sistema con la FCC:
-			\[
-				n = 2
-				\qquad
-				\begin{aligned}
-					a_0 &= 0\\
-					a_1 &= 0
-				\end{aligned}
-				\qquad
-				\begin{aligned}
-					b_0 &= 1\\
-					b_1 &= 0\\
-					b_2 &= 0
-				\end{aligned}
-			\]
-			\[
-				S:
-				\begin{cases}
-					\dot x =
+		\begin{mdframed}[style=Exercise]
+			\begin{Exercise}[title={Stabilizzazione di un sistema con osservatore}, difficulty=1]
+				\[
+					T(s) = \dfrac{1}{s^2}
+				\]
+				Abbiamo visto che si tratta di un sistema instabile e che non pu\'o essere stabilizzato con una retroazione algebrica sull'uscita. Proviamo quindi a stabilizzarlo con un osservatore asintotico.
+				
+				Realizziamo il sistema con la FCC:
+				\[
+					n = 2
+					\qquad
+					\begin{aligned}
+						a_0 &= 0\\
+						a_1 &= 0
+					\end{aligned}
+					\qquad
+					\begin{aligned}
+						b_0 &= 1\\
+						b_1 &= 0\\
+						b_2 &= 0
+					\end{aligned}
+				\]
+				\[
+					S:
+					\begin{cases}
+						\dot x =
+						\begin{bmatrix}
+							0 & 1\\
+							0 & 0
+						\end{bmatrix} x+
+						\begin{bmatrix}
+							0\\
+							1
+						\end{bmatrix} u
+						\\[1em]
+						y =
+						\begin{bmatrix}
+							1 & 0
+						\end{bmatrix} x
+					\end{cases}
+				\]
+				
+				Progettiamo il regolatore:
+				\[
+					u = Kz + v \qquad\qquad K =
+					\begin{bmatrix}
+						K_1 & K_2
+					\end{bmatrix}
+				\]
+				\[
+					(A+BK) =
 					\begin{bmatrix}
 						0 & 1\\
 						0 & 0
-					\end{bmatrix} x+
+					\end{bmatrix} +
 					\begin{bmatrix}
 						0\\
 						1
-					\end{bmatrix} u
-					\\
-					y =
+					\end{bmatrix}
+					\begin{bmatrix}
+						K_1 & K_2
+					\end{bmatrix} =
+					\begin{bmatrix}
+						0 & 1\\
+						K_1 & K_2
+					\end{bmatrix}
+				\]
+				\[
+					\varphi_{A+BK}(s) = det
+					\begin{bmatrix}
+						s & -1\\
+						-K_1 & s-K_2
+					\end{bmatrix} = s^2 - K_2s - K_1
+				\]
+				Se voglio entrambi gli autovalori in $ -1 $:
+				\[
+					\varphi_{A+BK}(s) = s^2 + 2s + 1 \quad\Leftrightarrow\quad K_1 = -1 \quad K_2 = -2
+				\]
+				
+				Progettiamo l'osservatore:
+				\[
+					\begin{cases}
+						\dot z = Az + Bu +L(y-Cz)\\
+						\hat x = z
+					\end{cases}
+				\]
+				$ L = \begin{bmatrix} l_1 \\ l_2 \end{bmatrix} $ tale che $ (A-LC) $ sia asintoticamente stabile.
+				\[
+					A-LC = 
+					\begin{bmatrix}
+						0 & 1\\
+						0 & 0
+					\end{bmatrix} -
+					\begin{bmatrix}
+						l_1\\
+						l_2
+					\end{bmatrix}
 					\begin{bmatrix}
 						1 & 0
-					\end{bmatrix} x
-				\end{cases}
-			\]
-			
-			Progettiamo il regolatore:
-			\[
-				u = Kz + v \qquad\qquad K =
-				\begin{bmatrix}
-					K_1 & K_2
-				\end{bmatrix}
-			\]
-			\[
-				(A+BK) =
-				\begin{bmatrix}
-					0 & 1\\
-					0 & 0
-				\end{bmatrix} +
-				\begin{bmatrix}
-					0\\
-					1
-				\end{bmatrix}
-				\begin{bmatrix}
-					K_1 & K_2
-				\end{bmatrix} =
-				\begin{bmatrix}
-					0 & 1\\
-					K_1 & K_2
-				\end{bmatrix}
-			\]
-			\[
-				\varphi_{A+BK}(s) = det
-				\begin{bmatrix}
-					s & -1\\
-					-K_1 & s-K_2
-				\end{bmatrix} = s^2 - K_2s - K_1
-			\]
-			Se voglio entrambi gli autovalori in $ -1 $:
-			\[
-				\varphi_{A+BK}(s) = s^2 + 2s + 1 \quad\Leftrightarrow\quad K_1 = -1 \quad K_2 = -2
-			\]
-			
-			Progettiamo l'osservatore:
-			\[
-				\begin{cases}
-					\dot z = Az + Bu +L(y-Cz)\\
-					\hat x = z
-				\end{cases}
-			\]
-			$ L = \left[  \begin{smallmatrix} l_1 \\ l_2 \end{smallmatrix} \right] $ tale che $ (A-LC) $ sia asintoticamente stabile.
-			\[
-				A-LC = 
-				\begin{bmatrix}
-					0 & 1\\
-					0 & 0
-				\end{bmatrix} -
-				\begin{bmatrix}
-					l_1\\
-					l_2
-				\end{bmatrix}
-				\begin{bmatrix}
-					1 & 0
-				\end{bmatrix} = 
-				\begin{bmatrix}
-					-l_1 & 1\\
-					-l_2 & 0
-				\end{bmatrix}
-			\]
-			\[
-				det\left[ sI - (A-LC) \right] = det 
-				\begin{bmatrix}
-					s+l_1 & -1\\
-					l & s
-				\end{bmatrix} = s^2 + l_1 s + l_2
-			\]
-			\[
-				\Rightarrow\quad l_1 = -2 \quad l_2 = 1
-			\]
-		\end{Exercise}
+					\end{bmatrix} = 
+					\begin{bmatrix}
+						-l_1 & 1\\
+						-l_2 & 0
+					\end{bmatrix}
+				\]
+				\[
+					det\left[ sI - (A-LC) \right] = det 
+					\begin{bmatrix}
+						s+l_1 & -1\\
+						l_2 & s
+					\end{bmatrix} = s^2 + l_1 s + l_2
+				\]
+				\[
+					\Rightarrow\quad l_1 = -2 \quad l_2 = 1
+				\]
+			\end{Exercise}
+		\end{mdframed}
 \end{document}

@@ -15,12 +15,13 @@
 	Finora abbiamo studiato come ottenere la matrice di trasferimento partendo o dall'equazione differenziale o dall'equazione di stato.
 	
 	\section{Controllabilit\'a/osservabilit\'a e l'equazione differenziale}
+		\label{sec:sistema_eq_diff}
 		\[
 			A(D)y(t) = B(D)u(t)
 		\]
 		Trasformando con Laplace si ottiene:
 		\[
-			Y(s) = Y_f(s) + Y_l(s) = T(s)U(s) + Y_l(s) = \dfrac{\bar B(s)}{\bar{\bar{A}}(s)} U(s) + \dfrac{I(s)}{A(s)} U(s)
+			Y(s) = Y_f(s) + Y_l(s) = T(s)U(s) + Y_l(s) = \dfrac{\bar B(s)}{\bar{A}(s)} U(s) + \dfrac{I(s)}{A(s)} U(s)
 		\]
 		Per i sistemi causali $ I(s) $ \'e un qualsiasi polinomio di grado $ < n = \pDeg{A(s)} $. Quindi in $ Y_l(s) $ possono essere presenti tutti i modi di evoluzione del sistema con le loro molteplicit\'a $ \quad\Rightarrow\quad $ tutti i modi di evoluzione del sistema sono osservabili.
 		

@@ -12,121 +12,125 @@
 				possibile aggiunta di parti non controllabili o non osservabili, dato che la funzione di trasferimento \'e influenzata solo dalla parte controllabile e osservabile.
 		\end{itemize}
 	
-		\paragraph{Esempio}
-		\[
-		T(s) = \dfrac{1}{s^2}				
-		\]
-		\'e un sistema strettamente proprio perch\'e $ \pDeg{\text{num}} < \pDeg{\text{denom}} \quad\Rightarrow\quad D = 0 $ (non c'\'e dipendenza istantanea tra ingresso e uscita).
-		
-		Consideriamo diversi sistemi e verifichiamo se sono realizzazioni di $ T(s) $:
-		\begin{itemize}
-			\item 
-				\[
-					S:
-					\begin{cases}
-						\dot x =
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Esempio}
+			\[
+				T(s) = \dfrac{1}{s^2}				
+			\]
+			\'e un sistema strettamente proprio perch\'e $ \pDeg{\text{num}} < \pDeg{\text{denom}} \quad\Rightarrow\quad D = 0 $ (non c'\'e dipendenza istantanea tra ingresso e uscita).
+			
+			Consideriamo diversi sistemi e verifichiamo se sono realizzazioni di $ T(s) $:
+			\begin{itemize}
+				\item 
+					\[
+						S:
+						\begin{cases}
+							\dot x =
+							\begin{bmatrix}
+								0 & 1\\
+								0 & 0
+							\end{bmatrix} x+
+							\begin{bmatrix}
+								0\\
+								1
+							\end{bmatrix} u
+							\\[1em]
+							y =
+							\begin{bmatrix}
+								1 & 0
+							\end{bmatrix} x
+						\end{cases}
+					\]
+					Il sistema $ S $ \'e una realizzazione di $ T(s) $? Verifichiamolo:
+					\[
 						\begin{bmatrix}
-							0 & 1\\
-							0 & 0
-						\end{bmatrix} x+
+							1 & 0
+						\end{bmatrix}
+						\begin{bmatrix}
+							\dfrac{1}{s} & \dfrac{1}{s^2}
+							\\[1em]
+							0 & \dfrac{1}{s}
+						\end{bmatrix}
 						\begin{bmatrix}
 							0\\
 							1
-						\end{bmatrix} u
-						\\
-						y =
+						\end{bmatrix} = \dfrac{1}{s^2}
+					\]
+				\item 
+					effettuiamo un cambio di base attraverso la matrice $ T = \begin{bmatrix} 0 & 1\\ 1 & 0 \end{bmatrix} $, che inverte il ruolo degli stati:
+					\[
+						\begin{cases}
+						\dot z =
 						\begin{bmatrix}
+							0 & 0\\
 							1 & 0
-						\end{bmatrix} x
-					\end{cases}
-				\]
-				Il sistema $ S $ \'e una realizzazione di $ T(s) $? Verifichiamolo:
-				\[
-					\begin{bmatrix}
-						1 & 0
-					\end{bmatrix}
-					\begin{bmatrix}
-						\dfrac{1}{s} & \dfrac{1}{s^2}\\[.5cm]
-						0 & \dfrac{1}{s}
-					\end{bmatrix}
-					\begin{bmatrix}
-						0\\
-						1
-					\end{bmatrix} = \dfrac{1}{s^2}
-				\]
-			\item 
-				effettuiamo un cambio di base attraverso la matrice $ T = \begin{smallmatrix} 0 & 1\\ 1 & 0 \end{smallmatrix} $, che inverte il ruolo degli stati:
-				\[
-					\begin{cases}
-					\dot z =
-					\begin{bmatrix}
-						0 & 0\\
-						1 & 0
-					\end{bmatrix} z+
-					\begin{bmatrix}
-						1\\
-						0
-					\end{bmatrix} u
-					\\
-					y =
-					\begin{bmatrix}
-						0 & 1
-					\end{bmatrix} z
-					\end{cases}
-				\]
-				la funzione di trasferimento non cambia:
-				\[
-					\begin{bmatrix}
-						0 & 1
-					\end{bmatrix}
-					\begin{bmatrix}
-						\dfrac{1}{s} & 0\\[.5cm]
-						\dfrac{1}{s^2} & \dfrac{1}{s}
-					\end{bmatrix}
-					\begin{bmatrix}
-						1\\
-						0
-					\end{bmatrix} = \dfrac{1}{s^2}
-				\]
-			\item 
-				\[
-					S:
-					\begin{cases}
-						\dot x =
+						\end{bmatrix} z+
 						\begin{bmatrix}
-							0 & 1 & 9\\
-							0 & 0 & 0\\
-							0 & 0 & \sqrt{2}
-						\end{bmatrix} x+
-						\begin{bmatrix}
-							0\\
 							1\\
 							0
 						\end{bmatrix} u
-						\\
+						\\[1em]
 						y =
 						\begin{bmatrix}
-							1 & 0 & \sqrt{17}
-						\end{bmatrix} x
-					\end{cases}
-				\]
-				Si nota che $ x_3 $ non dipende da $ x_1 $ e $ x_2 $ e dal controllo, quindi costituisce la parte non controllabile:
-				\[
-					\varphi(s) = s^2(s-\sqrt{2}) \quad\text{dove}\quad \sqrt{2} \ \text{\'e l'autovalore non controllabile}
-				\]
-				Se svolgiamo i calcoli otteniamo sempre:
-				\[
-					T(s) = \dots = \dfrac{1}{s^2}
-				\]
-		\end{itemize}
-	
+							0 & 1
+						\end{bmatrix} z
+						\end{cases}
+					\]
+					la funzione di trasferimento non cambia:
+					\[
+						\begin{bmatrix}
+							0 & 1
+						\end{bmatrix}
+						\begin{bmatrix}
+							\dfrac{1}{s} & 0
+							\\[1em]
+							\dfrac{1}{s^2} & \dfrac{1}{s}
+						\end{bmatrix}
+						\begin{bmatrix}
+							1\\
+							0
+						\end{bmatrix} = \dfrac{1}{s^2}
+					\]
+				\item 
+					\[
+						S:
+						\begin{cases}
+							\dot x =
+							\begin{bmatrix}
+								0 & 1 & 9\\
+								0 & 0 & 0\\
+								0 & 0 & \sqrt{2}
+							\end{bmatrix} x+
+							\begin{bmatrix}
+								0\\
+								1\\
+								0
+							\end{bmatrix} u
+							\\[1em]
+							y =
+							\begin{bmatrix}
+								1 & 0 & \sqrt{17}
+							\end{bmatrix} x
+						\end{cases}
+					\]
+					Si nota che $ x_3 $ non dipende da $ x_1 $ e $ x_2 $ e dal controllo, quindi costituisce la parte non controllabile:
+					\[
+						\varphi(s) = s^2(s-\sqrt{2}) \quad\text{dove}\quad \sqrt{2} \ \text{\'e l'autovalore non controllabile}
+					\]
+					Se svolgiamo i calcoli otteniamo sempre:
+					\[
+						T(s) = \dots = \dfrac{1}{s^2}
+					\]
+			\end{itemize}
+		\end{mdframed}
+
 	\section{Realizzazione minima}
 		Si vuole che la realizzazione sia la pi\'u compatta possibile. Si sceglie quindi:
 		\[
 			n_x = \pDeg{\text{denominatore di}\ T(s)} = \text{numero autovalori controllabili e osservabili}
 		\]
 		
-		Una realizzazione minima \'e sempre completamente controllabile e osservabile. Allora una qualsiasi realizzazione non minima non pu\'o essere completamente controllabile e osservabile.
+		Una realizzazione minima \'e sempre completamente controllabile \& osservabile. Allora una qualsiasi realizzazione non minima non pu\'o essere completamente controllabile \& osservabile.
 		
 		Tutte le realizzazioni minime di una $ T(s) $ sono in relazione tra loro mediante un opportuno cambio di base.
 		
@@ -173,7 +177,7 @@
 		\]
 		Come calcolare i $ \tilde b_i $?
 		\[
-			T(s) = \dfrac{\bar B(s)}{\bar{\bar A}(s)} =
+			T(s) = \dfrac{\bar B(s)}{\bar A(s)} =
 		\]
 		\[
 			\begin{array}{cccc|c}
@@ -196,63 +200,65 @@
 		\newline
 		La forma compagna controllabile \'e una realizzazione minima di $ T(s) $.
 		
-		\begin{Exercise}[title={Calcolare la forma compagna controllabile}, difficulty=1]
-			\[
-				T(s) = \dfrac{s^2-1}{s^2+2s+3} \quad\Rightarrow\quad n = \pDeg{\text{Denom}}
-			\]
-			Si pu\'o calcolare la FCC seguendo due strade:
-			\begin{itemize}
-				\item 
-					calcolandosi gli elementi delle matrici con le formule:
-					\[
-						\begin{aligned}
-							a_0 &= 3\\
-							a_1 &= 2
-						\end{aligned}
-						\qquad
-						\begin{aligned}
-							b_0 &= -1\\
-							b_1 &= 0\\
-							b_2 &= 1
-						\end{aligned}
-						\qquad\Rightarrow\quad
-						\begin{aligned}
-							\tilde b_0 &= b_0 - a_0 b_2 = -4\\
-							\tilde b_1 &= b_1 - a_1 b_2 = -2
-						\end{aligned}
-					\]
-					\[
-						\dot x = 
-						\begin{bmatrix}
-							0 & 1\\
-							-3 & -2
-						\end{bmatrix} x+
-						\begin{bmatrix}
-							0\\
-							1
-						\end{bmatrix} u
-						\\
-						y =
-						\begin{bmatrix}
-							-4 & -2
-						\end{bmatrix} x + u
-					\]
-					otteniamo lo stesso risultato: $ \tilde b_0 = -4 $, $ \tilde b_1 = -2 $
-				\item 
-					eseguendo la divisione tra polinomi:
-					\[
-						\begin{array}{ccc|c}
-							s^2 & & -1 & s^2 + 2s + 3
-							\\\cline{4-4}
-							s^2 & +2s & +3 & 1
-							\\\cline{1-3}
-							0 & -2s & -4 &
-						\end{array}
-					\]
-			\end{itemize} 
-		\end{Exercise}
-	
-	\subsection{Forma Completamente Osservabile}
+		\begin{mdframed}[style=Exercise]
+			\begin{Exercise}[title={Calcolare la forma compagna controllabile}, difficulty=1]
+				\[
+					T(s) = \dfrac{s^2-1}{s^2+2s+3} \quad\Rightarrow\quad n = \pDeg{\text{Denom}}
+				\]
+				Si pu\'o calcolare la FCC seguendo due strade:
+				\begin{itemize}
+					\item 
+						calcolandosi gli elementi delle matrici con le formule:
+						\[
+							\begin{aligned}
+								a_0 &= 3\\
+								a_1 &= 2
+							\end{aligned}
+							\qquad
+							\begin{aligned}
+								b_0 &= -1\\
+								b_1 &= 0\\
+								b_2 &= 1
+							\end{aligned}
+							\qquad\Rightarrow\quad
+							\begin{aligned}
+								\tilde b_0 &= b_0 - a_0 b_2 = -4\\
+								\tilde b_1 &= b_1 - a_1 b_2 = -2
+							\end{aligned}
+						\]
+						\[
+							\dot x = 
+							\begin{bmatrix}
+								0 & 1\\
+								-3 & -2
+							\end{bmatrix} x+
+							\begin{bmatrix}
+								0\\
+								1
+							\end{bmatrix} u
+							\\
+							y =
+							\begin{bmatrix}
+								-4 & -2
+							\end{bmatrix} x + u
+						\]
+						otteniamo lo stesso risultato: $ \tilde b_0 = -4 $, $ \tilde b_1 = -2 $
+					\item 
+						eseguendo la divisione tra polinomi:
+						\[
+							\begin{array}{ccc|c}
+								s^2 & & -1 & s^2 + 2s + 3
+								\\\cline{4-4}
+								s^2 & +2s & +3 & 1
+								\\\cline{1-3}
+								0 & -2s & -4 &
+							\end{array}
+						\]
+				\end{itemize} 
+			\end{Exercise}
+		\end{mdframed}
+
+	\subsection{Forma Compagna Osservabile}
 		\[
 			\Rightarrow\quad\text{FCO}\quad
 			\begin{cases}
@@ -260,7 +266,7 @@
 				y = B_C^T \vec z + D_C u &= C_O x + D_O u
 			\end{cases}
 		\]
-		La forma compagna osservabile \'e la \textbf{duale} della forma compagna controllabile.
+		La forma compagna osservabile \'e il \textbf{sistema duale} della forma compagna controllabile.
 		\[
 			\begin{aligned}
 				\dot{\vec x} &=
@@ -286,39 +292,43 @@
 			\end{aligned}
 		\]
 		
-		\paragraph{Esempio} integratore
-			\[
-				T(s) = \dfrac{1}{s} \quad\Rightarrow\quad n=1 \qquad
-				a_0 = 0 \qquad
-				\begin{aligned}
-					b_0 &= 1\\
-					b_1 &= 0
-				\end{aligned}
-			\]
-			Quando la $ T(s) $ \'e strettamente propria $ \quad\Rightarrow\quad \tilde b_i \equiv b_i $ perch\'e $ b_n = 0 $.
-			\[
-				\begin{cases}
-					\dot x = [-a_0] x + [1] u\\
-					y = [b_0] x + b_n u
-				\end{cases}
-				\quad\Rightarrow\quad
-				\begin{cases}
-					\dot x = u\\
-					y = x
-				\end{cases}
-			\]
-			
-		\paragraph{Esempio}
-			\[
-				T(s) = \dfrac{3}{s+2} = \dfrac{s+2-2-3}{s+2} = 1+\dfrac{-5}{s+2}
-			\]
-			\[
-				\begin{cases}
-					\dot x = -2x + u\\
-					y = -5x + u
-				\end{cases}
-			\]
-			
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Esempio} integratore
+				\[
+					T(s) = \dfrac{1}{s} \quad\Rightarrow\quad n=1 \qquad
+					a_0 = 0 \qquad
+					\begin{aligned}
+						b_0 &= 1\\
+						b_1 &= 0
+					\end{aligned}
+				\]
+				Quando la $ T(s) $ \'e strettamente propria $ \quad\Rightarrow\quad \tilde b_i \equiv b_i $ perch\'e $ b_n = 0 $.
+				\[
+					\begin{cases}
+						\dot x = [-a_0] x + [b_0] u\\
+						y = [1] x + b_n u
+					\end{cases}
+					\quad\Rightarrow\quad
+					\begin{cases}
+						\dot x = u\\
+						y = x
+					\end{cases}
+				\]
+		\end{mdframed}
+	
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Esempio}
+				\[
+					T(s) = \dfrac{3}{s+2} = \dfrac{s+2-2-3}{s+2} = 1+\dfrac{-5}{s+2}
+				\]
+				\[
+					\begin{cases}
+						\dot x = -2x + u\\
+						y = -5x + u
+					\end{cases}
+				\]
+		\end{mdframed}
+		
 	\subsection{Propriet\'a di FCC e FCO}
 		\begin{itemize}
 			\item 
@@ -334,24 +344,27 @@
 					\varphi(s) = s^n + a_{n-1} s^{n-1} + \ldots + a_0
 				\]
 				FCC e FCO non servono solo a realizzare una funzione di trasferimento, ma sono utilizzabili anche per "assegnazione di autovalori".
-				\paragraph{Esempio} voglio ottenere gli autovalori $ s_1 = 0, s_2 = -1, s_3 = 1 $, cio\'e
-					\[
-						\varphi(s) = s(s+1)(s-1) = s(s^2-1) = s^3 - s
-					\]
-					La forma compagna controllabile di questo sistema sarebbe:
-					\[
-						\dot x =
-						\begin{bmatrix}
-							0 & 1 & 0\\
-							0 & 0 & 1\\
-							0 & 1 & 0
-						\end{bmatrix} x+
-						\begin{bmatrix}
-							0\\
-							0\\
-							1
-						\end{bmatrix} u
-					\]
+				
+				\begin{mdframed}[style=Esempio]
+					\paragraph{Esempio} voglio ottenere gli autovalori $ s_1 = 0, s_2 = -1, s_3 = 1 $, cio\'e
+						\[
+							\varphi(s) = s(s+1)(s-1) = s(s^2-1) = s^3 - s
+						\]
+						La forma compagna controllabile di questo sistema sarebbe:
+						\[
+							\dot x =
+							\begin{bmatrix}
+								0 & 1 & 0\\
+								0 & 0 & 1\\
+								0 & 1 & 0
+							\end{bmatrix} x+
+							\begin{bmatrix}
+								0\\
+								0\\
+								1
+							\end{bmatrix} u
+						\]
+				\end{mdframed}
 			\item 
 				Supponiamo sia dato un sistema qualsiasi in FCC (non \'e detto che sia ottenuto da una $ T(s) $) al quale applichiamo il teorema di Kalmann di controllabilit\'a:
 				\[
@@ -368,18 +381,18 @@
 					\end{bmatrix}
 				\]
 				Poich\'e le colonne sono tutte linearmente indipendenti (qualunque valore ci sia al posto degli asterischi), il rango \'e massimo: $ rank \left\lbrace P_C \right\rbrace = n_x $ 
-				La coppia $ A_C B_C $ \'e sempre completamente controllabile. Se $ \pDeg{\varphi_{CO}(s)} < n_x $, allora si ha perdita di osservabili\'a.
+				La coppia $ (A_C, B_C) $ \'e sempre completamente controllabile. Se $ \pDeg{\varphi_{CO}(s)} < n_x $, allora si ha perdita di osservabili\'a.
 			\item 
 				Un sistema in FCO \'e sempre completamente osservabile. Se  $ \pDeg{\varphi_{CO}(s)} < n_x $, allora si ha perdita di controllabilit\'a.
 			\item 
-				Se si usano FCC o FCO per una realizzazione minima di una $ T(s) $, il risultato \'e sempre controllabile e osservabile.
+				Se si usano FCC o FCO per una realizzazione minima di una $ T(s) $, il risultato \'e sempre completamente controllabile \& osservabile.
 				
-				Quindi se avessimo un sistema descritto attraverso un'equazione differenziale lineare a coefficienti costanti (Nota: il sistema \'e completamente osservabile), metteremmo in equazione di stato solo la parte controllabile \& osservabile del sistema, ma non il resto. In base a $ P(s) $ (il polinomio in comune tra $ A(s) $ e $ B(s) $) conviene utilizzare una forma compagna rispetto all'altra:
+				Quindi se avessimo un sistema descritto attraverso un'equazione differenziale lineare di ordine $ n $ a coefficienti costanti (il sistema sarebbe completamente osservabile. vedi \ref{sec:sistema_eq_diff}), potremmo scrivere la $ T(s) $, semplificare i fattori comuni tra $ A(s) $ e $ B(s) $ e scrivere la FCC o la FCO. Cos\'i facendo, per\'o, metteremmo in equazione di stato solo la parte controllabile \& osservabile del sistema, ma non consideriamo il resto (la parte controllabile persa durante le semplificazioni). In base a $ P(s) $ (i fattori in comune tra $ A(s) $ e $ B(s) $) conviene utilizzare una forma compagna rispetto all'altra per :
 				\begin{itemize}
 					\item 
 						se $ P(s) = 1 $, il sistema \'e completamente controllabile \& osservabile, quindi \'e indifferente usare FCC o FCO.
 					\item 
-						se $ P(s) \neq 1 $, cio\'e ci sono semplificazioni tra numeratore e denominatore della $ T(s) $, bisogna usare la FCO (perch\'e l'equazione differenziale \'e sempre completamente osservabile).
+						se $ P(s) \neq 1 $, cio\'e ci sono semplificazioni tra numeratore e denominatore della $ T(s) $ che corrispondono a perdite di controllabilit\'a, bisogna usare la FCO (perch\'e l'equazione differenziale \'e sempre completamente osservabile).
 				\end{itemize}
 		\end{itemize}
 \end{document}
