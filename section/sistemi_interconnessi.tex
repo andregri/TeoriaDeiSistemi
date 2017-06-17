@@ -30,22 +30,22 @@
 			\begin{aligned}
 				&\text{vettore degli ingressi di $ S^{(i)} $}
 				\\
-				&\vec u =
+				&\vec u^{(i)} =
 				\begin{bmatrix}
-					u_1\\
+					u^{(i)}_1\\
 					\vdots\\
-					u_{n_u}
+					u^{(i)}_{n_u}
 				\end{bmatrix}
 			\end{aligned}
 			\qquad\qquad
 			\begin{aligned}
 				&\text{vettore degli uscite di $ S^{(i)} $}
 				\\
-				&\vec y =
+				&\vec y^{(i)} =
 				\begin{bmatrix}
-					y_1\\
+					y^{(i)}_1\\
 					\vdots\\
-					y_{n_y}
+					y^{(i)}_{n_y}
 				\end{bmatrix}
 			\end{aligned}
 		\]
@@ -76,160 +76,170 @@
 				Studio delle propriet\'a strutturali (Controllabilit\'a, Osservabilit\'a, Stabilit\'a) del sistema di equazioni di stato cos\'i ottenuto
 		\end{enumerate}
 	
-		\paragraph{Esempio}
-			\[
-				\begin{aligned}
-					T^{(1)}(s) = \dfrac{1}{s+1}
-					&\quad\Rightarrow\quad
-					\varphi_{CO}^{(1)}(s) = s+1
-					\\
-					T^{(2)}(s) = \dfrac{s+1}{s}
-					&\quad\Rightarrow\quad
-					\varphi_{CO}^{(2)}(s) = s
-				\end{aligned}
-			\]
-			Si tratta di un sistema di ordine 2. Eseguiamo tutti i passaggi:
-			\begin{enumerate}
-				\item 
-					\[
-						S^{(1)}:
-						\begin{cases}
-							\dot x^{(1)} = -x^{(1)} + u^{(1)}\\
-							y^{(1)} = x^{(1)}
-						\end{cases}
-						\qquad
-						S^{(2)}:
-						\begin{cases}
-							\dot x^{(2)} = u^{(2)}\\
-							y^{(2)} = x^{(2)} + u^{(2)}
-						\end{cases}
-					\]
-				\item 
-					\[
-						u^{(1)} = u \qquad u^{(2)} = y^{(1)} \qquad y = y^{(2)}
-					\]
-				\item 
-					\[
-						\begin{aligned}
-							\dot x^{(1)} &= -x^{(1)} + u\\
-							y^{(1)} &= x^{(1)}\\
-							\dot x^{(2)} &= y^{(1)} = x^{(1)}\\
-							y^{(2)} &= x^{(2)} + y^{(1)} = x^{(2)} + x^{(1)}\\
-							y &= y^{(2)} = x^{(2)} + u^{(2)} = x^{(2)} + y^{(1)} = x^{(2)} + x^{(1)}
-						\end{aligned}
-					\]
-					\[
-						\Rightarrow\quad S:
-						\begin{cases}
-							\dot{\vec x} =
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Esempio}
+				\[
+					\begin{aligned}
+						T^{(1)}(s) = \dfrac{1}{s+1}
+						&\quad\Rightarrow\quad
+						\varphi_{CO}^{(1)}(s) = s+1
+						\\
+						T^{(2)}(s) = \dfrac{s+1}{s}
+						&\quad\Rightarrow\quad
+						\varphi_{CO}^{(2)}(s) = s
+					\end{aligned}
+				\]
+				\begin{figure}[H]
+					\centering\includegraphics[width=0.7\textwidth]{sistemi_interconnessi/esempio1}
+				\end{figure}
+				Si tratta di un sistema di ordine 2. Eseguiamo tutti i passaggi:
+				\begin{enumerate}
+					\item 
+						\[
+							S^{(1)}:
+							\begin{cases}
+								\dot x^{(1)} = -x^{(1)} + u^{(1)}\\
+								y^{(1)} = x^{(1)}
+							\end{cases}
+							\qquad
+							S^{(2)}:
+							\begin{cases}
+								\dot x^{(2)} = u^{(2)}\\
+								y^{(2)} = x^{(2)} + u^{(2)}
+							\end{cases}
+						\]
+					\item 
+						\[
+							u^{(1)} = u \qquad u^{(2)} = y^{(1)} \qquad y = y^{(2)}
+						\]
+					\item 
+						\[
+							\begin{aligned}
+								\dot x^{(1)} &= -x^{(1)} + u\\
+								y^{(1)} &= x^{(1)}\\
+								\dot x^{(2)} &= y^{(1)} = x^{(1)}\\
+								y^{(2)} &= x^{(2)} + y^{(1)} = x^{(2)} + x^{(1)}\\
+								y &= y^{(2)} = x^{(2)} + u^{(2)} = x^{(2)} + y^{(1)} = x^{(2)} + x^{(1)}
+							\end{aligned}
+						\]
+						\[
+							\Rightarrow\quad S:
+							\begin{cases}
+								\dot{\vec x} =
+								\begin{bmatrix}
+									-1 & 0\\
+									1 & 0
+								\end{bmatrix} \vec x +
+								\begin{bmatrix}
+									1\\
+									0
+								\end{bmatrix} u
+								\\[1em]
+								y =
+								\begin{bmatrix}
+									1 & 1
+								\end{bmatrix} \vec x
+							\end{cases}
+						\]
+					\item 
+						\[
+							\varphi(s) = det(sI-A) = det
 							\begin{bmatrix}
-								-1 & 0\\
-								1 & 0
-							\end{bmatrix} \vec x +
+								s+1 & 0\\
+								-1 & s
+							\end{bmatrix} = s(s+1)
+							\qquad
+							m(s) \equiv \varphi(s)\ \text{perch\'e}\ m(s) \subseteq\cdot \varphi(s)
+						\]
+						Il sistema \'e semplicemente stabile perch\'e c'\'e un autovalore a $ \Re = 0 $ e uno a $ \Re < 0 $
+						\[
+							P =
 							\begin{bmatrix}
-								1\\
-								0
-							\end{bmatrix} u
-							\\
-							y =
+								1 & | & -1\\
+								0 & | & 1
+							\end{bmatrix}
+							\quad\Rightarrow\quad
+							rank(P) = 2
+						\]
+						Il sistema \'e completamente controllabile.
+						\[
+							Q =
 							\begin{bmatrix}
-								1 & 1
-							\end{bmatrix} \vec x
-						\end{cases}
-					\]
-				\item 
-					\[
-						\varphi(s) = det(sI-A) = det
-						\begin{bmatrix}
-							s+1 & 0\\
-							-1 & s
-						\end{bmatrix} = s(s+1)
-						\qquad
-						m(s) \equiv \varphi(s)\ \text{perch\'e}\ m(s) \subseteq\cdot \varphi(s)
-					\]
-					Il sistema \'e semplicemente stabile perch\'e c'\'e un autovalore a $ \Re = 0 $ e uno a $ \Re < 0 $
-					\[
-						P =
-						\begin{bmatrix}
-							1 & | & -1\\
-							0 & | & 1
-						\end{bmatrix}
-						\quad\Rightarrow\quad
-						rank(P) = 2
-					\]
-					Il sistema \'e completamente controllabile.
-					\[
-						Q =
-						\begin{bmatrix}
-							1 & 1\\
-							\cline{1-2}
-							0 & 0
-						\end{bmatrix}
-						\quad\Rightarrow\quad
-						rank(Q) = 1
-					\]
-					Il sistema non \'e completamente osservabile.
-					\[
-						(sI-A)^{-1} =
-						\begin{bmatrix}
-							\dfrac{1}{s+1} & 0\\[.5cm]
-							\dfrac{1}{s(s+1)} & \dfrac{1}{s}
-						\end{bmatrix}
-					\]
-					\[
-						(sI-A)^{-1}B =
-						\begin{bmatrix}
-							\dfrac{1}{s+1}\\[.5cm]
-							\dfrac{1}{s(s+1)}
-						\end{bmatrix}
-						\quad\Rightarrow\quad
-						\varphi_C(s) = s(s+1)
-					\]
-					\[
-						C(sI-A)^{-1} = 
-						\begin{bmatrix}
-							\dfrac{1}{s+1}+\dfrac{1}{s(s+1)} & \dfrac{1}{s}
-						\end{bmatrix} =
-						\begin{bmatrix}
-							\dfrac{1}{s} & \dfrac{1}{s}
-						\end{bmatrix}
-						\quad\Rightarrow\quad
-						\varphi_O(s) = s
-					\]
-			\end{enumerate}
-		
+								1 & 1\\
+								\cline{1-2}
+								0 & 0
+							\end{bmatrix}
+							\quad\Rightarrow\quad
+							rank(Q) = 1
+						\]
+						Il sistema NON \'e completamente osservabile.
+						\[
+							(sI-A)^{-1} =
+							\begin{bmatrix}
+								\dfrac{1}{s+1} & 0\\[.5cm]
+								\dfrac{1}{s(s+1)} & \dfrac{1}{s}
+							\end{bmatrix}
+						\]
+						\[
+							(sI-A)^{-1}B =
+							\begin{bmatrix}
+								\dfrac{1}{s+1}\\[.5cm]
+								\dfrac{1}{s(s+1)}
+							\end{bmatrix}
+							\quad\Rightarrow\quad
+							\varphi_C(s) = s(s+1)
+						\]
+						\[
+							C(sI-A)^{-1} = 
+							\begin{bmatrix}
+								\dfrac{1}{s+1}+\dfrac{1}{s(s+1)} & \dfrac{1}{s}
+							\end{bmatrix} =
+							\begin{bmatrix}
+								\dfrac{1}{s} & \dfrac{1}{s}
+							\end{bmatrix}
+							\quad\Rightarrow\quad
+							\varphi_O(s) = s
+						\]
+				\end{enumerate}
+		\end{mdframed}
+	
+		\begin{mdframed}[style=Exercise]
 			\begin{Exercise}[title={Studiare propriet\'a di sistemi interconnessi}, difficulty=3]
-				Sono dati i sistemi:
-				\[
-					S^{(1)}:
-					\begin{cases}
-						\dot{\vec x}^{(1)} =
-						\begin{bmatrix}
-							0 & 1\\
-							-1 & 2
-						\end{bmatrix}
-						\vec x^{(1)} +
-						\begin{bmatrix}
-							0\\
-							1
-						\end{bmatrix} u^{(1)}
-						\\[.5cm]
-						y^{(1)} =
-						\begin{bmatrix}
-							1 & 1\\
-							0 & 1
-						\end{bmatrix} \vec x^{(1)}
-					\end{cases}
-				\]
-				\[
-					S^{(2)}: T(s)^{(2)}=\dfrac{1}{s+1}
-				\]
-				
-				\begin{center}
-					\includegraphics[width=.4\textwidth]{sistemi_interconnessi/esercizio_sistemi_interconnessi}	
-				\end{center}
-				
-				Sono due sistemi strettamente propri quindi non ci sono loop algebrici. Metto in equazione di stato il 2° sistema:
+				Sono dati i sistemi $ S^{(1)} $ e $ S^{(2)} $:
+				\begin{figure}[H]
+					\begin{subfigure}{0.5\textwidth}
+						\[
+							\begin{aligned}
+								S^{(1)}&:
+								\begin{cases}
+									\dot{\vec x}^{(1)} =
+									\begin{bmatrix}
+										0 & 1\\
+										-1 & 2
+									\end{bmatrix}
+									\vec x^{(1)} +
+									\begin{bmatrix}
+										0\\
+										1
+									\end{bmatrix} u^{(1)}
+									\\[.5cm]
+									y^{(1)} =
+									\begin{bmatrix}
+										1 & 1\\
+										0 & 1
+									\end{bmatrix} \vec x^{(1)}
+								\end{cases}
+								\\
+								S^{(2)}&: T(s)^{(2)}=\dfrac{1}{s+1}
+							\end{aligned}
+						\]
+					\end{subfigure}
+					\begin{subfigure}{0.4\textwidth}
+						\includegraphics[width=1.1\textwidth]{sistemi_interconnessi/esercizio_sistemi_interconnessi}	
+					\end{subfigure}
+				\end{figure}
+			
+				Sono due sistemi strettamente propri quindi non ci sono loop algebrici. Metto in equazione di stato il secondo sistema:
 				\[
 					S^{(2)}:
 					\begin{cases}
@@ -336,41 +346,47 @@
 								Le terze righe di ogni sottomatrice sono linearmente indipendenti(bisogna calcolare tutti i minori), quindi il sistema non \'e completamente osservabile da $ y_3 $.\\
 							\item Stabilit\'a:
 								\[
-									\varphi(s) = det
-									\begin{bmatrix}
-										s & -1 & 0\\
-										1 & s-2 & -1\\
-										-1 & -1 & s+1
-									\end{bmatrix} =
-									(-s-1)+(s+1)(s^2-2s+1) = (s+1)(s^2-2s+1-1) =(s+1)s(s-2)
+									\begin{aligned}
+										\varphi(s) &= det
+										\begin{bmatrix}
+											s & -1 & 0\\
+											1 & s-2 & -1\\
+											-1 & -1 & s+1
+										\end{bmatrix} =
+										\\
+										&= (-s-1)+(s+1)(s^2-2s+1) = (s+1)(s^2-2s+1-1) =(s+1)s(s-2)
+									\end{aligned}
 								\]
 								poich\'e $ m(s) \subseteq\cdot \varphi(s) $, allora $ m(s) \equiv \varphi(s) $. Il sistema \'e instabile.
 							\item Stabilit\'a BIBO:\\
-								se nella matrice di trasferimento scompaiono gli autovalori $ 0 $ e $ +2 $, sarebbe stabile BIBO, cio\'e se $ \varphi_{CO}(s) = \dfrac{1}{s+1} $ o $ \varphi_{CO}(s) = 1 $. Ma abbiamo trovato che $ \pDeg{\varphi_C(s)} = 2 $ e $ \pDeg{\varphi_{O}(s)} = 3 $, quindi $ \pDeg{\varphi_{CO}(s)} = 2 $ (\'e l'intersezione dei gradi $ \varphi_C(s) $ e $ \varphi_O(s) $), cio\'e conterr\'a almeno uno di quei due autovalori ($ 0 $ o $ +2 $). Il sistema \'e instabile BIBO.
+								se nella matrice di trasferimento scomparissero gli autovalori $ 0 $ e $ +2 $, sarebbe stabile BIBO, cio\'e se $ \varphi_{CO}(s) = \frac{1}{s+1} $ o $ \varphi_{CO}(s) = 1 $. Ma abbiamo trovato che $ \pDeg{\varphi_C(s)} = 2 $ e $ \pDeg{\varphi_{O}(s)} = 3 $, quindi $ \pDeg{\varphi_{CO}(s)} = 2 $ (\'e l'intersezione dei gradi $ \varphi_C(s) $ e $ \varphi_O(s) $), cio\'e conterr\'a almeno uno di quei due autovalori ($ 0 $ o $ +2 $). Il sistema \'e instabile BIBO.
 						\end{itemize}
 				\end{enumerate}
 			\end{Exercise}
+		\end{mdframed}
 	
 		Molte delle propriet\'a strutturali possono essere desunte sfruttando relazioni note tra i polinomi.
-		\paragraph{Esempio}
-			\[
-				T(s) = \dfrac{1}{s^2}
-			\]
-			\begin{itemize}
-				\item Stabilit\'a BIBO:\\
-					non \'e stabile perch\'e c'\'e una radice a $ \Re = 0 $
-				\item Stabilit\'a:\\
-					\[
-						\varphi_{CO}(s) = s^2 \equiv m_{CO}(s)
-					\]
-					\begin{itemize}
-						\item 
-							$ \varphi_{CO}(s) \subseteq \varphi(s) $ ($ s^2 \subseteq \varphi(s) $) allora $ \varphi(s) $ avr\'a una radice a $ \Re = 0 $. Il sistema non pu\'o essere asintoticamente stabile.
-						\item 
-							$ m_{CO}(s) \subseteq m(s) $ ($ s^2 \subseteq m(s) $) allora $ m(s) $ ha una radice a $ \Re = 0 $ con molteplicit\'a 2. Il sistema \'e instabile.
-					\end{itemize}
-			\end{itemize}
-		
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Esempio}
+				\[
+					T(s) = \dfrac{1}{s^2}
+				\]
+				\begin{itemize}
+					\item Stabilit\'a BIBO:\\
+						non \'e stabile perch\'e c'\'e una radice a $ \Re = 0 $
+					\item Stabilit\'a:\\
+						\[
+							\varphi_{CO}(s) = s^2 \equiv m_{CO}(s)
+						\]
+						\begin{itemize}
+							\item 
+								$ \varphi_{CO}(s) \subseteq \varphi(s) $ ($ s^2 \subseteq \varphi(s) $) allora $ \varphi(s) $ avr\'a una radice a $ \Re = 0 $. Il sistema non pu\'o essere asintoticamente stabile.
+							\item 
+								$ m_{CO}(s) \subseteq m(s) $ ($ s^2 \subseteq m(s) $) allora $ m(s) $ ha una radice a $ \Re = 0 $ con molteplicit\'a 2. Il sistema \'e instabile.
+						\end{itemize}
+				\end{itemize}
+		\end{mdframed}
+	
 	\section{Sistemi serie/parallelo}
 		Il polinomio caratteristico di polinomi connessi unicamente serie e/o parallelo \'e dato dal prodotto dei singoli polinomi caratteristici.
 		\paragraph{Dimostrazione serie}
@@ -467,9 +483,9 @@
 		\end{figure}
 		Prendiamo un sistema ausiliario come in figura \ref{fig:sistema_ausiliario} costituito da tutti i singoli $ S^{(i)} $ ognuno con un suo ingresso $ \tilde{\vec u^{(i)}} $ e una sua uscita $ \tilde{\vec y^{(i)}} = \vec{y}^{(i)} $. Il sistema $ \tilde S $ \'e completamente controllabile da $ \tilde{\vec u} $ e completamente osservabile da $ \tilde{\vec y} $.
 		
-		Il sistema interconnesso $ S $ con aggiunta di ingressi "ausiliari" $ \tilde{\vec u^{(i)}} $ e uscite "ausiliarie" $ \tilde{\vec y^{(i)}} $ corrisponde, se considero come ingressi $ \tilde{\vec u} $ e come uscite $ \tilde{\vec y} $, a una retroazione algebrica sull'uscita di $ \tilde S $. Sappiamo che la retroazione algebrica sull'uscita non modifica le propriet\'a di controllabilit\'a e osservabilit\'a, quindi il sistema cos\'i costituito \'e completamente controllabile da $ \tilde{\vec u} $ e osservabile da $ \tilde{\vec y} $.
+		Il sistema interconnesso $ S $ con aggiunta di ingressi "ausiliari" $ \tilde{\vec u}^{(i)} $ e uscite "ausiliarie" $ \tilde{\vec y}^{(i)} $ corrisponde, se considero come ingressi $ \tilde{\vec u} $ e come uscite $ \tilde{\vec y} $, a una retroazione algebrica sull'uscita di $ \tilde S $. Sappiamo che la retroazione algebrica sull'uscita non modifica le propriet\'a di controllabilit\'a e osservabilit\'a, quindi il sistema cos\'i costituito \'e completamente controllabile da $ \tilde{\vec u} $ e osservabile da $ \tilde{\vec y} $.
 		
-		La controllabilit\'a \'e relativa agli ingressi e non dipende dalle particolari uscite. Se scelgo come ingressi quelli "veri" $ \vec u $ e come uscite quelle ausiliare $ \vec y $, allora da $ T_{\tilde y u}(s) $ ottengo le propriet\'a sulla controllabilit\'a. Analogamente se considero $ T_{y \tilde u}(s) $ ottengo propriet\'a sull'osservabilit\'a. Se scelgo $ T_{yu}(s) $ ottengo propriet\'a su controllabilit\'a e osservabilit\'a.
+		La controllabilit\'a \'e relativa agli ingressi e non dipende dalle particolari uscite. Se scelgo come ingressi quelli "veri" $ \vec u $ e come uscite quelle ausiliare $ \tilde{\vec y} $, allora da $ T_{\tilde y u}(s) $ ottengo le propriet\'a sulla controllabilit\'a. Analogamente se considero $ T_{y \tilde u}(s) $ ottengo propriet\'a sull'osservabilit\'a. Se scelgo $ T_{yu}(s) $ ottengo propriet\'a su controllabilit\'a e osservabilit\'a.
 		\[
 			\begin{array}{llll}
 				T_{yu}(s) \quad\Rightarrow & \varphi_{CO}(s) & m_{CO}(s) & \Rightarrow\quad \text{stabilit\'a BIBO}
@@ -482,62 +498,66 @@
 			\end{array}
 		\]
 		
-		\paragraph{Esempio}
-			Prendiamo un sistema di ordine 2
-			\[
-			T(s) = \dfrac{1}{s-1} \quad\Rightarrow\quad \varphi_{CO}(s) \equiv m_{CO}(s) = s-1
-			\]
-			\begin{figure}[H]
-				\centering\includegraphics[width=.7\textwidth]{sistemi_interconnessi/esempio_sistema_ausiliario1}
-			\end{figure}
-			
-			Costruiamo il sistema ausiliario:
-			\begin{figure}[H]
-				\centering\includegraphics[width=.4\textwidth]{sistemi_interconnessi/esempio_sistema_ausiliario2}
-			\end{figure}
-			\begin{itemize}
-				\item 
-					Verifichiamo la controllabilit\'a:
-					\[
-						T_{\tilde yu}(s) =
-						\begin{bmatrix}
-							T_{\tilde y^{(1)}}(s)\\
-							T_{\tilde y^{(2)}}(s)
-						\end{bmatrix} =
-						\begin{bmatrix}
-							\dfrac{1}{s+1}\\
-							\dfrac{1}{s-1}
-						\end{bmatrix}
-						\quad\Rightarrow\quad
-						\varphi_C(s) \equiv m_C(s) = (s+1)(s-1)
-					\]
-					\'e completamente controllabile.
-				\item 
-					Verifichiamo l'osservabilit\'a:
-					\[
-						T_{y \tilde u}(s) = 
-						\begin{bmatrix}
-							T_{y \tilde u^{(1)}} & T_{y \tilde u^{(2)}}
-						\end{bmatrix} =
-						\begin{bmatrix}
-							\dfrac{1}{s-1} & \dfrac{s+1}{s-1}
-						\end{bmatrix}
-						\quad\Rightarrow\quad
-						\varphi_O(s) \equiv m_O(s) = (s-1)
-					\]
-				\item 
-					Verifichiamo la contemporanea controllabilit\'a e osservabilit\'a:
-					\[
-						T_{\tilde y \tilde u} =
-						\begin{bmatrix}
-							\dfrac{1}{s+1} & 0\\
-							\dfrac{1}{s-1} & \dfrac{s+1}{s-1}
-						\end{bmatrix}
-						\quad\Rightarrow\quad
-						\varphi(s) \equiv m(s) = (s+1)(s-1)
-					\]
-			\end{itemize}
-		
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Esempio}
+				Prendiamo un sistema di ordine 2
+				\begin{figure}[H]
+					\centering\includegraphics[width=.5\textwidth]{sistemi_interconnessi/esempio_sistema_ausiliario1}
+				\end{figure}
+				\[
+					T(s) = \dfrac{1}{s-1} \quad\Rightarrow\quad \varphi_{CO}(s) \equiv m_{CO}(s) = s-1
+				\]
+				
+				Costruiamo il sistema ausiliario:
+				\begin{figure}[H]
+					\centering\includegraphics[width=.5\textwidth]{sistemi_interconnessi/esempio_sistema_ausiliario2}
+				\end{figure}
+				\begin{itemize}
+					\item 
+						Verifichiamo la controllabilit\'a:
+						\[
+							T_{\tilde yu}(s) =
+							\begin{bmatrix}
+								T_{\tilde y^{(1)}u}(s)
+								\\[1.5em]
+								T_{\tilde y^{(2)}u}(s)
+							\end{bmatrix} =
+							\begin{bmatrix}
+								\dfrac{1}{s+1}
+								\\[1em]
+								\dfrac{1}{s-1}
+							\end{bmatrix}
+							\quad\Rightarrow\quad
+							\varphi_C(s) \equiv m_C(s) = (s+1)(s-1)
+						\]
+						\'e completamente controllabile.
+					\item 
+						Verifichiamo l'osservabilit\'a:
+						\[
+							T_{y \tilde u}(s) = 
+							\begin{bmatrix}
+								T_{y \tilde u^{(1)}} & T_{y \tilde u^{(2)}}
+							\end{bmatrix} =
+							\begin{bmatrix}
+								\dfrac{1}{s-1} & \dfrac{s+1}{s-1}
+							\end{bmatrix}
+							\quad\Rightarrow\quad
+							\varphi_O(s) \equiv m_O(s) = (s-1)
+						\]
+					\item 
+						Verifichiamo la contemporanea controllabilit\'a e osservabilit\'a:
+						\[
+							T_{\tilde y \tilde u} =
+							\begin{bmatrix}
+								\dfrac{1}{s+1} & 0\\
+								\dfrac{1}{s-1} & \dfrac{s+1}{s-1}
+							\end{bmatrix}
+							\quad\Rightarrow\quad
+							\varphi(s) \equiv m(s) = (s+1)(s-1)
+						\]
+				\end{itemize}
+		\end{mdframed}
+	
 	\subsection{Cancellazione}
 		\begin{itemize}
 			\item 
@@ -620,8 +640,35 @@
 			Se ho due termini comuni al denominatore di due funzioni di trasferimento in parallelo perdo sia la controllabilit\'a che l'osservabilit\'a.
 		\end{itemize}
 	
+		\begin{mdframed}[style=Esempio]
+			\paragraph{Esempio}
+				Dato il sistema:
+				\begin{figure}[H]
+					\centering\includegraphics[width=0.5\textwidth]{sistemi_interconnessi/esempio_cancellazione1}
+				\end{figure}
+				\[
+					\varphi(s) = (s-1)^2 (s+1)
+				\]
+				\[
+					T(s) = \dfrac{1}{s-1} \dfrac{s-1}{s+1} \dfrac{1}{s-1} = \dfrac{1}{(s-1)(s+1)} \quad\Rightarrow\quad \varphi_{CO}(s) = (s+1)(s-1)
+				\]
+				
+				Guardiamo i sotto-sistemi:
+				\begin{itemize}
+					\item 
+						serie 1-2: cancellazione zero-polo, quindi perdo osservabilit\'a.
+					\item 
+						serie 2-3: cancellazione polo-zero, quindi perdo controllabilit\'a.
+				\end{itemize}
+				
+				Poich\'e esiste un sottosistema non controllabile, allora il sistema complessivo sar\'a non controllabile. Allo stesso modo poich\'e un sottosistema non \'e osservabile, il sistema complessivo sar\'a non osservabile.
+				\[
+					\varphi_C(s) = (s+1)(s-1) \qquad \varphi_O(s) = (s+1)(s-1)
+				\]
+		\end{mdframed}
+	
 	\section{Retroazione}
-		L'unica situazione in cui il sistema non \'e completamente controllabile e osservabile gli zeri in catena diretta coincidono con i poli in catena inversa.
+		L'unica situazione in cui il sistema non \'e completamente controllabile e osservabile \'e quella in cui gli zeri in catena diretta coincidono con i poli in catena inversa.
 		\begin{figure}[H]
 			\centering\includegraphics[width=.5\textwidth]{sistemi_interconnessi/retroazione}
 		\end{figure}
@@ -697,10 +744,10 @@
 		\end{figure}
 		
 		\[
-			T(s)=\dfrac{\dfrac{1}{s+1}}{1-\dfrac{1}{s+1}} = \dfrac{1}{s} \quad\Rightarrow\quad \varphi_C(s)=s \varphi(s)=s(s-1)
+			T(s)=\dfrac{\dfrac{1}{s+1}}{1-\dfrac{1}{s+1}} = \dfrac{1}{s} \quad\Rightarrow\quad \varphi_{CO}(s)=s \qquad \varphi(s)=s(s-1)
 		\]
 		
-		Abbiamo gi\'a visto che la retroazione algebrica sull'uscita modifica solo gli autovalori controllabili e osservabili: infatti $ s_2 $ non viene modificato, mentre $ s_2 $ passa da $ -1 $ a $ 0 $.
+		Abbiamo gi\'a visto che la retroazione algebrica sull'uscita modifica solo gli autovalori controllabili e osservabili: infatti $ s_2 $ non viene modificato, mentre $ s_1 $ passa da $ -1 $ a $ 0 $.
 		
 		\begin{center}
 			\fbox{
@@ -710,4 +757,232 @@
 			}
 		\end{center}
 		
+		\begin{mdframed}[style=Exercise]
+			\begin{Exercise}[title={Studio di un sistema dato in $ T(s) $}]
+				Dato il sistema:
+				\begin{figure}[H]
+					\centering
+					\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+						%blocks
+						\node(input){};
+						\node[sum, right of=input](error_node){};
+						\node[block, right of=error_node](s1){$ \dfrac{s+2}{s+1} $};
+						\node[right of=s1](output){};
+						\node[block, below of=s1](s2){$ \dfrac{1}{s+2} $};
+						%connections
+						\draw [->] (input) -- node[at start](u){$ u $} node[pos=0.9]{$ + $} (error_node);
+						\draw [->] (error_node) -- (s1);
+						\draw [->] (s1) -- node[](y){$ y $} (output);
+						\draw [->] (y) |- (s2);
+						\draw [->] (s2) -| node[pos=0.95]{$ + $} (error_node);
+					\end{tikzpicture}
+				\end{figure}
+			
+				C'\'e una cancellazione di un polo in retroazione quindi si ha perdita di controllabilit\'a e osservabilit\'a $ \quad\Rightarrow\quad (s+2) \in \varphi(s) $
+				\[
+					T(s) = \dfrac{\frac{s+2}{s+1}}{1-\frac{s+2}{s+1}\frac{1}{s+2}} = \dfrac{s+2}{s+1} \dfrac{s+1}{s+1-1} = \dfrac{s+2}{s} = 1 + \dfrac{2}{s}
+				\]
+				
+				Quindi $ \varphi_{CO}(s) = s \subseteq \varphi(s) $. Il sistema ha ordine $ 2 \quad\Rightarrow\quad \pDeg{\varphi(s)} = 2 \quad\Rightarrow\quad \varphi(s) = s(s+2) $.
+				
+				Il sistema non \'e stabile BIBO perch\'e c'\'e un polo a $ \Re = 0 $ e poich\'e $ m(s) \equiv \varphi(s) $ il sistema \'e semplicemente stabile.
+				
+				Grazie alle relazioni tra polinomi tra i polinomi caratteristici si ricava subito che $ \varphi_C(s) = \varphi_O(s) = s $.
+			\end{Exercise}
+		\end{mdframed}
+	
+		\begin{mdframed}[style=Exercise]
+			\begin{Exercise}[title={Studio di un sistema dato in $ T(s) $}]
+				Dato il sistema (in cui sono stati aggiunti ingressi e uscite ausiliarie):
+				\begin{figure}[H]
+					\centering
+					\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+						%blocks
+						\node(input){};
+						\node[sum, right of=input](error){};
+						\node[sum, right of=error](sum1){};
+						\node[above of=sum1](u1){$ \tilde u_1 $};
+						\node[block, right of=sum1](s1){$ \dfrac{s+2}{s+1} $};
+						\node[right of=s1](y1){};
+						\node[above of=y1](y11){$ \tilde y_1 $};
+						\node[right of=y1](output){};
+						%
+						\node[block, below of=s1](s2){$ \dfrac{1}{s+2} $};
+						\node[sum, right of=s2](sum2){};
+						\node[below of=sum2](u2){$ \tilde u_2 $};
+						\node[left of=s2](y2){};
+						\node[below of=y2](y21){$ \tilde y_2 $};
+						%
+						%connections
+						%
+						\draw[->] (input) -- node[at start](u){$ u $} node[pos=0.85]{$ + $} (error);
+						\draw[->] (error) -- node[pos=0.85]{$ + $} (sum1);
+						\draw[->] (u1) -- node[pos=0.85]{$ + $} (sum1);
+						\draw[->] (sum1) -- (s1);
+						\draw[->] (y1.center) -- (y11);
+						\draw[->] (s1) -- node[near end](y){$ y $} (output);
+						%
+						\draw[->] (y) |- node[pos=0.85]{$ + $} (sum2);
+						\draw[->] (u2) -- node[pos=0.85]{$ + $} (sum2);
+						\draw[->] (sum2) -- (s2);
+						\draw[->] (s2) -| node[pos=0.9]{$ - $} (error);
+						\draw[->] (y2.center) -- (y21);
+					\end{tikzpicture}
+				\end{figure}
+				
+				C'\'e una cancellazione di un polo in retroazione quindi si ha perdita di controllabilit\'a e osservabilit\'a $ \quad\Rightarrow\quad (s+2) \in \varphi(s) $
+				\[
+					T(s) = \dfrac{\dfrac{s+2}{s+1}}{1+\dfrac{s+2}{s+1}\dfrac{1}{s+2}} = \dfrac{\dfrac{s+2}{s+1}}{\dfrac{s+2}{s+1}} = 1
+				\]
+				$ \varphi_{CO}(s) = 1 $ quindi nessun autovalore \'e contemporaneamente controllabile e osservabile.
+				
+				Studiamo le propriet\'a strutturali del sistema attraverso gli ingressi e le uscite ausiliari.
+				\begin{itemize}
+					\item
+						\[
+							T_{\tilde y u}(s) =
+							\begin{bmatrix}
+								T_{\tilde y_1 u}(s)
+								\\[1em]
+								T_{\tilde y_2 u}(s)
+							\end{bmatrix} =
+							\begin{bmatrix}
+								1
+								\\[1em]
+								\dfrac{1}{s+2}
+							\end{bmatrix}
+							\quad\Rightarrow\quad
+							\varphi_C(s) = (s+2)
+						\]
+						\[
+							T_{\tilde y_2 u}(s) = \dfrac{\dfrac{s+2}{s+1}\dfrac{1}{s+2}}{1+\dfrac{s+2}{s+1}\dfrac{1}{s+2}} = \dfrac{\dfrac{1}{s+1}}{1+\dfrac{1}{s+1}} = \dfrac{1}{s+2}
+						\]
+						($ T_{\tilde y_2 u}(s) $) presenta un polo in $ -2 $: esso non deriva dal sistema in catena diretta, dal polo $ -1 $, che \'e stato spostato dalla retroazione sull'uscita).
+					\item 
+						\[
+							T_{y \tilde u}(s) = 
+							\begin{bmatrix}
+								T_{y \tilde u_1} & T_{y \tilde u_2}
+							\end{bmatrix} =
+							\begin{bmatrix}
+								1 & -\dfrac{1}{s+2}
+							\end{bmatrix}
+							\quad\Rightarrow\quad
+							\varphi_O(s) = (s+2)
+						\]
+						\[
+							T_{y \tilde u_2}(s) = \dfrac{\dfrac{1}{s+2}(-1)\dfrac{s+2}{s+1}}{1-\dfrac{1}{s+2}(-1)\dfrac{s+2}{s+1}} =
+							\dfrac{-\dfrac{1}{s+1}}{1+\dfrac{1}{s+1}} =
+							\dfrac{-\dfrac{1}{s+1}}{\dfrac{s+2}{s+1}} =
+							-\dfrac{1}{s+2}
+						\]
+					\item 
+						\[
+							T_{\tilde y \tilde u}(s) = 
+							\begin{bmatrix}
+								T_{\tilde y_1 \tilde u_1} & T_{\tilde y_1 \tilde u_2}
+								\\[1em]
+								T_{\tilde y_2 \tilde u_1} & T_{\tilde y_2 \tilde u_2}
+							\end{bmatrix} =
+							\begin{bmatrix}
+								1 & -\dfrac{1}{s+2}
+								\\[1em]
+								\dfrac{1}{s+2} & \dfrac{s+1}{(s+2)^2}
+							\end{bmatrix}
+						\]
+						\[
+							\begin{aligned}
+								T_{\tilde y_1 \tilde u_1} &= T(s) = 1
+								\\
+								T_{\tilde y_1 \tilde u_2} &= T_{y \tilde u_2} = -\dfrac{1}{s+2}
+								\\
+								T_{\tilde y_2 \tilde u_1} &= \dfrac{\dfrac{s+2}{s+1}\dfrac{1}{s+2}}{1+\dfrac{s+2}{s+1}\dfrac{1}{s+2}} = \dfrac{\dfrac{1}{s+1}}{1+\dfrac{1}{s+1}} = \dfrac{1}{s+2}
+								\\
+								T_{\tilde y_2 \tilde u_2} &= \dfrac{\dfrac{1}{s+2}}{1+\dfrac{1}{s+2}\dfrac{s+2}{s+1}} = \dfrac{\dfrac{1}{s+1}}{1+\dfrac{1}{s+1}} = \dfrac{s+1}{(s+2)^2}
+								\\
+							\end{aligned}
+						\]
+						\[
+							\begin{aligned}
+								\quad\Rightarrow\quad m(s) &= (s+2)^2
+								\\
+								\varphi(s) &= (s+2)^2 \quad \text{perch\'e}\ m(s) \subseteq\cdot \varphi(s) \quad \text{e} \quad \pDeg{\varphi(s)} = 2
+							\end{aligned}
+						\]
+				\end{itemize}
+			
+				Adesso studiamo nuovamente il sistema con la realizzazione minima:
+				\[
+					\begin{aligned}
+						S^{(1)}&: \quad
+						\begin{cases}
+							\dot x^{(1)} = -x^{(1)} + u^{(1)}\\
+							y^{(1)} = x^{(1)} + u^{(1)}
+						\end{cases}
+						\\
+						S^{(2)}&: \quad
+						\begin{cases}
+							\dot x^{(2)} = -2x^{(2)} + u^{(2)}\\
+							y^{(2)} = x^{(2)}
+						\end{cases}
+					\end{aligned}
+				\]
+				Le equazioni di interconnessione sono:
+				\[
+					\begin{aligned}
+						u^{(1)} &= u - y^{(2)} = u - x^{(2)}\\
+						u^{(2)} &= y^{(1)} = x^{(1)} + u^{(1)} = x^{(1)} + u - x^{(2)}\\
+						y &= y^{(1)} = x^{(1)} - x^{(2)} + u
+					\end{aligned}
+				\]
+				\[
+					\begin{cases}
+						\dot x = 
+						\begin{bmatrix}
+							-1 & -1\\
+							1 & -3
+						\end{bmatrix} x+
+						\begin{bmatrix}
+							1\\
+							1
+						\end{bmatrix} u
+						\\
+						y =
+						\begin{bmatrix}
+							1 & -1
+						\end{bmatrix} x + u
+					\end{cases}
+				\]
+				\[
+					\varphi(s) = det(sI-A) = det
+					\begin{bmatrix}
+						s+1 & 1\\
+						-1 & s+3
+					\end{bmatrix} =
+					s^2 + 4s + 4 = (s+2)^2
+				\]
+				Il sistema \'e asintoticamente stabile perch\'e tutti gli autovalori in $ m(s) $ saranno sicuramente a $ \Re < 0 $. Questo implica anche la stabilit\'a BIBO.
+				\[
+					P =
+					\begin{bmatrix}
+						1 & | & -2\\
+						1 & | & -2
+					\end{bmatrix}
+					\qquad
+					rank(P) = 1
+					\quad\Rightarrow\quad \text{NON completamente controllabile}
+				\]
+				\[
+					Q =
+					\begin{bmatrix}
+						1 & -1
+						\\\cline{1-2}
+						-2 & 2
+					\end{bmatrix}
+					\qquad
+					rank(Q) = 1
+					\quad\Rightarrow\quad \text{NON completamente osservabile}
+				\]
+			\end{Exercise}
+		\end{mdframed}
 \end{document}
