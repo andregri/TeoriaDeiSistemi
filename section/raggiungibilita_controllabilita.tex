@@ -210,7 +210,7 @@
 			\left[ B | AB | \dots | A^{n_x-1} B \right]
 		\]
 
-	\subsection{Teorema di Kalmann di raggiungibilit\'a}
+	\subsection{Teorema di Kalman di raggiungibilit\'a}
 		$ X_R $ \'e combinazione lineare di tutte le colonne di:
 		\[
 			P = \left[ B | AB | \dots | A^{n_x-1} B \right]
@@ -247,7 +247,7 @@
 			 In conclusione $ dim\left( X_R \right) = 2 $.
 		\end{mdframed}
 
-	\subsection{Corollari del teorema di Kalmann}
+	\subsection{Corollari del teorema di Kalman}
 		\begin{itemize}
 			\item 
 				\[ 
@@ -268,7 +268,7 @@
 				\]
 				dove $ ker $ \'e l'operatore kernel: $ ker\left( P \right) = \vec v\ \text{tale che}\ P \vec v = 0 $
 			\item 
-				Il teorema di Kalmann di raggiungibilit\'a pu\'o essere applicato separatamente su ogni singola variabile di controllo o gruppi di esse.
+				Il teorema di Kalman di raggiungibilit\'a pu\'o essere applicato separatamente su ogni singola variabile di controllo o gruppi di esse.
 		\end{itemize}
 	
 		\begin{mdframed}[style=Esempio]
@@ -339,7 +339,7 @@
 			T(s) = C(sI-A)^{-1}B+D = \tilde C (sI-\tilde A)^{-1} \tilde B + \tilde D
 		\]
 		
-		Si pu\'o verificare attraverso il teorema di Kalmann che lo spazio di raggiungibilit\'a \'e invariante rispetto al cambio di base:
+		Si pu\'o verificare attraverso il teorema di Kalman che lo spazio di raggiungibilit\'a \'e invariante rispetto al cambio di base:
 		\[ 
 			Z_R = Im\left\lbrace \tilde P = \left[ \tilde B | \tilde A \tilde B | \dots | \tilde A^{n_x-1} \tilde B \right] \right\rbrace
 		\]
@@ -698,7 +698,7 @@
 				H_2 B
 			\end{bmatrix}
 		\]
-		Per il teorema di Kalmann le colonne di $ B $ appartengono a $ X_R $ quindi $ H_2 \perp B $
+		Per il teorema di Kalman le colonne di $ B $ appartengono a $ X_R $ quindi $ H_2 \perp B $
 		\[
 			\Rightarrow \tilde B =
 			\begin{bmatrix}
@@ -859,7 +859,7 @@
 						0
 					\end{bmatrix} u
 				\]
-				Applichiamo il teorema di Kalmann e calcoliamo $ \tilde P $:
+				Applichiamo il teorema di Kalman e calcoliamo $ \tilde P $:
 				\[
 					\tilde P =
 					\begin{bmatrix}
@@ -973,7 +973,7 @@
 				Per studiare la controllabilit\'a possiamo procedere in due modi:
 				\begin{itemize}
 					\item
-						Usare il teorema di Kalmann che ci permette di trovare $ n_R $ e $ X_R $:
+						Usare il teorema di Kalman che ci permette di trovare $ n_R $ e $ X_R $:
 						\[
 							P =
 							\begin{bmatrix}
@@ -1053,7 +1053,7 @@
 			
 				Da queste osservazioni ricaviamo subito che $ n_R = 1 \quad\Rightarrow\quad X_R = \begin{bmatrix} \alpha\\ 0 \end{bmatrix} $.
 				
-				Si pu\'o giungere allo stesso risultato pragmaticamente utilizzando il teorema di Kalmann:
+				Si pu\'o giungere allo stesso risultato pragmaticamente utilizzando il teorema di Kalman:
 				\[
 					P =
 					\begin{bmatrix}
