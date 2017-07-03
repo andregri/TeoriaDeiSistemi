@@ -150,6 +150,10 @@
 		\]
 		
 	\subsection{Retroazione (feedback)}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.3\linewidth]{interconnections/retroazione}
+		\end{figure}
 		\[
 			y= \T{1}e = \T{1}(u-v) = \T{1}[u-\T{2}y] = \T{1}u - \T{1}\T{2}y \]
 		\[ 
@@ -165,6 +169,11 @@
 		\[
 			T(s) = \frac{\T{1}}{1\pm\T{1}\T{2}}
 		\]
+		o, ancora più in generale:
+		\[
+		T(s) = \frac{\text{catena diretta}}{1\pm \text{anello}}
+		\]
+		con il segno a denominatore opposto rispetto a quello che troviamo nel nodo sommatore.
 	\subsubsection{Loop algebrici}
 		Se tutte le funzioni di trasferimento sono semplicemente proprie, allora si forma un \textbf{loop algebrico}, che rende irrealizzabile la retroazione.
 		

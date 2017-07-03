@@ -234,7 +234,7 @@
 			\item
 				\textbf{instabile} $ \Leftrightarrow $ esiste un elemento di $ (sI-A)^{-1} $, il cui denominatore ha almeno una radice a $ \Re > 0 $ oppure almeno una radice $ \Re = 0 $ con molteplicit\'a $ > 1 $;
 			\item
-				\textbf{semplicemente stabile} $ \Leftrightarrow $ non esistono radici di nessun denominatore a $ \Re > 0 $ oppure esiste almeno una radice a $ \Re = 0 $ e tutte hanno molteplicit\'a 1.
+				\textbf{semplicemente stabile} $ \Leftrightarrow $ non esistono radici di nessun denominatore a $ \Re > 0 $ ma esiste almeno una radice a $ \Re = 0 $ con molteplicit\'a 1.
 		\end{itemize}
 	
 		\begin{mdframed}[style=Esempio]
@@ -323,9 +323,9 @@
 			\item
 				\textbf{asintoticamente stabile} se tutte le radici di $ m(s) $ hanno $ \Re < 0 $;
 			\item
-				\textbf{instabile} se $ m(s) $ ha almeno una radice a $ \Re > 0 $ oppure esiste almeno una radice a $ \Re = 0 $ ma tutte con molteplicit\'a $ >1 $ in $ m(s) $;
+				\textbf{instabile} se $ m(s) $ ha almeno una radice a $ \Re > 0 $ oppure esiste almeno una radice a $ \Re = 0 $ ma con molteplicit\'a $ >1 $ in $ m(s) $;
 			\item
-				\textbf{semplicemente stabile} in tutte le altre situazioni: nessuna radice a $ \Re > 0 $ e esiste almeno una radice a $ \Re = 0 $ con molteplicit\'a $ =1 $ in $ m(s) $.
+				\textbf{semplicemente stabile} in tutte le altre situazioni: nessuna radice a $ \Re > 0 $ ma esiste almeno una radice a $ \Re = 0 $ con molteplicit\'a $ =1 $ in $ m(s) $.
 		\end{itemize}
 	
 		\begin{mdframed}[style=Esempio]
@@ -537,6 +537,12 @@
 					$ (\pi, 0) $: se aumentiamo leggermente $ x $, la derivata \'e negativa, cio\'e lo stato tende a tornare al punto di equilibrio; lo stesso accade se diminuiamo leggermente $ x $, la derivata \'e positiva, cio\'e lo stato tende ad aumentare opponendosi alla nostra variazione. Allora si tratta di un punto di equilibrio asintoticamente stabile localmente. 
 			\end{itemize}
 		
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=0.4\linewidth]{punto_equilibrio/derivata_sistema_sinusoidale}
+				\caption{Grafico della derivata dello stato. In blu le direzioni di incremento (verso destra, quando la derivata \'e positiva) e di decremento (verso sinistra, quando la derivata \'e negativa).}
+			\end{figure}
+		
 			Adesso studiamo il sistema linearizzato:
 			\[
 				\begin{aligned}
@@ -596,11 +602,11 @@
 		Se il sistema linearizzato ha:
 		\begin{itemize}
 			\item
-				tutti autovalori a $ \Re < 0 \quad \Rightarrow \quad (\hat x, \hat u) $ \'e \textbf{asintoticamente stabile localmente} per il sistema non lineare;
+				tutti autovalori di $(sI-A)^{-1}$ sono a $ \Re < 0 \quad \Rightarrow \quad (\hat x, \hat u) $ \'e \textbf{asintoticamente stabile localmente} per il sistema non lineare;
 			\item
-				almeno un autovalore a $ \Re > 0 \quad \Rightarrow \quad (\hat x, \hat u) $ \'e \textbf{instabile localmente} per il sistema non lineare;
+				almeno un autovalore di $(sI-A)^{-1}$ \'e a $ \Re > 0 \quad \Rightarrow \quad (\hat x, \hat u) $ \'e \textbf{instabile localmente} per il sistema non lineare;
 			\item
-				in tutti gli altri casi (esistono autovalori del linearizzato a $ \Re = 0 $ e nessuno a $ \Re > 0 $) $ \quad \Rightarrow \quad $ \textbf{non si conclude} nulla sulla stabilit\'a del sistema non lineare, anche se il linearizzato \'e semplicemente stabile.
+				in tutti gli altri casi (esistono autovalori di $(sI-A)^{-1}$ del sistema linearizzato a $ \Re = 0 $ e nessuno a $ \Re > 0 $) $ \quad \Rightarrow \quad $ \textbf{non si conclude} nulla sulla stabilit\'a del sistema non lineare, anche se il sistema linearizzato \'e semplicemente stabile.
 		\end{itemize}
 	
 		\begin{mdframed}[style=Esempio]

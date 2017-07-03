@@ -138,11 +138,11 @@
 						1 & 0 & 0\\
 						0 & 0 & 1\\
 						\hline
-						-1 & 1 & 0\\
+						-1 & 0 & 0\\
 						0 & 1 & 0\\
 						\hline
 						1 & 0 & 0\\
-						0 & 1 & 0
+						0 & 0 & 1
 					\end{bmatrix}
 				\]
 				$ rank\{Q\} = 3 = n_x $ il rango \'e massimo quindi il sistema \'e completamente osservabile.
@@ -157,17 +157,17 @@
 					Q_1 =
 					\begin{bmatrix}
 						1 & 0 & 0\\
-						-1 & 1 & 0\\
+						-1 & 0 & 0\\
 						1 & 0 & 0
 					\end{bmatrix}
 				\] 
-				$ rank\{Q_1\} = 2 $ quindi il sistema non \'e completamente osservabile da $ y_1 $. Calcoliamo $ X_{NO1} $:
+				$ rank\{Q_1\} = 1 $ quindi il sistema non \'e completamente osservabile da $ y_1 $. Calcoliamo $ X_{NO1} $:
 				\[
 					\tilde x =
 					\begin{bmatrix}
-						a\\
-						b\\
-						c
+						a & d \\
+						b & e \\
+						c & f
 					\end{bmatrix}
 					\quad\text{tale che}\quad
 					Q_1 \tilde x = 0
@@ -175,30 +175,36 @@
 				\[
 					\begin{bmatrix}
 						1 & 0 & 0\\
-						-1 & 1 & 0\\
+						-1 & 0 & 0\\
 						1 & 0 & 0
 					\end{bmatrix}
 					\begin{bmatrix}
-						a\\
-						b\\
-						c
+						a & d \\
+						b & e \\
+						c & f
 					\end{bmatrix} =
 					\begin{bmatrix}
-						0\\
-						0\\
-						0
+						0 & 0\\
+						0 & 0\\
+						0 & 0
 					\end{bmatrix}
-					\quad\Rightarrow\quad
-					\begin{cases}
-						a = 0\\
-						-a+b = 0\\
-						a = 0
-					\end{cases}
+					\Rightarrow
+					\begin{bmatrix}
+						a & d \\
+						-a & -d \\
+						a & d
+					\end{bmatrix} =
+					\begin{bmatrix}
+						0 & 0\\
+						0 & 0\\
+						0 & 0
+					\end{bmatrix}
+					\Rightarrow a=d=0
 					\quad\Rightarrow\quad X_{NO} =
 					\begin{bmatrix}
-						0\\
-						0\\
-						c
+						0 & 0 \\
+						b & e \\
+						c & f
 					\end{bmatrix}
 				\]
 				Consideriamo solo $ y_2 $:
@@ -212,7 +218,7 @@
 					\begin{bmatrix}
 						0 & 0 & 1\\
 						0 & 1 & 0\\
-						0 & 1 & 0
+						0 & 0 & 1
 					\end{bmatrix}
 				\] 
 				$ rank\{Q_2\} = 2 $ quindi il sistema non \'e completamente osservabile da $ y_2 $. Calcoliamo $ X_{NO2} $ analogamente a prima e otteniamo:
@@ -227,7 +233,7 @@
 			\end{Exercise}
 		\end{mdframed}
 
-	\subsection{Decomposizione di Kalman di osservabilit\'a}
+	\subsection{Decomposizione canonica di osservabilit\'a}
 		Prendiamo una matrice $ T = [T_1 | T_2] $ dove
 		\begin{itemize}
 			\item 

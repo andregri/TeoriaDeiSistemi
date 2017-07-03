@@ -57,7 +57,7 @@
 		La corrente $ i $ \'e una quantit\'a che evolve nel tempo, ma nell'equazione scompare. Si tratta di una variabile interna che pu\'o essere sostituita dalla tensione.
 		
 		Ridefiniamo alcune variabili:
-		\[ v_{in}(t) \triangleq u(t) \qquad v_{out}(t) = y(t) \]
+		\[ v_{in}(t) \triangleq u(t) \qquad v_{out}(t) \triangleq  y(t) \]
 		
 		Il sistema pu\'o essere descritto con:
 		\begin{itemize}
@@ -176,7 +176,7 @@
 		Infatti anche se $h(t)$ diventa maggiore dell'altezza massima della vasca, cio\'e l'acqua comincia a fuoriuscire, l'equazione del modello dice che la variazione di altezza cresce (se supponiamo positivo il secondo membro di \ref{eq.vasca_non_lineare}), mentre in realt\'a si dovrebbe annullare.
 		
 	\section{Linearizzazione}
-		Consideriamo il sistema della vasca nel paragrafo precedente: fissiamo un altezza $ \bar{h} $ e supponiamo che $ u(t) \equiv \bar{u} = e \sqrt{\overset{  }{2g \bar{h}}} $. Ne segue che $ \dot{h}(\bar{t}) = 0 $. Questa situazione \'e detta condizione di equilibrio e $( \bar{h} , \bar{u}) $ \'e il punto di equilibrio.\\
+		Consideriamo il sistema della vasca nel paragrafo precedente: fissiamo un altezza $ \bar{h} $ e supponiamo che $ u(t) \equiv \bar{u} = E \sqrt{\overset{  }{2g \bar{h}}} $. Ne segue che $ \dot{h}(\bar{t}) = 0 $. Questa situazione \'e detta condizione di equilibrio e $( \bar{h} , \bar{u}) $ \'e il punto di equilibrio.\\
 		\newline
 		Nei passaggi successivi riscriveremo l'equazione \ref{eq.vasca_non_lineare}: $ \quad \dot{h(t)} = f(h(t),u(t)) $\\		
 		\newline
@@ -191,9 +191,9 @@
 		poich\'e $ f \big( \bar{h},\bar{u} \big) = 0 $:
 		\[
 			\begin{aligned}
-				\left. \pder{f(h,u)}{h} \right|_{(\bar{h},\bar{u})} &= - \frac{E}{S} \sqrt{2g} \left. \frac{1}{2\sqrt{h}} \right|_{(\bar{h},\bar{u})} = - \frac{E}{2S} \sqrt{\frac{2g}{\bar{h}}} = - \alpha \quad &(\alpha > 0)
+				\left. \pder{f(h,u)}{h} \right|_{(\bar{h},\bar{u})} &= - \frac{E}{S} \sqrt{2g} \left. \frac{1}{2\sqrt{h}} \right|_{(\bar{h},\bar{u})} = - \frac{E}{2S} \sqrt{\frac{2g}{\bar{h}}} \triangleq  - \alpha \quad &(\alpha > 0)
 				\\
-				\left. \pder{f(h,u)}{u} \right|_{(\bar{h},\bar{u})} &= \frac{1}{S} = \beta \quad &(\beta > 0)
+				\left. \pder{f(h,u)}{u} \right|_{(\bar{h},\bar{u})} &= \frac{1}{S} \triangleq  \beta \quad &(\beta > 0)
 			\end{aligned}
 		\]
 		%

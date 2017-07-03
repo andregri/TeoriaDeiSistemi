@@ -74,19 +74,28 @@
 	\section{Soluzione dell'equazione di stato}
 		Significa trovare $ \vec x(t) $ e di conseguenza $ \vec y(t) $, dati $ \vec x(t_0^-) $ e $ u(\tau) $ per $ \tau \in [0, t_0] $.
 		
-		Si dimostra che:
+		Si dimostra la seguente soluzione dell'equazione di stato, detta \textit{equazione di Lagrange}:
 		\[
-			\vec x(t) = C e^{At} \vec x(0^-) + C \int_{0^-}^{t} e^{A(t-\tau)} B \vec u(\tau) d\tau + D \vec u(t)
+			\vec x(t) = e^{At} \vec x(0^-) + \int_{0^-}^{t} e^{A(t-\tau)} B \vec u(\tau) d\tau 
+		\]
+		da cui :
+			\[
+		\vec y(t) = C e^{At} \vec x(0^-) + C \int_{0^-}^{t} e^{A(t-\tau)} B \vec u(\tau) d\tau + D \vec u(t)
 		\]
 		dove:
 		\begin{itemize}
 			\item 
-				$ e^{At} \vec x(0^-) \quad $ evoluzione libera dello stato. \'E l'uscita che dipende solo dalle $ n_x $ condizioni iniziali, pertanto si chiama vettore delle uscite libere.
+				$ e^{At} \vec x(0^-) \quad $ \'E l'evoluzione libera dello stato $\vec x_l(t)$.
 			\item
-				$ \int_{0^-}^{t} e^{A(t-\tau)} B \vec u(\tau) d\tau \quad $ integrale di convoluzione che rappresenta l'evoluzione forzata dello stato.
+				$ \int_{0^-}^{t} e^{A(t-\tau)} B \vec u(\tau) d\tau \quad $ \'E l'integrale di convoluzione che rappresenta l'evoluzione forzata dello stato $\vec x_f(t)$.
+			\item 
+				$ C e^{At} \vec x(0^-) \quad $  \'E l'uscita che dipende solo dalle $ n_x $ condizioni iniziali, pertanto si chiama \textit{vettore delle uscite libere} $\vec y_l(t)$.
+			\item 
+				$ C \int_{0^-}^{t} e^{A(t-\tau)} B \vec u(\tau) d\tau + D \vec u(t) \quad $  \'E il  \textit{vettore delle uscite forzate} $\vec y_f(t)$.
 		\end{itemize}
 	
 	\subsection{Come si calcola $ e^{At} $}
+	Scomponendo con Taylor:
 		\[
 			e^{At} = I + \dfrac{At}{1!} + \dfrac{(At)^2}{2!} + \dfrac{(At)^3}{3!} + \dots = \sum_{k=0}^{k=\infty} \dfrac{A^k t^k}{k!}
 		\]
@@ -110,7 +119,7 @@
 							\qquad
 							A^k =
 							\begin{bmatrix}
-								0 & 1\\ 0 & 0
+								0 & 0\\ 0 & 0
 							\end{bmatrix}
 						\]
 						Abbiamo trovato che A \'e una matrice nil-potente di ordine 2.
@@ -133,7 +142,7 @@
 			\item
 				A \'e una matrice diagonale:
 				\[
-					e^{At} =
+					e^{At} = \sum_{k=0}^{k=\infty}
 					\begin{bmatrix}
 						\dfrac{\lambda_1^k t^k}{k!} & \dots & 0
 						\\
@@ -150,7 +159,36 @@
 					\end{bmatrix}
 				\]
 			\item
-				Negli altri casi usiamo questa formula che verr\'a chiarita in seguito:
+				A \'e una matrice diagonalizzabile:\\
+				Possiamo quindi trovare una matrice $D_A$ diagonale: $ A=T D_A T^{-1} \rightarrow D_A=T^{-1} A T $.\\
+				Inoltre si dimostra abbastanza agevolmente che $ A^K =T D_A^K T^{-1}$\\
+				Abbiamo perci\'o:
+				\[
+				e^{At} = T e^{D_A t} T^{-1}
+				\]
+			\item
+				A \'e una matrice Jordanizzabile:\\
+				Possiamo quindi trovare una matrice di Jordan $D_J$ diagonale a blocchi, i cui elementi sulla diagonale siano miniblocchi di Jordan $M$ nella forma:
+				\[
+					M=
+					\begin{bmatrix}
+					\lambda_i & 1 & 0 & \dots & 0
+					\\
+					0 & \lambda_i & 1 & \ddots & \vdots
+					\\
+					0 & \ddots & \ddots & \ddots & 0
+					\\
+					0 & 0 & \dots & 0 & \lambda_i
+					\end{bmatrix}
+				\]
+				Perci\'o : $ A=T D_j T^{-1} \rightarrow D_J=T^{-1} A T $.\\
+				Anche in questo caso $ A^K =T D_J^K T^{-1}$\\
+				Abbiamo perci\'o:
+				\[
+				e^{At} = T e^{D_J t} T^{-1}
+				\]
+			\item
+				Negli altri casi usiamo questa formula generale, utile anche la maggior parte delle volte che sar\'a possibile usarla in modo pi\'u agevole al posto dei metodi illustrati sopra, e che verr\'a chiarita in seguito:
 				\[
 					e^{At} = \aLbrace{(sI-A)^{-1}}
 				\]

@@ -34,28 +34,23 @@
 				se $ \tilde x \in X_R(\tilde t) $, allora $ \tilde x \in X_R(\hat t)\ \forall \hat t > 0 $.
 				Lo stesso vale per $ X_C $ per la propriet\'a precedente.
 				
-				Per i sistemi LTI si parla dunque di $ X_R \equiv X_C $ indipendentemente dal tempo.
-				
-				Prendiamo:
-				\begin{itemize}
-					\item
-						$ \dot x = A x + B u $ \'e un sistema completamente controllabile in $ \tilde t $;
-					\item
-						dato uno stato iniziale $ x(0^-) = \hat x $, voglio ottenere che lo stato in $ \tilde t $ sia: $ x(\tilde t) = \tilde x $;
-				\end{itemize}
-			
-				Dimostriamo questa propriet\'a per un determinato controllo:
-				\[
-					\tilde u(\tau) = B^T e^{A^T (\tilde t - \tau)} \cdot \left[ \int_{0^-}^{\tilde t} e^{A(\tilde t - \epsilon)} B B^T e^{A^T (\tilde t - \epsilon)} d\epsilon \right]^{-1} \cdot \left( \tilde x - e^{A \tilde t} \hat x \right) = B^T e^{A^T (\tilde t - \tau)} \cdot W^{-1}\big( \tilde t \big) \cdot \left( \tilde x - e^{A \tilde t} \hat x \right)
-				\]
-				Applico l'equazione di Lagrange per calcolare $ x\big( \tilde t \big) $:
-				\begin{align*}
-					x\big( \tilde t \big) &= e^{A \tilde t} \hat x + \underbrace{\int_{0^-}^{\tilde t} e^{A(\tilde t - \tau)} B B^T e^{A^T (\tilde t - \tau)}}_{W\big( \tilde t \big)} W^{-1}\big( \tilde t \big) \left( \tilde x - e^{A \tilde t} \hat x \right) =
-					\\
-					&= e^ {A \tilde t} \hat x + \left[ W\big( \tilde t \big) W^{-1}\big( \tilde t \big) \right] \left( \tilde x - e^{A \tilde t} \hat x \right) = \hat x \quad \forall \tilde t > 0
-				\end{align*}
-				Ho dimostrato che partendo da dove voglio $ \hat x $, arrivo dove voglio $ \tilde x $ in un tempo a piacere, se prendo il giusto controllo $ \tilde u(t) $.
-		\end{itemize}
+				Per i sistemi LTI si parla dunque di $ X_R \equiv X_C $ indipendentemente dal tempo.\\
+				Infatti se prendiamo un sistema 	$ \dot x = A x + B u $ completamente controllabile in $ \tilde t $, dato uno stato iniziale $ x(0^-) = \hat x $ otteniamo che lo stato in $ \tilde t $ sia $ x(\tilde t) = \tilde x $;
+			\end{itemize}
+
+			\paragraph{Dimostrazione dell'indipendenza da \textit{t}}
+			Dimostriamo questa propriet\'a per un determinato controllo, utilizzando $W(t)$, detta \textit{matrice Gramiana di controllabilit\'a}:
+			\[
+				\tilde u(\tau) = B^T e^{A^T (\tilde t - \tau)} \cdot \left[ \int_{0^-}^{\tilde t} e^{A(\tilde t - \epsilon)} B B^T e^{A^T (\tilde t - \epsilon)} d\epsilon \right]^{-1} \cdot \left( \tilde x - e^{A \tilde t} \hat x \right) = B^T e^{A^T (\tilde t - \tau)} \cdot W^{-1}\big( \tilde t \big) \cdot \left( \tilde x - e^{A \tilde t} \hat x \right)
+			\]
+			Applico l'equazione di Lagrange per calcolare $ x\big( \tilde t \big) $:
+			\begin{align*}
+				x\big( \tilde t \big) &= e^{A \tilde t} \hat x + \underbrace{\int_{0^-}^{\tilde t} e^{A(\tilde t - \tau)} B B^T e^{A^T (\tilde t - \tau)}}_{W\big( \tilde t \big)} W^{-1}\big( \tilde t \big) \left( \tilde x - e^{A \tilde t} \hat x \right) =
+				\\
+				&= e^ {A \tilde t} \hat x + \left[ W\big( \tilde t \big) W^{-1}\big( \tilde t \big) \right] \left( \tilde x - e^{A \tilde t} \hat x \right) = \hat x \quad \forall \tilde t > 0
+			\end{align*}
+			Ho dimostrato che partendo da dove voglio $ \hat x $, arrivo dove voglio $ \tilde x $ in un tempo a piacere, se prendo il giusto controllo $ \tilde u(t) $. \textbf{C.V.D.} \\
+		\\
 		\noindent
 		Inoltre valgono le seguenti propriet\'a per $ X_R \equiv X_C $:
 		\begin{itemize}
@@ -187,9 +182,9 @@
 		In generale $ A^{n_x+k} $ \'e combinazione lineare di $ I, A, \dots, A_{n_x-1} $.
 		
 	\subsubsection{Com'\'e fatto $ X_R $}
-		Se ipotizziamo $ \vec x(0^-) $:
+		Se ipotizziamo $ \vec x(0^-) $=0:
 		\[
-			X_R = \left\lbrace \text{sottospazio di tutti i}\ \tilde x\ \text{raggiungibili} \right\rbrace = \left\lbrace \int_{0^-}^{\tilde t} e^{A(\tilde t - \tau)} B \tilde u(\tau) d\tau, \forall \tilde t \right\rbrace
+			X_R = \left\lbrace \text{sottospazio di tutti i}\ \tilde x\ \text{raggiungibili} \right\rbrace = \left\lbrace \int_{0^-}^{\tilde t} e^{A(\tilde t - \tau)} B \tilde u(\tau) d\tau, \forall \tilde t \right\rbrace \footnote{\'E l'equazione di Lagrange calcolata con $x(0^-)=0$}
 		\]
 		L'integrale pu\'o essere visto come combinazione lineare di infiniti termini tra $ e^{A(\tilde t - \tau)} B $ e $ u(\tau) $:
 		\[
@@ -323,7 +318,7 @@
 		
 		Effettuiamo il cambio di base:
 		\begin{align*}
-			\dot z &= \dot{(Tz)} = T \dot z = ATz + Bu
+			\dot x &= \dot{(Tz)} = T \dot z = ATz + Bu
 			\\
 			y &= CTz + Du
 		\end{align*}
@@ -732,7 +727,7 @@
 		\]
 		Con questo cambiamento di base abbiamo ottenuto che le prime $ n_R $ componenti sono raggiungibili, le ultime $ n_{NR} $ non sono raggiungibili. Abbiamo messo in ordine la struttura della matrice. Strutturalmente $ z_{NR} $ \'e non raggiungibile perch\'e \'e indipendente dal controllo, invece $ z_R $ \'e completamente raggiungibile.
 		\begin{figure}[H]
-			\centering\includegraphics[width=.5\textwidth]{raggiungibilita_controllabilita/decomposizione_controllabilita}
+			\centering\includegraphics[width=.4\textwidth]{raggiungibilita_controllabilita/decomposizione_controllabilita}
 		\end{figure}
 		
 		\begin{mdframed}[style=Exercise]

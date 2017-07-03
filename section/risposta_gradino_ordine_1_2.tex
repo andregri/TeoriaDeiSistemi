@@ -89,11 +89,24 @@
 				\]
 		\end{itemize}
 		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.4\textwidth]{risposta_gradino_ordine_1_2/sistema_ord_1}
+			\caption{Grafico della risposta al gradino di un sistema di ordine 1.}
+		\end{figure} 
+		
 	\subsubsection{Tempo di assestamento}
+		Definiamo intanto:
 		\[
 			T_a = inf \left\lbrace \bar t : | y_f(t) - y_f(\infty) | \leq 0.05 \cdot y_f(\infty) \quad \forall t > \bar t \right\rbrace
 		\]
 		In questa categoria di sistemi si pu\'o verificare facilmente che: $ T_a \cong 3\tau $.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.6\textwidth]{risposta_gradino_ordine_1_2/sistema_ord_1_t_assest}
+			\caption{Tempo di assestamento ed altri parametri.}
+		\end{figure} 
 		
 	\section{Sistemi di ordine 2}
 		\[ 
@@ -124,7 +137,7 @@
 				\xi = \frac{a_1}{2\sqrt{a_0}} \quad &\text{coefficiente di smorzamento}
 			\end{cases}
 		\]
-		I poli del denominatore sono:
+		I poli di $T(s)$ sono:
 		\[ 
 			p_{1,2} = w_0(-\xi \pm \sqrt{\xi^2-1})
 		\]
