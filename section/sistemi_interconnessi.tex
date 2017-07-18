@@ -473,17 +473,16 @@
 		
 	\subsection{Propriet\'a di controllabilit\'a e osservabilit\'a}
 		Condizione necessaria per la controllabilit\'a (osservabilit\'a) di un sistema interconnesso \'e che tutti i suoi possibili sottosistemi siano controllabili (osservabili).
-		
-		Si consideri un sistema interconnesso $ S $ formato da $ N $ sottosistemi, ognuno dei quali \'e completamente controllabile e osservabile.
+		\paragraph{Dimostrazione} Si consideri un sistema interconnesso $ S $ formato da $ N $ sottosistemi, ognuno dei quali \'e completamente controllabile e osservabile.
 		
 		\begin{figure}[H]
-			\centering\includegraphics[width=.4\textwidth]{sistemi_interconnessi/sistema_ausiliario}
+			\centering\includegraphics[width=.3\textwidth]{sistemi_interconnessi/sistema_ausiliario}
 			\caption{sistema ausiliario}
 			\label{fig:sistema_ausiliario}
 		\end{figure}
 		Prendiamo un sistema ausiliario come in figura \ref{fig:sistema_ausiliario} costituito da tutti i singoli $ S^{(i)} $ ognuno con un suo ingresso $ \tilde{\vec u^{(i)}} $ e una sua uscita $ \tilde{\vec y^{(i)}} = \vec{y}^{(i)} $. Il sistema $ \tilde S $ \'e completamente controllabile da $ \tilde{\vec u} $ e completamente osservabile da $ \tilde{\vec y} $.
 		
-		Il sistema interconnesso $ S $ con aggiunta di ingressi "ausiliari" $ \tilde{\vec u}^{(i)} $ e uscite "ausiliarie" $ \tilde{\vec y}^{(i)} $ corrisponde, se considero come ingressi $ \tilde{\vec u} $ e come uscite $ \tilde{\vec y} $, a una retroazione algebrica sull'uscita di $ \tilde S $. Sappiamo che la retroazione algebrica sull'uscita non modifica le propriet\'a di controllabilit\'a e osservabilit\'a, quindi il sistema cos\'i costituito \'e completamente controllabile da $ \tilde{\vec u} $ e osservabile da $ \tilde{\vec y} $.
+		Il sistema interconnesso $ S $ con aggiunta di ingressi "ausiliari" $ \tilde{\vec u}^{(i)} $ e uscite "ausiliarie" $ \tilde{\vec y}^{(i)} $ corrisponde, se considero come ingressi $ \tilde{\vec u} $ e come uscite $ \tilde{\vec y} $, a una retroazione algebrica sull'uscita di $ \tilde S $. Sappiamo che la retroazione algebrica sull'uscita non modifica le propriet\'a di controllabilit\'a e osservabilit\'a, quindi il sistema cos\'i costituito \'e completamente controllabile da $ \tilde{\vec u} $ e osservabile da $ \tilde{\vec y} $. \textbf{C.V.D.}
 		
 		La controllabilit\'a \'e relativa agli ingressi e non dipende dalle particolari uscite. Se scelgo come ingressi quelli "veri" $ \vec u $ e come uscite quelle ausiliare $ \tilde{\vec y} $, allora da $ T_{\tilde y u}(s) $ ottengo le propriet\'a sulla controllabilit\'a. Analogamente se considero $ T_{y \tilde u}(s) $ ottengo propriet\'a sull'osservabilit\'a. Se scelgo $ T_{yu}(s) $ ottengo propriet\'a su controllabilit\'a e osservabilit\'a.
 		\[
@@ -793,7 +792,7 @@
 	
 		\begin{mdframed}[style=Exercise]
 			\begin{Exercise}[title={Studio di un sistema dato in $ T(s) $}]
-				Dato il sistema (in cui sono stati aggiunti ingressi e uscite ausiliarie):
+				Dato il sistema dell'esercizio 22 ma con un $-$ sulla retroazione al nodo sommatore, e con cui sono stati aggiunti ingressi e uscite ausiliarie:
 				\begin{figure}[H]
 					\centering
 					\begin{tikzpicture}[auto, node distance=2cm,>=latex']

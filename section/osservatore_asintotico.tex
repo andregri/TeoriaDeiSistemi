@@ -59,6 +59,15 @@
 			Un sistema \'e \textit{detettabile} se e solo se gli autovalori osservabili sono tutti a $ \Re < 0 $. Quindi se un sistema \'e \textit{detettabile}, \'e possibile costruire un osservatore asintotico.
 		\end{definition}
 		
+		\paragraph{Osservatore deterministico e non deterministico (stocastico)}
+		La caratterizzazione tra un osservatore \textit{deterministico} e \textit{non deterministico} \'e del tutto generale. \'E evidente che la velocit\'a di convergenza dell'osservatore di stato pu\'o essere modificata agendo sulla matrice \textit{L}.\\
+		Tipicamente viene associato a questo tipo di osservatore il nome di \textit{Osservatore di Luenberger} o di osservatore deterministico per distinguerlo dall'osservatore non deterministico detto \textit{Filtro di Kalman}.\\
+		In realt\'a entrambi i tipi di osservatore hanno la medesima struttura e si differenziano solo per la scelta della matrice \textit{L}:
+		\begin{itemize}
+			\item nel caso deterministico la scelta \'e legata esclusivamente alla velocit\'a di convergenza della stima;
+			\item nel caso non deterministico la scelta \'e influenzata dall'incertezza sulla misura di ${\vec {u}}(t)$ e ${\vec {y}}(t)$.
+		\end{itemize}
+		
 	\subsection{Osservatore di Luenberger}
 		\[
 			\begin{cases}

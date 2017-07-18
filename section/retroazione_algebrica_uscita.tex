@@ -112,7 +112,7 @@
 		c.v.d.
 		
 	\subsection{Polinomio caratteristico}
-		Supponiamo di effettuare la decomposizione di Kalmann al sistema retroazionato:
+		Supponiamo di effettuare la decomposizione di Kalman al sistema retroazionato:
 		\[
 			\tilde S^{*}:
 			\begin{cases}
@@ -152,7 +152,7 @@
 			\end{bmatrix}
 		\]
 		
-		$ \varphi^{*}(s) $ \'e il polinomio caratteristico associato $ A + BKC $. $ \tilde \varphi^{*}(s) $ \'e il polinomio caratteristico del sistema retroazionato decomposto con Kalmann, associato a $ \tilde A + \tilde B K \tilde C $. Nonostante ci\'o il polinomio caratteristico \'e invariante ai cambiamenti di base:
+		$ \varphi^{*}(s) $ \'e il polinomio caratteristico associato $ A + BKC $. $ \tilde \varphi^{*}(s) $ \'e il polinomio caratteristico del sistema retroazionato decomposto con Kalman, associato a $ \tilde A + \tilde B K \tilde C $. Nonostante ci\'o il polinomio caratteristico \'e invariante ai cambiamenti di base:
 		\[
 			\varphi^{*}(s) = \tilde \varphi^{*}(s)
 		\]
@@ -161,7 +161,7 @@
 		\[
 			\varphi^{*}(s) = \tilde \varphi^{*}(s) = det(sI-\tilde A_{11}) \cdot det[sI-(\tilde A_{22} + \tilde B_2 K \tilde C_2)] \cdot det(sI-\tilde A_{33}) \cdot det(sI-\tilde A_{44})
 		\]
-		Rispetto a quanto avevamo trovato nella \hyperref[sec:decomp_kalmann_polinomio]{decomposizione di Kalmann}, solo il secondo fattore \'e stato modificato dalla retroazione:
+		Rispetto a quanto avevamo trovato nella \hyperref[sec:decomp_kalmann_polinomio]{decomposizione di Kalman}, solo il secondo fattore \'e stato modificato dalla retroazione:
 		\begin{center}
 			\fbox{
 				\begin{minipage}{.8\linewidth}
@@ -231,7 +231,7 @@
 							\end{bmatrix}
 						\]
 						Trucchetto: se nella matrice compare un denominatore di grado massimo, allora esso sar\'a il polinomio caratteristico: $ \varphi_C(s) = s^2 $. Inoltre $ \varphi_C(s) \equiv m_C(s) $.\\
-						Oppure col teorema di Kalmann:
+						Oppure col teorema di Kalman:
 						\[
 							P =
 							\begin{bmatrix}

@@ -79,7 +79,7 @@
 					$ X_{NO} $ \'e invariante rispetto ad $ A $: se $ \tilde x \in X_{NO} $, allora $ A \tilde x \in X_{NO} $
 			\end{itemize}
 	
-	\subsection{Teorema di Kalmann di Osservabilit\'a}
+	\subsection{Teorema di Kalman di Osservabilit\'a}
 		\[
 			X_{NO} \triangleq Ker\{Q\} \quad n_{NO} \triangleq dim { X_{NO} }
 		\]
@@ -98,7 +98,7 @@
 			}_{n_x}
 			n_x \times n_y
 		\]
-	\subsection{Corollari del teorema di Kalmann}
+	\subsection{Corollari del teorema di Kalman}
 		\begin{itemize}
 			\item
 				\textbf{sistema completamente osservabile} $ \quad\Leftrightarrow\quad $
@@ -106,7 +106,7 @@
 					\quad\Leftrightarrow\quad X_{NO} = Ker\{Q\} = {0} \quad\Leftrightarrow\quad n_{NO} = 0 \quad\Leftrightarrow\quad rank\{Q\} = n_x\ \text{(ha rango massimo)}
 				\]
 			\item 
-				posso applicare il teorema di Kalmann di osservabilit\'a a gruppi di uscite o a ogni singola uscita.
+				posso applicare il teorema di Kalman di osservabilit\'a a gruppi di uscite o a ogni singola uscita.
 			\item 
 				sistema completamente NON osservabile $ \quad\Leftrightarrow\quad X_{NO} = \R^{n_x} \quad\Leftrightarrow\quad rank\{Q\} = 0 \quad\Leftrightarrow\quad C = [0] $ cio\'e l'uscita non dipende dallo stato.
 		\end{itemize}
@@ -138,11 +138,11 @@
 						1 & 0 & 0\\
 						0 & 0 & 1\\
 						\hline
-						-1 & 1 & 0\\
+						-1 & 0 & 0\\
 						0 & 1 & 0\\
 						\hline
 						1 & 0 & 0\\
-						0 & 1 & 0
+						0 & 0 & 1
 					\end{bmatrix}
 				\]
 				$ rank\{Q\} = 3 = n_x $ il rango \'e massimo quindi il sistema \'e completamente osservabile.
@@ -157,17 +157,17 @@
 					Q_1 =
 					\begin{bmatrix}
 						1 & 0 & 0\\
-						-1 & 1 & 0\\
+						-1 & 0 & 0\\
 						1 & 0 & 0
 					\end{bmatrix}
 				\] 
-				$ rank\{Q_1\} = 2 $ quindi il sistema non \'e completamente osservabile da $ y_1 $. Calcoliamo $ X_{NO1} $:
+				$ rank\{Q_1\} = 1 $ quindi il sistema non \'e completamente osservabile da $ y_1 $. Calcoliamo $ X_{NO1} $:
 				\[
 					\tilde x =
 					\begin{bmatrix}
-						a\\
-						b\\
-						c
+						a & d \\
+						b & e \\
+						c & f
 					\end{bmatrix}
 					\quad\text{tale che}\quad
 					Q_1 \tilde x = 0
@@ -175,30 +175,36 @@
 				\[
 					\begin{bmatrix}
 						1 & 0 & 0\\
-						-1 & 1 & 0\\
+						-1 & 0 & 0\\
 						1 & 0 & 0
 					\end{bmatrix}
 					\begin{bmatrix}
-						a\\
-						b\\
-						c
+						a & d \\
+						b & e \\
+						c & f
 					\end{bmatrix} =
 					\begin{bmatrix}
-						0\\
-						0\\
-						0
+						0 & 0\\
+						0 & 0\\
+						0 & 0
 					\end{bmatrix}
-					\quad\Rightarrow\quad
-					\begin{cases}
-						a = 0\\
-						-a+b = 0\\
-						a = 0
-					\end{cases}
+					\Rightarrow
+					\begin{bmatrix}
+						a & d \\
+						-a & -d \\
+						a & d
+					\end{bmatrix} =
+					\begin{bmatrix}
+						0 & 0\\
+						0 & 0\\
+						0 & 0
+					\end{bmatrix}
+					\Rightarrow a=d=0
 					\quad\Rightarrow\quad X_{NO} =
 					\begin{bmatrix}
-						0\\
-						0\\
-						c
+						0 & 0 \\
+						b & e \\
+						c & f
 					\end{bmatrix}
 				\]
 				Consideriamo solo $ y_2 $:
@@ -212,7 +218,7 @@
 					\begin{bmatrix}
 						0 & 0 & 1\\
 						0 & 1 & 0\\
-						0 & 1 & 0
+						0 & 0 & 1
 					\end{bmatrix}
 				\] 
 				$ rank\{Q_2\} = 2 $ quindi il sistema non \'e completamente osservabile da $ y_2 $. Calcoliamo $ X_{NO2} $ analogamente a prima e otteniamo:
@@ -227,7 +233,7 @@
 			\end{Exercise}
 		\end{mdframed}
 
-	\subsection{Decomposizione di Kalmann di osservabilit\'a}
+	\subsection{Decomposizione canonica di osservabilit\'a}
 		Prendiamo una matrice $ T = [T_1 | T_2] $ dove
 		\begin{itemize}
 			\item 
@@ -340,7 +346,7 @@
 	\subsection{Studio dell'osservabilit\'a}
 		\begin{itemize}
 			\item 
-				Utilizzando il teorema di Kalmann si trovano $ X_{NO} $ e $ n_O = n_x - dim(X_{NO}) $
+				Utilizzando il teorema di Kalman si trovano $ X_{NO} $ e $ n_O = n_x - dim(X_{NO}) $
 			\item 
 				Studiando $ C(sI-A)^{-1} $ si ottengono $ \varphi_O(s) $ e $ \pDeg{\varphi_O(s)} $
 		\end{itemize}
@@ -375,7 +381,7 @@
 			
 				Studiamo l'osservabilit\'a del sistema, cio\'e se \'e possibile ricavare il volume di ciascuna vasca partendo dal volume totale.
 				
-				\paragraph{Metodo con teorema di Kalmann}
+				\paragraph{Metodo con teorema di Kalman}
 					\[
 						Q =
 						\begin{bmatrix}
@@ -487,7 +493,7 @@
 							0 & 1
 						\end{bmatrix}
 					\]
-					Si vede subito che il sistema \'e completamente osservabile perch\'e lo stato coincide con le uscite, ma si pu\'o ricavare rigorosamente con il teorema di Kalmann: basta osservare che $ rank\left\lbrace C \right\rbrace = 2 = n_x $.
+					Si vede subito che il sistema \'e completamente osservabile perch\'e lo stato coincide con le uscite, ma si pu\'o ricavare rigorosamente con il teorema di Kalman: basta osservare che $ rank\left\lbrace C \right\rbrace = 2 = n_x $.
 					
 					La trasformata dell'uscita nel caso $ \alpha_1 = \alpha_2 = \alpha $ \'e:
 					\[
